@@ -3,7 +3,7 @@ const Foreca = {
   headers: {
     headers: {
       'x-rapidapi-host': process.env.REACT_APP_API_URL,
-      'x-rapidapi-key': process.env.REACT_APP_API_URL,
+      'x-rapidapi-key': process.env.REACT_APP_API_KEY,
     },
   },
   async getLocation(city) {
