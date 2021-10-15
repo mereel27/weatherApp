@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Forecast from './components/Forecast/Forecast';
 import moment from 'moment';
 import Foreca from './api/foreca';
+import { BiSearch } from 'react-icons/bi';
 
 
 function App() {
@@ -60,7 +61,7 @@ function App() {
   /* const getIcon = (icon, big) => big ? `${iconURL}${icon}@2x.png` : `${iconURL}${icon}.png`; */
 
   return (
-    <div className="App">
+    <div className="App" id='clear-night'>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -68,7 +69,7 @@ function App() {
           value={city}
           onChange={handleChange}
         ></input>
-        <button type="submit">Enter</button>
+        <button id='search-button' type="submit"><BiSearch /></button>
       </form>
       {/* {data.cod === '404' && <div>{data.message}</div>} */}
       {data && (
