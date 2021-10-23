@@ -69,7 +69,7 @@ function App() {
           value={city}
           onChange={handleChange}
         ></input>
-        <button id='search-button' type="submit"><BiSearch /></button>
+        <button id='search-button' type="submit" disabled={city ? false : true}><BiSearch /></button>
       </form>
       {/* {data.cod === '404' && <div>{data.message}</div>} */}
       {data && (

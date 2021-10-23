@@ -1,13 +1,12 @@
 .day {
   margin: 0 auto;
-  padding: 10px;
   border-radius: 20px;
   position: relative;
 }
 
-/* .day {
-  filter: drop-shadow(grey 10px 10px 10px);
-} */
+.weather-icon {
+  height: 30px;
+}
 
 .img-md {
   height: 70px;
@@ -41,11 +40,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  font-weight: 600;
 }
 
 .day-forecast {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.096);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.096);
   border-radius: 20px;
+  padding-bottom: 10px;
 }
 
 .forecast {
@@ -58,13 +59,19 @@
   gap: 20px;
 }
 
+.hourly-container {
+  width: 100%;
+}
+
 .hourly-forecast {
   display: flex;
-  width: 100%;
+  max-width: 100%;
   overflow: auto;
-  gap: 2em;
+  gap: 10px;
   margin-bottom: 1em;
-  padding-bottom: 1em;
+  padding-bottom: 12px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .hour {
@@ -72,6 +79,9 @@
   font-size: 14px;
   flex-direction: column;
   align-items: center;
+  border-radius: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.096);
+  padding: 3px 4px;
 }
 
 .hourly-info {
@@ -114,7 +124,8 @@
 }
 
 .current {
-  margin-bottom: 40px;
+  width: 100%;
+  padding-bottom: 40px;
   display: flex;
   flex-direction: column;
   place-items: center;
@@ -177,5 +188,11 @@
 
   .info {
     margin-bottom: 0;
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .weather-icon {
+    height: 70px;
   }
 }
