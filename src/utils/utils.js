@@ -1,6 +1,6 @@
 export const getWindDirect = (deg) => {
   switch (true) {
-    case deg > 350 && deg <= 10:
+    case deg > 350 || deg <= 10:
       return 'North';
     case deg > 10 && deg < 80:
       return 'Northeast';

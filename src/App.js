@@ -57,7 +57,7 @@ function App() {
   };
 
   const getDate = (date) => [moment(date).format('dddd'), moment(date).format('DD.MM'), moment(date).format('HH:mm')];
-  const getTemp = (temp) => `${Math.round(temp)} °C`;
+  const getTemp = (temp) => `${Math.round(temp)}°`;
   /* const getIcon = (icon, big) => big ? `${iconURL}${icon}@2x.png` : `${iconURL}${icon}.png`; */
 
   return (

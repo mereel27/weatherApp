@@ -14,6 +14,7 @@
 
 .img-xl {
   height: 100px;
+  padding: 10px 0;
 }
 
 .img-sm {
@@ -60,7 +61,9 @@
 }
 
 .hourly-container {
-  width: 100%;
+  max-width: 100%;
+  width: fit-content;
+  justify-content: center;
 }
 
 .hourly-forecast {
@@ -125,7 +128,7 @@
 
 .current {
   width: 100%;
-  padding-bottom: 40px;
+  padding-bottom: 15px;
   display: flex;
   flex-direction: column;
   place-items: center;
@@ -164,6 +167,14 @@
 .misc-icon {
   width: 30px;
   height: 30px;
+}
+
+.current-more-info {
+  margin: 15px 0 10px 0;
+  width: 100%;
+  display: flex;
+  gap: 50px;
+  justify-content: center;
 }
 
 @media screen and (max-width: 640px) {
