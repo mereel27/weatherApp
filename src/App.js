@@ -1,10 +1,14 @@
 import './App.css';
+import '../src/components/Forecast/Forecast.css';
 import { useEffect, useState } from 'react';
-import Forecast from './components/Forecast/Forecast';
 import moment from 'moment';
 import Foreca from './api/foreca';
 import { BiSearch } from 'react-icons/bi';
+import Current from './components/Current/Current';
+import Hourly from './components/Hourly/Hourly';
+import Daily from './components/Daily/Daily';
 
+const iconURL = process.env.REACT_APP_ICON_URL;
 
 function App() {
   const [city, setCity] = useState('');
@@ -22,13 +26,13 @@ function App() {
           },
           (error) => console.log(`${error.message}`)
         );
-      })
+      });
       const allData = await Foreca.getAllData(`${lon},${lat}`);
       const name = allData[0].name;
       const current = allData[1].current;
       const hourly = allData[2];
       const daily = allData[3];
-      console.log(allData)
+      console.log(allData);
       setData({ name, current, daily, hourly });
     };
     fetchData();
@@ -36,7 +40,7 @@ function App() {
 
   const handleChange = (e) => {
     setCity(e.target.value);
-    console.log(city)
+    console.log(city);
   };
 
   const handleSubmit = (e) => {
@@ -47,7 +51,7 @@ function App() {
 
   const getWeather = async () => {
     const location = await Foreca.getLocation(city);
-    console.log(location)
+    console.log(location);
     const allData = await Foreca.getAllData(location.id);
     const name = allData[0].name;
     const current = allData[1].current;
@@ -56,12 +60,27 @@ function App() {
     setData({ name, current, daily, hourly });
   };
 
-  const getDate = (date) => [moment(date).format('dddd'), moment(date).format('DD.MM'), moment(date).format('HH:mm')];
-  const getTemp = (temp) => `${Math.round(temp)}°`;
-  /* const getIcon = (icon, big) => big ? `${iconURL}${icon}@2x.png` : `${iconURL}${icon}.png`; */
+  const getDate = (date) => [
+    moment(date).format('dddd'),
+    moment(date).format('DD.MM'),
+    moment(date).format('HH:mm'),
+  ];
+
+  const timeOfDay = () => {
+    const day = new Date().getHours();
+    if (day >= 5 && day <= 18) {
+      return 'day';
+    } else {
+      return 'night';
+    }
+  };
+
 
   return (
-    <div className="App" id='clear-night'>
+    <div
+      className="App"
+      id={data ? data.current.symbolPhrase + '-' + timeOfDay() : 'clear-day'}
+    >
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -69,15 +88,20 @@ function App() {
           value={city}
           onChange={handleChange}
         ></input>
-        <button id='search-button' type="submit" disabled={city ? false : true}><BiSearch /></button>
+        <button id="search-button" type="submit" disabled={city ? false : true}>
+          <BiSearch />
+        </button>
       </form>
-      {/* {data.cod === '404' && <div>{data.message}</div>} */}
       {data && (
-        <Forecast data={data} getDate={getDate} getTemp={getTemp} />
+        <div className="day">
+          {console.log(data.current.symbolPhrase + '-' + timeOfDay())}
+          <Current data={data} getDate={getDate} iconURL={iconURL} />
+          <Hourly data={data} getDate={getDate} iconURL={iconURL} />
+          <Daily data={data} getDate={getDate} iconURL={iconURL} />
+        </div>
       )}
     </div>
   );
 }
 
 export default App;
-

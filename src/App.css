@@ -19,7 +19,7 @@ form {
 input {
   border: 1px solid transparent;
   border-radius: 20px;
-  background-color: rgba(255, 255, 255, 0.062);
+  background-color: rgba(255, 255, 255, 0.212);
   height: 25px;
   padding: 3px 10px 3px 15px;
   color: white;
@@ -27,7 +27,7 @@ input {
 
 input:focus {
   outline: none;
-  border: 1px solid rgba(255, 255, 255, 0.123);
+  border: 1px solid rgba(124, 142, 241, 0.5);
 }
 
 button {

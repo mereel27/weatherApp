@@ -72,9 +72,15 @@
   overflow: auto;
   gap: 10px;
   margin-bottom: 1em;
-  padding-bottom: 12px;
+  /* padding-bottom: 12px; */
   margin-left: 10px;
   margin-right: 10px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.hourly-forecast span:not(.precib) {
+  padding: 10px 0;
 }
 
 .hour {
@@ -82,9 +88,8 @@
   font-size: 14px;
   flex-direction: column;
   align-items: center;
-  border-radius: 20px;
-  border: 2px solid rgba(255, 255, 255, 0.096);
-  padding: 3px 4px;
+  /* border-right: 1px solid rgba(255, 255, 255, 0.096); */
+  padding: 10px 5px;
 }
 
 .hourly-info {
@@ -101,6 +106,14 @@
   color: rgba(255, 255, 255, 0.829);
 }
 
+#cloudy-night, #overcast-night {
+  background: #232526;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: rgb(209, 209, 209);
+  text-shadow: 1px 1px 1px rgb(36, 36, 36);
+}
+
 #clear-day {
   background-image: linear-gradient(
     109.6deg,
@@ -109,12 +122,20 @@
   );
 }
 
-#cloudy {
+#clear-day img {
+  filter: drop-shadow(grey 1px 1px 1px);
+}
+
+#overcast-day {
   background-image: linear-gradient(
     180.3deg,
     rgba(221, 221, 221, 1) 5.5%,
     rgba(110, 136, 161, 1) 90.2%
   );
+}
+
+#overcast-day img {
+  filter: drop-shadow(grey 1px 1px 1px);
 }
 
 #rainy {
@@ -128,7 +149,7 @@
 
 .current {
   width: 100%;
-  padding-bottom: 15px;
+  /* padding-bottom: 15px; */
   display: flex;
   flex-direction: column;
   place-items: center;
@@ -140,7 +161,7 @@
 }
 
 #big-temp {
-  font-size: 48px;
+  font-size: 64px;
   margin-bottom: 0;
 }
 
@@ -150,13 +171,18 @@
 
 .info {
   display: flex;
+  justify-content: center;
   align-items: center;
   margin-bottom: 10px;
 }
 
-.hour .info {
+.precib {
+  /* padding-top: 10px; */
   font-size: 12px;
-  font-weight: 700;
+}
+
+.precib svg {
+  margin-left: -10px;
 }
 
 .icon {
@@ -175,6 +201,31 @@
   display: flex;
   gap: 50px;
   justify-content: center;
+}
+
+.date-info {
+  align-items: center;
+}
+
+.meta {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.meta img {
+  padding: 0 20px;
+}
+
+.meta span {
+  font-size: 10px;
+  padding: 0 20px;
+}
+
+.logo {
+  width: 50px;
 }
 
 @media screen and (max-width: 640px) {
@@ -199,6 +250,10 @@
 
   .info {
     margin-bottom: 0;
+  }
+
+  .small {
+    font-size: 12px;
   }
 }
 
