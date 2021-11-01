@@ -126,7 +126,7 @@
   filter: drop-shadow(grey 1px 1px 1px);
 }
 
-#overcast-day {
+#overcast-day, #cloudy-day {
   background-image: linear-gradient(
     180.3deg,
     rgba(221, 221, 221, 1) 5.5%,
