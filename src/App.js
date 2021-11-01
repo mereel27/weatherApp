@@ -76,7 +76,7 @@ function App() {
   return (
     <div
       className="App"
-      id={data ? data.current.symbolPhrase + '-' + timeOfDay() : 'clear-day'}
+      id={data ? data.current.symbolPhrase.replace(' ', '') + '-' + timeOfDay() : 'clear-day'}
     >
       <form onSubmit={handleSubmit}>
         <input
@@ -91,7 +91,7 @@ function App() {
       </form>
       {data && (
         <div className="day">
-          {console.log(data.current.symbolPhrase + '-' + timeOfDay())}
+          {console.log(data.current.symbolPhrase.replace(' ', '') + '-' + timeOfDay())}
           <Current data={data} getDate={getDate} />
           <Hourly data={data} getDate={getDate} />
           <Daily data={data} getDate={getDate} />

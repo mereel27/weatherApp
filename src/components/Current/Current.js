@@ -1,5 +1,5 @@
 import { WiStrongWind, WiUmbrella, WiHumidity } from 'react-icons/wi';
-import logo from '../../img/logo.svg';
+import Logo from '../Logo';
 
 const Current = ({ data, getDate }) => {
   return (
@@ -31,7 +31,7 @@ const Current = ({ data, getDate }) => {
         </span>
       </div>
       <div className="meta">
-        <img className="logo" src={logo} alt=''/>
+        <a href="https://www.foreca.com/"><Logo className='logo' /></a>
         <span>{`Updated: ${getDate(data.current.time)[2]}`}</span>
       </div>
     </div>
