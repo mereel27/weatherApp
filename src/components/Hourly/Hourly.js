@@ -1,6 +1,6 @@
 import { WiRaindrop } from 'react-icons/wi';
 
-const Hourly = ({ data, getDate, iconURL }) => {
+const Hourly = ({ data, getDate }) => {
   return (
     <div className="hourly-container">
       <div className="hourly-forecast">
@@ -9,7 +9,7 @@ const Hourly = ({ data, getDate, iconURL }) => {
             <span className="info">{getDate(hour.time)[2]}</span>
             <img
               className="img-sm "
-              src={`${iconURL}${hour.symbol}.png`}
+              src={`${process.env.REACT_APP_ICON_URL}${hour.symbol}.png`}
               alt={hour.symbolPhrase}
               title={hour.symbolPhrase}
             />

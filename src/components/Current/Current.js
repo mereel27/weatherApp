@@ -1,7 +1,7 @@
 import { WiStrongWind, WiUmbrella, WiHumidity } from 'react-icons/wi';
 import logo from '../../img/logo.svg';
 
-const Current = ({ data, iconURL, getDate }) => {
+const Current = ({ data, getDate }) => {
   return (
     <div className="current">
       <span id="name">{data.name || ''}</span>
@@ -11,7 +11,7 @@ const Current = ({ data, iconURL, getDate }) => {
       </span>
       <img
         className="img-xl"
-        src={`${iconURL}${data.current.symbol}.png`}
+        src={`${process.env.REACT_APP_ICON_URL}${data.current.symbol}.png`}
         alt={data.current.symbolPhrase}
         title={data.current.symbolPhrase}
       />

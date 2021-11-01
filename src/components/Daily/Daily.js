@@ -6,7 +6,7 @@ import {
   WiWindDeg
 } from 'react-icons/wi';
 
-const Daily = ({ data, getDate, iconURL }) => {
+const Daily = ({ data, getDate }) => {
   return (
     <div className="forecast">
       {data.daily.forecast.slice(1).map((day, index) => (
@@ -17,7 +17,7 @@ const Daily = ({ data, getDate, iconURL }) => {
             </div>
           <img
             className="weather-icon"
-            src={`${iconURL}${day.symbol}.png`}
+            src={`${process.env.REACT_APP_ICON_URL}${day.symbol}.png`}
             alt={day.symbolPhrase}
             title={day.symbolPhrase}
           />

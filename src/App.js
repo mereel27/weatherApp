@@ -8,8 +8,6 @@ import Current from './components/Current/Current';
 import Hourly from './components/Hourly/Hourly';
 import Daily from './components/Daily/Daily';
 
-const iconURL = process.env.REACT_APP_ICON_URL;
-
 function App() {
   const [city, setCity] = useState('');
   const [data, setData] = useState(null);
@@ -75,7 +73,6 @@ function App() {
     }
   };
 
-
   return (
     <div
       className="App"
@@ -95,9 +92,9 @@ function App() {
       {data && (
         <div className="day">
           {console.log(data.current.symbolPhrase + '-' + timeOfDay())}
-          <Current data={data} getDate={getDate} iconURL={iconURL} />
-          <Hourly data={data} getDate={getDate} iconURL={iconURL} />
-          <Daily data={data} getDate={getDate} iconURL={iconURL} />
+          <Current data={data} getDate={getDate} />
+          <Hourly data={data} getDate={getDate} />
+          <Daily data={data} getDate={getDate} />
         </div>
       )}
     </div>
