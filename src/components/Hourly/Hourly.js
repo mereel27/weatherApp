@@ -7,6 +7,12 @@ const Hourly = ({ data, getDate }) => {
         {data.hourly.forecast.map((hour, index) => (
           <div className="hour" key={index}>
             <span className="info">{getDate(hour.time)[2]}</span>
+            {hour.precipProb > 15 && (
+              <div className="info precib" title="chance of rain">
+                <WiRaindrop size="1.5em" />
+                {hour.precipProb}%
+              </div>
+            )}
             <img
               className="img-sm "
               src={`${process.env.REACT_APP_ICON_URL}${hour.symbol}.png`}
@@ -16,12 +22,6 @@ const Hourly = ({ data, getDate }) => {
             <span className="info hourly-info">
               {`${Math.round(hour.temperature)}°`}
             </span>
-            {hour.precipProb > 15 && (
-              <div className="info precib" title="chance of rain">
-                <WiRaindrop size="1.5em" />
-                {hour.precipProb}%
-              </div>
-            )}
           </div>
         ))}
       </div>

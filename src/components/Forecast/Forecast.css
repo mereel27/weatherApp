@@ -13,13 +13,14 @@
 }
 
 .img-xl {
-  height: 100px;
+  height: 70px;
   padding: 10px 0;
 }
 
 .img-sm {
   height: 30px;
   padding: 10px;
+  margin-top: auto;
 }
 
 ::-webkit-scrollbar {
@@ -93,6 +94,8 @@
   flex-direction: column;
   align-items: center;
   padding: 10px 5px;
+  height: 142px;
+  justify-content: space-between;
 }
 
 .hourly-info {
@@ -185,6 +188,8 @@
 #big-temp {
   font-size: 64px;
   margin-bottom: 0;
+  font-weight: 400;
+  padding: 5px 0;
 }
 
 .description::first-letter {
