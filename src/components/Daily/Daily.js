@@ -12,7 +12,7 @@ const Daily = ({ data, getDate }) => {
       {data.daily.forecast.slice(1).map((day, index) => (
         <div className="day-forecast" key={index}>
             <div className="date-info">
-              <span>{getDate(day.date)[0]}</span>
+              <span className='date'>{getDate(day.date)[0]}</span>
               <span className="info small">{getDate(day.date)[1]}</span>
             </div>
           <img

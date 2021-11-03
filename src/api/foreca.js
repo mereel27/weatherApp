@@ -32,10 +32,10 @@ const Foreca = {
 
   async getAllData(coord) {
     const urls = [
-      `${this.domain}/location/${coord}`,
-      `${this.domain}/current/${coord}`,
+      `${this.domain}/location/${coord}?lang=ru`,
+      `${this.domain}/current/${coord}?lang=ru`,
       `${this.domain}/forecast/hourly/${coord}`,
-      `${this.domain}/forecast/daily/${coord}?dataset=full`,
+      `${this.domain}/forecast/daily/${coord}?dataset=full&lang=ru`,
     ];
     const data = await Promise.all(urls.map((url) => this.getData(url)));
     return data;

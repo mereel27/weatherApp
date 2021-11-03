@@ -103,7 +103,7 @@
   white-space: nowrap;
 }
 
-#clear-night {
+#n000, #n100 {
   background-image: radial-gradient(
     circle 610px at 5.2% 51.6%,
     rgba(5, 8, 114, 1) 0%,
@@ -112,7 +112,7 @@
   color: rgba(255, 255, 255, 0.829);
 }
 
-#cloudy-night, #overcast-night, #lightrain-night {
+#n300, #n400, #n420 {
   background: #232526;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -120,35 +120,63 @@
   text-shadow: 1px 1px 1px rgb(36, 36, 36);
 }
 
-#clear-day {
-  background-image: linear-gradient(
-    109.6deg,
-    rgba(247, 202, 201, 1) 20.6%,
-    rgba(146, 168, 209, 1) 85.9%
-  );
+#n200 {
+  background: #141E30;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #243B55, #141E30);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #243B55, #141E30); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: rgb(209, 209, 209);
+  text-shadow: 1px 1px 1px rgb(36, 36, 36);
 }
 
-#lightrain-day {
+#n200 img, #n400 img {
+  filter: drop-shadow(rgb(39, 39, 39) 1px 1px 1px);
+}
+
+#n600 {
+  background: #000000;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #434343, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #434343, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: rgb(209, 209, 209);
+}
+
+#n600 img {
+  filter: drop-shadow(rgb(0, 0, 0) 1px 1px 1px);
+}
+
+#d000, #d100 {
+  background: linear-gradient(to top, #363795, #005C97);
+}
+
+#d200 {
+  background: linear-gradient(to top, #2c3e50, #3498db);
+  color: rgb(209, 209, 209);
+}
+
+#d000 img, #d100 img, #d200 img {
+  filter: drop-shadow(rgb(75, 75, 75) 1px 1px 1px);
+}
+
+#d410 {
   background: #BBD2C5;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #536976, #BBD2C5);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #536976, #BBD2C5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-#lightrain-day img {
+#d410 img {
   filter: drop-shadow(grey 1px 1px 1px);
 }
 
 .st0 {
   fill-rule:evenodd;
   clip-rule:evenodd;
-  fill:#FFFFFF;
+  fill: #FFFFFF;
 }
 
-#clear-day img {
+#d000 img {
   filter: drop-shadow(grey 1px 1px 1px);
 }
 
-#overcast-day, #cloudy-day {
+#d400, #d300 {
   background-image: linear-gradient(
     180.3deg,
     rgba(221, 221, 221, 1) 5.5%,
@@ -156,7 +184,7 @@
   );
 }
 
-#overcast-day img {
+#d400 img, #d300 img {
   filter: drop-shadow(grey 1px 1px 1px);
 }
 
@@ -254,6 +282,10 @@
 .logo {
   width: 40px;
   padding: 0 20px;
+}
+
+.date {
+  text-transform: capitalize;
 }
 
 @media screen and (max-width: 640px) {

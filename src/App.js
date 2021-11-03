@@ -2,6 +2,7 @@ import './App.css';
 import '../src/components/Forecast/Forecast.css';
 import { useEffect, useState } from 'react';
 import moment from 'moment';
+import 'moment/locale/ru';
 import Foreca from './api/foreca';
 import { BiSearch } from 'react-icons/bi';
 import Current from './components/Current/Current';
@@ -58,6 +59,7 @@ function App() {
     setData({ name, current, daily, hourly });
   };
 
+  moment.locale('ru');
   const getDate = (date) => [
     moment(date).format('dddd'),
     moment(date).format('DD.MM'),
@@ -76,7 +78,7 @@ function App() {
   return (
     <div
       className="App"
-      id={data ? data.current.symbolPhrase.replace(' ', '') + '-' + timeOfDay() : 'clear-day'}
+      id={data ? data.current.symbol.replace(' ', '') : 'clear-day'}
     >
       <form onSubmit={handleSubmit}>
         <input
@@ -91,7 +93,7 @@ function App() {
       </form>
       {data && (
         <div className="day">
-          {console.log(data.current.symbolPhrase.replace(' ', '') + '-' + timeOfDay())}
+          {console.log(data.current.symbol.replace(' ', ''))}
           <Current data={data} getDate={getDate} />
           <Hourly data={data} getDate={getDate} />
           <Daily data={data} getDate={getDate} />
