@@ -9,6 +9,8 @@ import Current from './components/Current/Current';
 import Hourly from './components/Hourly/Hourly';
 import Daily from './components/Daily/Daily';
 
+moment.locale('ru');
+
 function App() {
   const [city, setCity] = useState('');
   const [data, setData] = useState(null);
@@ -59,21 +61,11 @@ function App() {
     setData({ name, current, daily, hourly });
   };
 
-  moment.locale('ru');
   const getDate = (date) => [
     moment(date).format('dddd'),
     moment(date).format('DD.MM'),
     moment(date).format('HH:mm'),
   ];
-
-  const timeOfDay = () => {
-    const day = new Date().getHours();
-    if (day >= 5 && day <= 18) {
-      return 'day';
-    } else {
-      return 'night';
-    }
-  };
 
   return (
     <div
