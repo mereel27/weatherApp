@@ -89,6 +89,9 @@ function App() {
           <Current data={data} getDate={getDate} />
           <Hourly data={data} getDate={getDate} />
           <Daily data={data} getDate={getDate} />
+          <div id="more">
+            <a href="https://www.foreca.com/" rel="noreferrer" target='_blank'>Детальный прогноз</a>
+          </div>
         </div>
       )}
     </div>

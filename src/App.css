@@ -2,6 +2,8 @@
   text-align: center;
   background-size: cover;
   background-repeat: no-repeat;
+  color: rgb(209, 209, 209);
+  text-shadow: 1px 1px 1px rgb(36, 36, 36);
 }
 
 .App-logo {

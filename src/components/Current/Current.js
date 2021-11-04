@@ -18,14 +18,14 @@ const Current = ({ data, getDate }) => {
       <p className="description">{data.current.symbolPhrase || ''}</p>
       <div className="current-more-info">
         <span className="info">
-          <WiStrongWind size="1.25em" title="wind speed" />{' '}
+          <WiStrongWind size="1.25em" title="Скорость ветра" />{' '}
           {`${data.current.windSpeed} - ${data.current.windGust}`} m/s
         </span>
         <span className="info">
-          <WiHumidity size="1.25em" title="air humidity" />
+          <WiHumidity size="1.25em" title="Относительная влажность" />
           {data.current.relHumidity}%
         </span>
-        <span className="info" title="chance of rain">
+        <span className="info" title="Вероятность осадков">
           <WiUmbrella size="1.25em" />
           {data.current.precipProb}%
         </span>
