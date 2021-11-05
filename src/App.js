@@ -99,7 +99,7 @@ function App() {
           <Hourly data={data} getDate={getDate} />
           <Daily data={data} getDate={getDate} />
           <div id="more">
-            <a href={`https://www.foreca.com/${data.location.id}/${data.location.name}-${data.location.adminArea}-${data.location.country}`}rel="noreferrer" target='_blank'>Детальный прогноз</a>
+            <a href={`https://www.foreca.com/ru/${data.location.id}/${data.location.name}-${data.location.adminArea}-${data.location.country}`}rel="noreferrer" target='_blank'>Детальный прогноз</a>
           </div>
         </div>
       )}

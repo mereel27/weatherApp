@@ -31,7 +31,7 @@ const Current = ({ data, getDate }) => {
         </span>
       </div>
       <div className="meta">
-        <a href="https://www.foreca.com/"><Logo className='logo' /></a>
+        <a href="https://www.foreca.com/ru"><Logo className='logo' /></a>
         <span>{`Обновлено: ${getDate(data.current.time)[2]}`}</span>
       </div>
     </div>
