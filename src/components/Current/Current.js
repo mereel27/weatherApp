@@ -5,7 +5,7 @@ const Current = ({ data, getDate }) => {
   return (
     <div className="current">
       <span id="name">{data.location.name || ''}</span>
-      <span className='date'>{getDate(data.current.time)[0] || ''}</span>
+      <span className="date">{getDate(data.current.time)[0] || ''}</span>
       <span className="info" id="big-temp">
         {`${Math.round(data.current.temperature)}°`}
       </span>
@@ -31,7 +31,9 @@ const Current = ({ data, getDate }) => {
         </span>
       </div>
       <div className="meta">
-        <a href="https://www.foreca.com/ru"><Logo className='logo' /></a>
+        <a href="https://www.foreca.com/ru" rel="noreferrer" target="_blank">
+          <Logo className="logo" />
+        </a>
         <span>{`Обновлено: ${getDate(data.current.time)[2]}`}</span>
       </div>
     </div>
