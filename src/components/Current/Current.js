@@ -4,7 +4,7 @@ import Logo from '../Logo';
 const Current = ({ data, getDate }) => {
   return (
     <div className="current">
-      <span id="name">{data.name || ''}</span>
+      <span id="name">{data.location.name || ''}</span>
       <span className='date'>{getDate(data.current.time)[0] || ''}</span>
       <span className="info" id="big-temp">
         {`${Math.round(data.current.temperature)}°`}

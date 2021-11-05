@@ -2,7 +2,7 @@
   text-align: center;
   background-size: cover;
   background-repeat: no-repeat;
-  color: rgb(209, 209, 209);
+  color: rgb(224, 224, 224);
   text-shadow: 1px 1px 1px rgb(36, 36, 36);
 }
 
@@ -24,12 +24,17 @@ input {
   background-color: rgba(255, 255, 255, 0.212);
   height: 25px;
   padding: 3px 10px 3px 15px;
-  color: white;
+  color: var(--main-color);
+}
+
+input::placeholder {
+  color: inherit;
+  opacity: .5;
 }
 
 input:focus {
   outline: none;
-  border: 1px solid rgba(124, 142, 241, 0.5);
+  border: 1px solid ;
 }
 
 button {

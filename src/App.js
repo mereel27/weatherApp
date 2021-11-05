@@ -11,6 +11,8 @@ import Daily from './components/Daily/Daily';
 
 moment.locale('ru');
 
+let timeoutID;
+
 function App() {
   const [city, setCity] = useState('');
   const [data, setData] = useState(null);
@@ -29,19 +31,27 @@ function App() {
         );
       });
       const allData = await Foreca.getAllData(`${lon},${lat}`);
-      const name = allData[0].name;
+      const location = allData[0];
       const current = allData[1].current;
       const hourly = allData[2];
       const daily = allData[3];
       console.log(allData);
-      setData({ name, current, daily, hourly });
+      setData({ location, current, daily, hourly });
     };
     fetchData();
   }, []);
 
   const handleChange = (e) => {
+    console.log(timeoutID);
     setCity(e.target.value);
-    console.log(city);
+    if (timeoutID) {
+      clearTimeout(timeoutID);
+      timeoutID = null;
+    }
+    timeoutID = setTimeout(() => {
+      Foreca.getLocation(city)
+      .then(response => console.log(response));
+    }, 2000)
   };
 
   const handleSubmit = (e) => {
@@ -51,14 +61,14 @@ function App() {
   };
 
   const getWeather = async () => {
-    const location = await Foreca.getLocation(city);
-    console.log(location);
-    const allData = await Foreca.getAllData(location.id);
-    const name = allData[0].name;
+    const locInfo = await Foreca.getLocation(city);
+    console.log(locInfo);
+    const allData = await Foreca.getAllData(locInfo.id);
+    const location = allData[0];
     const current = allData[1].current;
     const hourly = allData[2];
     const daily = allData[3];
-    setData({ name, current, daily, hourly });
+    setData({ location, current, daily, hourly });
   };
 
   const getDate = (date) => [
@@ -85,12 +95,11 @@ function App() {
       </form>
       {data && (
         <div className="day">
-          {console.log(data.current.symbol.replace(' ', ''))}
           <Current data={data} getDate={getDate} />
           <Hourly data={data} getDate={getDate} />
           <Daily data={data} getDate={getDate} />
           <div id="more">
-            <a href="https://www.foreca.com/" rel="noreferrer" target='_blank'>Детальный прогноз</a>
+            <a href={`https://www.foreca.com/${data.location.id}/${data.location.name}-${data.location.adminArea}-${data.location.country}`}rel="noreferrer" target='_blank'>Детальный прогноз</a>
           </div>
         </div>
       )}
