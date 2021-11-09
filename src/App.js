@@ -42,14 +42,13 @@ function App() {
   }, []);
 
   const handleChange = (e) => {
-    console.log(timeoutID);
     setCity(e.target.value);
     if (timeoutID) {
       clearTimeout(timeoutID);
       timeoutID = null;
     }
     timeoutID = setTimeout(() => {
-      Foreca.getLocation(city).then((response) => console.log(response));
+      Foreca.getLocation(e.target.value).then((response) => console.log(response));
     }, 2000);
   };
 
@@ -61,7 +60,6 @@ function App() {
 
   const getWeather = async () => {
     const locInfo = await Foreca.getLocation(city);
-    console.log(locInfo);
     const allData = await Foreca.getAllData(locInfo.id);
     const location = allData[0];
     const current = allData[1].current;

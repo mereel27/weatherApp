@@ -8,12 +8,12 @@ const Foreca = {
   },
   async getLocation(city) {
     const response = await fetch(
-      `${this.domain}/location/search/${city}`,
+      `${this.domain}/location/search/${city}?lang=ru`,
       this.headers
     );
     const jsonReponse = await response.json();
     if (jsonReponse.locations.length > 0) {
-      console.log(jsonReponse.locations);
+      console.log(jsonReponse);
       return jsonReponse.locations[0];
     } else {
       return { name: 'Kyiv', country: 'Ukraine', id: '100703448' };

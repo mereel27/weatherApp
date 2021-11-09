@@ -17,7 +17,7 @@ const Daily = ({ data, getDate }) => {
             </div>
           <img
             className="weather-icon"
-            src={`${process.env.REACT_APP_ICON_URL}${day.symbol}.png`}
+            src={`${process.env.REACT_APP_ICON_URL}${day.symbol}.svg`}
             alt={day.symbolPhrase}
             title={day.symbolPhrase}
           />

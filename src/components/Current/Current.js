@@ -11,7 +11,7 @@ const Current = ({ data, getDate }) => {
       </span>
       <img
         className="img-xl"
-        src={`${process.env.REACT_APP_ICON_URL}${data.current.symbol}.png`}
+        src={`${process.env.REACT_APP_ICON_URL}${data.current.symbol}.svg`}
         alt={data.current.symbolPhrase}
         title={data.current.symbolPhrase}
       />
@@ -19,7 +19,7 @@ const Current = ({ data, getDate }) => {
       <div className="current-more-info">
         <span className="info">
           <WiStrongWind size="1.25em" title="Скорость ветра" />{' '}
-          {`${data.current.windSpeed} - ${data.current.windGust}`} m/s
+          {`${data.current.windSpeed} - ${data.current.windGust}`} м/с
         </span>
         <span className="info">
           <WiHumidity size="1.25em" title="Относительная влажность" />

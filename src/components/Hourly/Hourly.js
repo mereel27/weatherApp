@@ -15,7 +15,7 @@ const Hourly = ({ data, getDate }) => {
             )}
             <img
               className="img-sm "
-              src={`${process.env.REACT_APP_ICON_URL}${hour.symbol}.png`}
+              src={`${process.env.REACT_APP_ICON_URL}${hour.symbol}.svg`}
               alt={hour.symbolPhrase}
               title={hour.symbolPhrase}
             />
