@@ -1,0 +1,20 @@
+<svg width="150" height="142" viewBox="0 0 150 142" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M129 76.8034C129 86.9961 120.722 95.2592 110.507 95.2592H43.5888C30.0097 95.2592 19 84.2733 19 70.7162C19 57.1631 30.0097 46.1733 43.5888 46.1733C44.8067 46.1733 46.0037 46.2666 47.1774 46.4364C52.7303 35.4298 64.1503 27.877 77.3425 27.877C93.3053 27.877 106.678 38.9393 110.191 53.8014C110.542 55.2852 110.795 56.8054 110.94 58.3541V58.358C120.95 58.586 129 66.7558 129 76.8034Z" fill="url(#paint0_linear_415_125)" stroke="black" stroke-opacity="0.1"/>
+<path d="M89 94.5641C89 100.124 84.4847 104.631 78.9128 104.631H42.4121C35.0053 104.631 29 98.6386 29 91.2439C29 83.8512 35.0053 77.8568 42.4121 77.8568C43.0764 77.8568 43.7293 77.9077 44.3695 78.0003C47.3983 71.9967 53.6274 67.877 60.8232 67.877C69.5302 67.877 76.8244 73.911 78.7407 82.0176C78.9319 82.827 79.07 83.6561 79.1493 84.5009V84.503C84.6093 84.6274 89 89.0836 89 94.5641Z" fill="url(#paint1_linear_415_125)" stroke="black" stroke-opacity="0.1"/>
+<path d="M58 108.877C53.8166 111.299 51 115.819 51 121C51 121.186 51.0026 121.37 51.0102 121.552C51.3526 130.353 64.6474 130.353 64.9898 121.552C64.9974 121.37 65 121.186 65 121C65.0013 115.819 62.1834 111.299 58 108.877V108.877Z" fill="#00A3FF"/>
+<path d="M129 62L99.2796 85.9229H106.669L93.506 101.168H101.256L89 119.036L118.378 98.5945H110.268L123.245 84.0139H113.969L129 62Z" fill="url(#paint2_radial_415_125)"/>
+<defs>
+<linearGradient id="paint0_linear_415_125" x1="60.4111" y1="47.9103" x2="60.4111" y2="115.293" gradientUnits="userSpaceOnUse">
+<stop offset="0.9999" stop-color="#EBEBEB"/>
+<stop offset="1" stop-color="white" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="paint1_linear_415_125" x1="51.5879" y1="78.8043" x2="51.5879" y2="115.558" gradientUnits="userSpaceOnUse">
+<stop offset="0.9999" stop-color="#E1E1E1"/>
+<stop offset="1" stop-color="white" stop-opacity="0"/>
+</linearGradient>
+<radialGradient id="paint2_radial_415_125" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(109 90.5181) rotate(90) scale(39.6941 27.8378)">
+<stop stop-color="#FFD88B"/>
+<stop offset="1" stop-color="#FFA900"/>
+</radialGradient>
+</defs>
+</svg>

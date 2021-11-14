@@ -15,7 +15,7 @@ const Hourly = ({ data, getDate }) => {
             )}
             <img
               className="img-sm "
-              src={`${process.env.REACT_APP_ICON_URL}${hour.symbol}.svg`}
+              src={require(`../../img/weather/${hour.symbol}.svg`).default}
               alt={hour.symbolPhrase}
               title={hour.symbolPhrase}
             />
