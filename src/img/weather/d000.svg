@@ -1,9 +1,1 @@
-<svg width="150" height="142" viewBox="0 0 150 142" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M94 50.377C94 71.0876 77.2107 87.877 56.5 87.877C35.7893 87.877 19 71.0876 19 50.377C19 29.6663 35.7893 12.877 56.5 12.877C77.2107 12.877 94 29.6663 94 50.377Z" fill="url(#paint0_linear_410_198)"/>
-<defs>
-<linearGradient id="paint0_linear_410_198" x1="71.6061" y1="16.3488" x2="40.0123" y2="87.8689" gradientUnits="userSpaceOnUse">
-<stop stop-color="#FFD88B"/>
-<stop offset="1" stop-color="#FFA900"/>
-</linearGradient>
-</defs>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 40.91 40.91"><defs><style>.cls-1{fill:url(#New_Gradient_Swatch_1);}</style><linearGradient id="New_Gradient_Swatch_1" x1="5.99" y1="34.92" x2="34.92" y2="5.99" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#fdb728"/><stop offset="1" stop-color="#ffcd23"/></linearGradient></defs><g id="Слой_2" data-name="Слой 2"><g id="Icons"><g id="Mostly_Sunny" data-name="Mostly Sunny"><circle class="cls-1" cx="20.46" cy="20.46" r="20.46"/></g></g></g></svg>
