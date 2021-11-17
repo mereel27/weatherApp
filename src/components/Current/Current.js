@@ -4,18 +4,20 @@ import Logo from '../Logo';
 const Current = ({ data, getDate }) => {
   return (
     <div className="current">
+      <span id="country-name">{data.location.country || ''}</span>
       <span id="name">{data.location.name || ''}</span>
       <span className="date">{getDate(data.current.time)[0] || ''}</span>
-      <span className="info" id="big-temp">
-        {`${Math.round(data.current.temperature)}°`}
-      </span>
+      <div className="info">
+        <span id="big-temp">{`${Math.round(data.current.temperature)}`}</span>
+        <span id="celc">°</span>
+      </div>
       <img
         className="img-xl"
         src={require(`../../img/weather/${data.current.symbol}.svg`).default}/* src={`${process.env.REACT_APP_ICON_URL}${data.current.symbol}.png`} */
         alt={data.current.symbolPhrase}
         title={data.current.symbolPhrase}
       />
-      <p className="description">{data.current.symbolPhrase || ''}</p>
+      <span id="description">{data.current.symbolPhrase || ''}</span>
       <div className="current-more-info">
         <span className="info">
           <WiStrongWind size="1.25em" title="Скорость ветра" />{' '}
