@@ -190,14 +190,8 @@ img {
   place-items: center;
 }
 
-#name {
-  padding-bottom: 10px;
-  font-size: 24px;
-}
-
-#country-name {
-  font-size: 8px;
-  opacity: 0.4;
+.current > *:not(:first-child) {
+  padding: 10px 0;
 }
 
 #big-temp {
@@ -208,8 +202,14 @@ img {
   line-height: 55px;
 }
 
-.current > *:not(:first-child) {
-  padding: 10px 0;
+#name {
+  padding: 0 0 10px 0;
+  font-size: 24px;
+}
+
+#country-name {
+  font-size: 8px;
+  opacity: 0.4;
 }
 
 #description::first-letter {
@@ -224,8 +224,7 @@ img {
 
 #celc {
   font-size: 35px;
-  line-height: 55px;
-  margin-top: -12px;
+  margin-top: -20px;
   margin-left: 2px;
 }
 
