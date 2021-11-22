@@ -4,6 +4,8 @@
   background-repeat: no-repeat;
   color: rgb(224, 224, 224);
   text-shadow: 1px 1px 1px rgb(36, 36, 36);
+  background-image: linear-gradient( 180.7deg,  rgba(3,50,186,1) -3.6%, rgba(42,97,255,1) 87.9% );
+  /* background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #2a5298 100%); */
 }
 
 .App-logo {
@@ -44,12 +46,43 @@ button {
   color: rgb(167, 167, 167);
   font-size: 20px;
   right: 15px;
-  bottom: 10px;
+  top: 16px;
   cursor: pointer;
 }
 
 button:hover {
   transform: scale(1.2);
+}
+
+#search-results {
+  
+}
+
+#search-results ul {
+  position: absolute;
+  z-index: 2;
+  max-height: 50vh;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  padding-right: 0;
+  background-color: rgba(1, 2, 68, 0.801);
+  border-radius: 20px;
+  overflow-y: scroll;
+}
+
+#search-results li {
+  text-align: left;
+  white-space: nowrap;
+  text-overflow: clip;
+  cursor: pointer;
+  padding-left: 15px;
+  width: 100%;
+  min-width: 185px;
+}
+
+#search-results li:hover {
+  background-color: rgba(0, 0, 0, 0.733);
 }
 
 @media (prefers-reduced-motion: no-preference) {

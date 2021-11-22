@@ -16,6 +16,7 @@ let timeoutID;
 function App() {
   const [city, setCity] = useState('');
   const [data, setData] = useState(null);
+  const [searchResults, setSearchResults] = useState('');
 
   useEffect(() => {
     let lon, lat;
@@ -48,19 +49,36 @@ function App() {
       timeoutID = null;
     }
     timeoutID = setTimeout(() => {
-      Foreca.getLocation(e.target.value).then((response) => console.log(response));
-    }, 2000);
+      Foreca.getLocation(e.target.value).then((response) => {
+        console.log(response);
+        setSearchResults(response);
+      });
+
+    }, 1000);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    clearTimeout(timeoutID);
+    timeoutID = null;
+    setSearchResults('')
     getWeather();
     setCity('');
   };
 
-  const getWeather = async () => {
-    const locInfo = await Foreca.getLocation(city);
-    const allData = await Foreca.getAllData(locInfo.id);
+  const handleSearchChoice = (e) => {
+    console.log(e.target.id)
+    getWeather(e.target.id);
+    setCity('');
+    setSearchResults('');
+  }
+
+  const getWeather = async (id) => {
+    let locInfo;
+    if (!id) {
+      locInfo = await Foreca.getLocation(city);
+    }
+    const allData = await Foreca.getAllData(id || locInfo[0].id);
     const location = allData[0];
     const current = allData[1].current;
     const hourly = allData[2];
@@ -77,7 +95,7 @@ function App() {
   return (
     <div
       className="App"
-      id={data ? data.current.symbol.replace(' ', '') : 'clear-day'}
+      /* id={data ? data.current.symbol.replace(' ', '') : 'clear-day'} */
     >
       <form onSubmit={handleSubmit}>
         <input
@@ -89,6 +107,22 @@ function App() {
         <button id="search-button" type="submit" disabled={city ? false : true}>
           <BiSearch />
         </button>
+        {searchResults && searchResults.length > 0 &&
+          <div id="search-results">
+            <ul>
+            {searchResults.map(res => (
+              <li 
+                key={res.id}
+                id={res.id}
+                onClick={handleSearchChoice}
+              >
+                  <span>{res.name}</span>, {res.country}
+              </li>
+            ))}
+            </ul>
+          </div>
+        }
+        
       </form>
       {data && (
         <div className="day">

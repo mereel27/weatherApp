@@ -26,15 +26,15 @@
   margin-top: auto;
 }
 
-::-webkit-scrollbar {
+.hourly-forecast::-webkit-scrollbar {
   height: 5px;
 }
 
-::-webkit-scrollbar-track {
+.hourly-forecast::-webkit-scrollbar-track {
   background-color: transparent;
 }
 
-::-webkit-scrollbar-thumb {
+.hourly-forecast::-webkit-scrollbar-thumb {
   background-color: transparent; /* rgba(255, 255, 255, 0.123); */
   border-radius: 2px;
 }
