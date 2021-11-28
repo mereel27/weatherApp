@@ -107,7 +107,8 @@ function App() {
         <button id="search-button" type="submit" disabled={city ? false : true}>
           <BiSearch />
         </button>
-        {searchResults && searchResults.length > 0 &&
+      </form>
+      {searchResults && searchResults.length > 0 &&
           <div id="search-results">
             <ul>
             {searchResults.map(res => (
@@ -122,8 +123,6 @@ function App() {
             </ul>
           </div>
         }
-        
-      </form>
       {data && (
         <div className="day">
           <Current data={data} getDate={getDate} />

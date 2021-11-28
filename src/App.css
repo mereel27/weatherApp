@@ -1,4 +1,5 @@
 .App {
+  position: relative;
   text-align: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -55,7 +56,13 @@ button:hover {
 }
 
 #search-results {
-  background-color: transparent;
+  position: absolute;
+  z-index: 2;
+  left: 0; 
+  right: 0; 
+  margin-left: auto; 
+  margin-right: auto; 
+  width: fit-content;
 }
 
 #search-results ul::-webkit-scrollbar {
@@ -90,12 +97,11 @@ button:hover {
 }
 
 #search-results ul {
-  position: absolute;
-  z-index: 2;
   max-height: 50vh;
   list-style: none;
   padding: 10px 0 10px 0;
-  margin: 0;
+  margin: 0 auto;
+  /* width: fit-content; */
   background-color: rgba(1, 2, 68, 0.801);
   border-radius: 20px;
   overflow-y: scroll;
