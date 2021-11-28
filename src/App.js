@@ -16,7 +16,7 @@ let timeoutID;
 function App() {
   const [city, setCity] = useState('');
   const [data, setData] = useState(null);
-  const [searchResults, setSearchResults] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
     let lon, lat;
