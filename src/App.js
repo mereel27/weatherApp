@@ -100,7 +100,7 @@ function App() {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="Enter city"
+          placeholder="Поиск"
           value={city}
           onChange={handleChange}
         ></input>

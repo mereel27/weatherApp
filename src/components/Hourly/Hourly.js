@@ -8,7 +8,7 @@ const Hourly = ({ data, getDate }) => {
           <div className="hour" key={index}>
             <span className="info">{getDate(hour.time)[2]}</span>
             {hour.precipProb > 15 && (
-              <div className="info precib" title="chance of rain">
+              <div className="info precib" title="Вероятность осадков">
                 <WiRaindrop size="1.5em" />
                 {hour.precipProb}%
               </div>

@@ -1,21 +1,21 @@
 export const getWindDirect = (deg) => {
   switch (true) {
     case deg > 350 || deg <= 10:
-      return 'North';
+      return 'Север';
     case deg > 10 && deg < 80:
-      return 'Northeast';
+      return 'Северо-восток';
     case deg >= 80 && deg <= 100:
-      return 'East';
+      return 'Восток';
     case deg > 100 && deg < 170:
-      return 'Southeast';
+      return 'Юго-восток';
     case deg >= 170 && deg <= 190:
-      return 'South';
+      return 'Юг';
     case deg > 190 && deg < 260:
-      return 'Southwest';
+      return 'Юго-запад';
     case deg >= 260 && deg <= 280:
-      return 'West';
+      return 'Запад';
     case deg > 280 && deg < 350:
-      return 'Northwest';
+      return 'Северо-запад';
     default:
       return 'N/A';
   }

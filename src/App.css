@@ -37,7 +37,7 @@ input::placeholder {
 
 input:focus {
   outline: none;
-  border: 1px solid ;
+  border: 1px solid;
 }
 
 button {
@@ -63,8 +63,10 @@ button:hover {
   margin-left: auto; 
   margin-right: auto; 
   width: fit-content;
-  max-width: 100%;
+  max-width: 90%;
   overflow: hidden;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.295) 0px 0px 1px 2px;
 }
 
 #search-results ul::-webkit-scrollbar {
@@ -105,7 +107,7 @@ button:hover {
   margin: 0 auto;
   /* width: fit-content; */
   background-color: rgba(1, 2, 68, 0.801);
-  border-radius: 20px;
+  /* border-radius: 20px; */
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -121,7 +123,7 @@ button:hover {
 }
 
 #search-results li:hover {
-  background-color: rgba(0, 0, 0, 0.733);
+  background-color: rgba(0, 0, 0, 0.493);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -151,5 +153,11 @@ button:hover {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media screen and (min-width: 640px) {
+  .App {
+    padding: 0 18%;
   }
 }

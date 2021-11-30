@@ -9,7 +9,7 @@ import {
 const Daily = ({ data, getDate }) => {
   return (
     <div className="forecast">
-      {data.daily.forecast.slice(1).map((day, index) => (
+      {data.daily.forecast.map((day, index) => (
         <div className="day-forecast" key={index}>
             <div className="date-info">
               <span className='date'>{getDate(day.date)[0]}</span>
@@ -22,21 +22,21 @@ const Daily = ({ data, getDate }) => {
             title={day.symbolPhrase}
           />
           <span className="info daily-temp">{`${Math.round(day.maxTemp)}° / ${Math.round(day.minTemp)}°`}</span>
-          <span className="info extra">
+          <span className="info extra" title="Скорость ветра">
             <WiStrongWind size="2em" /> {day.maxWindSpeed} m/s
           </span>
           <span
             className="info extra"
-            title={`Wind direction: ${getWindDirect(day.windDir)}`}
+            title={`Направление ветра: ${getWindDirect(day.windDir)}`}
             style={{ transform: `rotate(${day.windDir}deg)` }}
           >
             <WiWindDeg size="2.2em" />
           </span>
-          <span className="info extra">
+          <span className="info extra" title="Относительная влажность">
             <WiHumidity size="2.2em" />
             {day.minRelHumidity}%
           </span>
-          <span className="info extra">
+          <span className="info extra" title="Атмосферное давление">
             <WiBarometer size="2.2em" />
             {day.pressure.toFixed()} hPa
           </span>
