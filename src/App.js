@@ -4,14 +4,15 @@ import { useEffect, useState } from 'react';
 import moment from 'moment';
 import 'moment/locale/ru';
 import Foreca from './api/foreca';
-import { BiSearch } from 'react-icons/bi';
 import Current from './components/Current/Current';
 import Hourly from './components/Hourly/Hourly';
 import Daily from './components/Daily/Daily';
+import SearchBar from './components/SearchBar/SearchBar';
 
 moment.locale('ru');
 
 let timeoutID;
+let blurTimeout;
 
 function App() {
   const [city, setCity] = useState('');
@@ -53,7 +54,6 @@ function App() {
         console.log(response);
         setSearchResults(response);
       });
-
     }, 1000);
   };
 
@@ -61,16 +61,33 @@ function App() {
     e.preventDefault();
     clearTimeout(timeoutID);
     timeoutID = null;
-    setSearchResults('')
+    setSearchResults('');
     getWeather();
     setCity('');
   };
 
   const handleSearchChoice = (e) => {
-    console.log(e.target.id)
+    console.log(e.target.id);
     getWeather(e.target.id);
     setCity('');
     setSearchResults('');
+  };
+
+  const focusOut = (event) => {
+    blurTimeout = setTimeout(() => {
+      if (document.getElementById('search-results')) {
+        document.getElementById('search-results').style.display = 'none';
+      }
+    }, 100)
+    
+  }
+
+  const focusOn = () => {
+    clearTimeout(blurTimeout);
+    const searchBar = document.getElementById('search-results');
+    if (searchBar) {
+      searchBar.style.display = 'block';
+    }
   }
 
   const getWeather = async (id) => {
@@ -97,32 +114,15 @@ function App() {
       className="App"
       /* id={data ? data.current.symbol.replace(' ', '') : 'clear-day'} */
     >
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Поиск"
-          value={city}
-          onChange={handleChange}
-        ></input>
-        <button id="search-button" type="submit" disabled={city ? false : true}>
-          <BiSearch />
-        </button>
-      </form>
-      {searchResults && searchResults.length > 0 &&
-          <div id="search-results">
-            <ul>
-            {searchResults.map(res => (
-              <li 
-                key={res.id}
-                id={res.id}
-                onClick={handleSearchChoice}
-              >
-                  <span>{res.name}</span>, {res.country}
-              </li>
-            ))}
-            </ul>
-          </div>
-        }
+      <SearchBar
+        searchResults={searchResults}
+        city={city}
+        handleSearchChoice={handleSearchChoice}
+        andleSubmit={handleSubmit}
+        handleChange={handleChange}
+        focusOut={focusOut}
+        focusOn={focusOn}
+      />
       {data && (
         <div className="day">
           <Current data={data} getDate={getDate} />

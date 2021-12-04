@@ -6,7 +6,6 @@ const Current = ({ data, getDate }) => {
     <div className="current">
       <span id="country-name">{data.location.country || ''}</span>
       <span id="name">{data.location.name || ''}</span>
-      {/* <span className="date">{getDate(data.current.time)[0] || ''}</span> */}
       <div className="info">
         <span id="big-temp">{`${Math.round(data.current.temperature)}`}</span>
         <span id="celc">°</span>
