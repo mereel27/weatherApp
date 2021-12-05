@@ -118,7 +118,7 @@ function App() {
         searchResults={searchResults}
         city={city}
         handleSearchChoice={handleSearchChoice}
-        andleSubmit={handleSubmit}
+        handleSubmit={handleSubmit}
         handleChange={handleChange}
         focusOut={focusOut}
         focusOn={focusOn}
