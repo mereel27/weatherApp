@@ -114,17 +114,18 @@ function App() {
       className="App"
       /* id={data ? data.current.symbol.replace(' ', '') : 'clear-day'} */
     >
-      <SearchBar
-        searchResults={searchResults}
-        city={city}
-        handleSearchChoice={handleSearchChoice}
-        handleSubmit={handleSubmit}
-        handleChange={handleChange}
-        focusOut={focusOut}
-        focusOn={focusOn}
-      />
+      
       {data && (
         <div className="day">
+          <SearchBar
+            searchResults={searchResults}
+            city={city}
+            handleSearchChoice={handleSearchChoice}
+            handleSubmit={handleSubmit}
+            handleChange={handleChange}
+            focusOut={focusOut}
+            focusOn={focusOn}
+          />
           <Current data={data} getDate={getDate} />
           <Hourly data={data} getDate={getDate} />
           <Daily data={data} getDate={getDate} />
