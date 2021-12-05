@@ -183,6 +183,10 @@ img {
   justify-content: center;
 }
 
+.current-more-info svg {
+  padding: 0 2px;
+}
+
 .date-info {
   align-items: center;
 }
