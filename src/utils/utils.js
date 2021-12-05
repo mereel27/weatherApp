@@ -20,3 +20,17 @@ export const getWindDirect = (deg) => {
       return 'N/A';
   }
 };
+
+/* export const move = () => {
+  const scrollContainer = document.querySelector('.hourly-forecast');
+
+  scrollContainer.addEventListener('wheel', (evt) => {
+    evt.preventDefault();
+    evt.currentTarget.scrollLeft += evt.deltaY;
+  });
+}; */
+
+export const move = (evt) => {
+  evt.preventDefault();
+  evt.currentTarget.scrollLeft += evt.deltaY;
+}

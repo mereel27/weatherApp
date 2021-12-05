@@ -13,7 +13,6 @@ const Foreca = {
     );
     const jsonReponse = await response.json();
     if (jsonReponse.locations.length > 0) {
-      /* console.log(jsonReponse.locations); */
       return jsonReponse.locations;
     } else {
       return { name: 'Kyiv', country: 'Ukraine', id: '100703448' };

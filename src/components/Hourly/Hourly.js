@@ -1,6 +1,16 @@
+import { useEffect } from 'react';
 import { WiRaindrop } from 'react-icons/wi';
+import { move } from '../../utils/utils';
 
 const Hourly = ({ data, getDate }) => {
+  useEffect(() => {
+    const scrollBar = document.querySelector('.hourly-forecast');
+    scrollBar.addEventListener('wheel', move);
+    return () => {
+      scrollBar.removeEventListener('wheel', move);
+    };
+  }, []);
+
   return (
     <div className="hourly-container">
       <div className="hourly-forecast">
@@ -15,7 +25,9 @@ const Hourly = ({ data, getDate }) => {
             )}
             <img
               className="img-sm "
-              src={require(`../../img/weather/${hour.symbol}.svg`).default}/* src={`${process.env.REACT_APP_ICON_URL}${hour.symbol}.png`} */
+              src={
+                require(`../../img/weather/${hour.symbol}.svg`).default
+              } /* src={`${process.env.REACT_APP_ICON_URL}${hour.symbol}.png`} */
               alt={hour.symbolPhrase}
               title={hour.symbolPhrase}
             />
