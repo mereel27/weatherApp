@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { WiRaindrop } from 'react-icons/wi';
 import { move } from '../../utils/utils';
+import './Hourly.css';
 
 const Hourly = ({ data, getDate }) => {
   useEffect(() => {

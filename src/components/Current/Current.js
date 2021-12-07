@@ -1,5 +1,6 @@
 import { WiStrongWind, WiUmbrella, WiHumidity } from 'react-icons/wi';
 import Logo from '../Logo';
+import './Current.css';
 
 const Current = ({ data, getDate }) => {
   return (

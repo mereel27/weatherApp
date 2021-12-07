@@ -7,123 +7,35 @@
   background: linear-gradient(to right, #141e30, #243b55);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-form {
+.day {
+  margin: 0 auto;
+  border-radius: 20px;
   position: relative;
-  padding: 10px;
-  margin: 0 auto;
-  width: 200px;
 }
 
-input {
-  border: 1px solid rgba(255, 255, 255, 0.096);
-  border-radius: 20px;
-  background-color: rgba(0, 0, 0, 0.13);
-  height: 25px;
-  padding: 3px 10px 3px 15px;
-  color: var(--main-color);
+.st0 {
+  fill-rule:evenodd;
+  clip-rule:evenodd;
+  fill: currentColor;
 }
 
-input::placeholder {
+.info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  filter: drop-shadow(0 0 2px #141e30);
+}
+
+#more {
+  padding: 15px 0;
+}
+
+#more a {
+  text-decoration: none;
   color: inherit;
-  opacity: .5;
-}
-
-input:focus {
-  outline: none;
-  box-shadow: 0 0 0 1px #4d597098;
-}
-
-button {
-  position: absolute;
-  background-color: transparent;
-  border: none;
-  color: rgb(167, 167, 167);
-  font-size: 20px;
-  right: 10px;
-  top: 16px;
-  cursor: pointer;
-}
-
-button:hover {
-  transform: scale(1.2);
-}
-
-#search-results {
-  position: absolute;
-  z-index: 2;
-  left: 0; 
-  right: 0; 
-  margin-left: auto; 
-  margin-right: auto; 
-  width: fit-content;
-  max-width: 90%;
-  overflow: hidden;
-  border-radius: 20px;
-  box-shadow: rgba(26, 26, 26, 0.295) 0px 0px 2px 1px;
-  background: linear-gradient(to top, #141e30, #243b55);
-}
-
-#search-results ul::-webkit-scrollbar {
-  height: 5px;
-}
-
-#search-results ul::-webkit-scrollbar-track {
-  background-color: transparent;
-  border-radius: 20px;
-  margin: 0 30px;
-}
-
-#search-results ul::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.123);
-  border: 3px solid transparent;
-  border-radius: 20px;
-  box-sizing: border-box;
-  background-clip: content-box;
-}
-
-.hidden {
-  display: none;
-}
-
-#search-results ::-webkit-scrollbar-button:start{
-  display: block;
-}
-
-#search-results ::-webkit-scrollbar-button:end{
-  display: block;
-}
-
-#search-results ::-webkit-scrollbar {
-  width: 14px;
-  height: 6px;
-}
-
-#search-results ul {
-  max-height: 50vh;
-  list-style: none;
-  padding: 10px 0 10px 0;
-  margin: 0 auto;
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
-
-#search-results li {
-  text-align: left;
-  white-space: nowrap;
-  text-overflow: clip;
-  cursor: pointer;
-  padding: 7px 15px 7px 15px;
-  width: 100%;
-  min-width: 185px;
-}
-
-#search-results li:hover {
-  background-color: rgba(0, 0, 0, 0.377);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -132,35 +44,8 @@ button:hover {
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 @media screen and (min-width: 640px) {
   .App {
     padding: 0 18%;
-  }
-  button {
-    right: 15px;
   }
 }

@@ -1,0 +1,119 @@
+form {
+  position: relative;
+  padding: 10px;
+  margin: 0 auto;
+  width: 200px;
+}
+
+input {
+  border: 1px solid rgba(255, 255, 255, 0.096);
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.13);
+  height: 25px;
+  padding: 3px 10px 3px 15px;
+  color: var(--main-color);
+}
+
+input::placeholder {
+  color: inherit;
+  opacity: 0.5;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: 0 0 0 1px #4d597098;
+}
+
+button {
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  color: rgb(167, 167, 167);
+  font-size: 20px;
+  right: 10px;
+  top: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: scale(1.2);
+}
+
+#search-results {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+  max-width: 90%;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: rgba(26, 26, 26, 0.295) 0px 0px 2px 1px;
+  background: linear-gradient(to top, #141e30, #243b55);
+}
+
+#search-results ul::-webkit-scrollbar {
+  height: 5px;
+}
+
+#search-results ul::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 20px;
+  margin: 0 30px;
+}
+
+#search-results ul::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.123);
+  border: 3px solid transparent;
+  border-radius: 20px;
+  box-sizing: border-box;
+  background-clip: content-box;
+}
+
+.hidden {
+  display: none;
+}
+
+#search-results ::-webkit-scrollbar-button:start {
+  display: block;
+}
+
+#search-results ::-webkit-scrollbar-button:end {
+  display: block;
+}
+
+#search-results ::-webkit-scrollbar {
+  width: 14px;
+  height: 6px;
+}
+
+#search-results ul {
+  max-height: 50vh;
+  list-style: none;
+  padding: 10px 0 10px 0;
+  margin: 0 auto;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+#search-results li {
+  text-align: left;
+  white-space: nowrap;
+  text-overflow: clip;
+  cursor: pointer;
+  padding: 7px 15px 7px 15px;
+  width: 100%;
+  min-width: 185px;
+}
+
+#search-results li:hover {
+  background-color: rgba(0, 0, 0, 0.377);
+}
+
+@media screen and (min-width: 640px) {
+  button {
+    right: 15px;
+  }
+}

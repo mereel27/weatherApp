@@ -5,6 +5,7 @@ import {
   WiBarometer,
   WiWindDeg
 } from 'react-icons/wi';
+import './Daily.css';
 
 const Daily = ({ data, getDate }) => {
   return (

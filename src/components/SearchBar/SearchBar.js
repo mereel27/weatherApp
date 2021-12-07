@@ -1,4 +1,5 @@
 import { BiSearch } from 'react-icons/bi';
+import './SearchBar.css';
 
 const SearchBar = ({
   handleSubmit,
