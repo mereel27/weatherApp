@@ -13,7 +13,9 @@ const Current = ({ data, getDate }) => {
       </div>
       <img
         className="img-xl"
-        src={require(`../../img/weather/${data.current.symbol}.svg`).default}/* src={`${process.env.REACT_APP_ICON_URL}${data.current.symbol}.png`} */
+        src={
+          require(`../../img/weather/${data.current.symbol}.svg`).default
+        } /* src={`${process.env.REACT_APP_ICON_URL}${data.current.symbol}.png`} */
         alt={data.current.symbolPhrase}
         title={data.current.symbolPhrase}
       />

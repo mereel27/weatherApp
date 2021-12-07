@@ -49,7 +49,6 @@ function App() {
     }
     timeoutID = setTimeout(() => {
       Foreca.getLocation(e.target.value).then((response) => {
-        console.log(response);
         setSearchResults(response);
       });
     }, 1000);
@@ -65,7 +64,6 @@ function App() {
   };
 
   const handleSearchChoice = (e) => {
-    console.log(e.target.id);
     getWeather(e.target.id);
     setCity('');
     setSearchResults('');
@@ -76,9 +74,8 @@ function App() {
       if (document.getElementById('search-results')) {
         document.getElementById('search-results').style.display = 'none';
       }
-    }, 100)
-    
-  }
+    }, 100);
+  };
 
   const focusOn = () => {
     clearTimeout(blurTimeout);
@@ -86,7 +83,7 @@ function App() {
     if (searchBar) {
       searchBar.style.display = 'block';
     }
-  }
+  };
 
   const getWeather = async (id) => {
     let locInfo;
@@ -112,7 +109,6 @@ function App() {
       className="App"
       /* id={data ? data.current.symbol.replace(' ', '') : 'clear-day'} */
     >
-      
       {data && (
         <div className="day">
           <SearchBar
