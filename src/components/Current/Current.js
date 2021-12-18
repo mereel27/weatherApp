@@ -1,4 +1,4 @@
-import { WiStrongWind, WiUmbrella, WiHumidity } from 'react-icons/wi';
+/* import { WiStrongWind, WiUmbrella, WiHumidity } from 'react-icons/wi'; */
 import Logo from '../Logo';
 import './Current.css';
 
@@ -32,6 +32,7 @@ const Current = ({ data, getDate }) => {
         </span>
         <span className="more" title="Вероятность осадков">
           <span className="more-desc">Осадки:</span>
+         {/*  <WiUmbrella size="1.25em" /> */}
           {data.current.precipProb}%
         </span>
       </div>
