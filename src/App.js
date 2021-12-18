@@ -36,6 +36,7 @@ function App() {
       const current = allData[1].current;
       const hourly = allData[2];
       const daily = allData[3];
+      console.log(allData);
       setData({ location, current, daily, hourly });
     };
     fetchData();
