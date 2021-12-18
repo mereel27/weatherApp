@@ -22,16 +22,16 @@ const Current = ({ data, getDate }) => {
       />
       <span id="description">{data.current.symbolPhrase || ''}</span>
       <div className="current-more-info">
-        <span className="info" title="Скорость ветра">
-          <WiStrongWind size="1.25em" />{' '}
+        <span className="more" title="Скорость ветра">
+          <span className="more-desc">Ветер:</span>
           {`${data.current.windSpeed} - ${data.current.windGust}`} м/с
         </span>
-        <span className="info" title="Относительная влажность">
-          <WiHumidity size="1.25em" />
+        <span className="more" title="Относительная влажность">
+          <span className="more-desc">Влажность:</span>
           {data.current.relHumidity}%
         </span>
-        <span className="info" title="Вероятность осадков">
-          <WiUmbrella size="1.25em" />
+        <span className="more" title="Вероятность осадков">
+          <span className="more-desc">Осадки:</span>
           {data.current.precipProb}%
         </span>
       </div>

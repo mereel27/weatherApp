@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   place-items: center;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .current > *:not(:first-child, img) {
@@ -23,7 +23,7 @@
 #big-temp {
   font-size: 64px;
   margin-bottom: 0;
-  font-weight: 400;
+  font-weight: 300;
   padding: 10px 0;
   line-height: 55px;
 }
@@ -32,6 +32,7 @@
   font-size: 35px;
   margin-top: -20px;
   margin-left: 2px;
+  font-weight: 300;
 }
 
 #description::first-letter {
@@ -46,8 +47,19 @@
 .current-more-info {
   width: 100%;
   display: flex;
-  gap: 50px;
+  gap: 30px;
   justify-content: center;
+}
+
+.more {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  gap: 5px;
+}
+
+.more-desc {
+  font-size: 12px;
 }
 
 .current-more-info svg {
