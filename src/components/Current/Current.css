@@ -6,7 +6,7 @@
   font-weight: 400;
 }
 
-.current > *:not(:first-child, img) {
+.current > *:not(:first-child) {
   padding: 10px 0;
 }
 
@@ -40,8 +40,8 @@
 }
 
 .img-xl {
-  width: 100px;
-  height: 100px;
+  width: 75px;
+  height: 75px;
 }
 
 .current-more-info {

@@ -7,6 +7,7 @@ import Current from './components/Current/Current';
 import Hourly from './components/Hourly/Hourly';
 import Daily from './components/Daily/Daily';
 import SearchBar from './components/SearchBar/SearchBar';
+import { IoMenu } from 'react-icons/io5';
 
 moment.locale('ru');
 
@@ -121,6 +122,11 @@ function App() {
             focusOut={focusOut}
             focusOn={focusOn}
           />
+          <div id='settings'>
+            <button>
+              <IoMenu />
+            </button>
+          </div>
           <Current data={data} getDate={getDate} />
           <Hourly data={data} getDate={getDate} />
           <Daily data={data} getDate={getDate} />
