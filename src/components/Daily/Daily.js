@@ -18,9 +18,9 @@ const Daily = ({ data, getDate }) => {
           </div>
           <img
             className="weather-icon"
-            src={
+            /* src={
               require(`../../img/weather/${day.symbol}.svg`).default
-            } /* src={`${process.env.REACT_APP_ICON_URL}${day.symbol}.png`} */
+            } */ src={`${process.env.REACT_APP_ICON_URL}${day.symbol}.png`}
             alt={day.symbolPhrase}
             title={day.symbolPhrase}
           />
