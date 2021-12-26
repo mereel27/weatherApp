@@ -7,6 +7,63 @@
   background: linear-gradient(to right, #141e30, #243b55);
 }
 
+#settings {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  padding: 10px;
+  position: absolute;
+  right: 5px;
+  height: 100vh;
+  background-color: #243b55;
+  border: 1px solid rgba(255, 255, 255, 0.096);
+  z-index: 3;
+}
+
+#savedList {
+  list-style: none;
+  text-align: left;
+  padding: 0;
+}
+
+#savedList li {
+  padding: 2px 5px 2px 5px;
+  border-radius: 5px;
+}
+
+#savedList li:hover {
+  background-color: rgba(0, 0, 0, 0.158);
+  cursor: pointer;
+}
+
+.city {
+  display: flex;
+  align-items: center;
+}
+
+.star {
+  padding: 2px 4px;
+  cursor: pointer;
+  color: rgba(224, 224, 224, 0.473);
+  margin-left: auto;
+}
+
+.gold {
+  color: #fcf06b;
+}
+
+.gold path {
+  fill: #fcf06b;
+}
+
+.star path:hover {
+  fill: rgb(224, 224, 224);
+}
+
+[hidden]{
+  display: none !important;
+}
+
 .day {
   margin: 0 auto;
   border-radius: 20px;

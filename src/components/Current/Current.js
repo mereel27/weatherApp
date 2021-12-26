@@ -3,7 +3,7 @@ import Logo from '../Logo';
 import './Current.css';
 
 const Current = ({ data, getDate }) => {
-  console.log(data)
+  /* console.log(data) */
   return (
     <div className="current">
       <span id="country-name">{data.location.country || ''}</span>

@@ -25,17 +25,33 @@ input:focus {
 }
 
 button {
-  position: absolute;
   background-color: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+#menu, #search-button {
+  position: absolute;
   border: none;
   color: rgb(167, 167, 167);
   font-size: 20px;
   right: 10px;
   top: 16px;
-  cursor: pointer;
 }
 
-button:hover {
+#add-button {
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.096);
+  padding: 8px;
+  margin: 5px 0;
+  font-size: 12px;
+}
+
+#add-button:hover {
+  background-color: #2f4e7094;
+}
+
+#search-button:hover {
   transform: scale(1.2);
 }
 

@@ -3,11 +3,12 @@ import { useEffect, useState } from 'react';
 import moment from 'moment';
 import 'moment/locale/ru';
 import Foreca from './api/foreca';
+import getLocationByIp from './api/whois';
 import Current from './components/Current/Current';
 import Hourly from './components/Hourly/Hourly';
 import Daily from './components/Daily/Daily';
 import SearchBar from './components/SearchBar/SearchBar';
-import { IoMenu } from 'react-icons/io5';
+import { IoMenu, IoStarOutline } from 'react-icons/io5';
 
 moment.locale('ru');
 
@@ -18,21 +19,39 @@ function App() {
   const [city, setCity] = useState('');
   const [data, setData] = useState(null);
   const [searchResults, setSearchResults] = useState([]);
+  const [hidden, setHidden] = useState(true);
+  const [savedLocations, setSavedLocations] = useState(
+    JSON.parse(localStorage.getItem('savedLocations')) || []
+  );
+  const [defaultCity, setDefaultCity] = useState(
+    Number(localStorage.getItem('defaultCity')) || ''
+  );
 
   useEffect(() => {
-    let lon, lat;
+    console.log('i render');
+    /* let lon, lat; */
+    let coordinates;
     const fetchData = async () => {
-      await new Promise((resolve) => {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            lon = position.coords.longitude;
+      coordinates =
+        defaultCity ||
+        (await new Promise((resolve) => {
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              /* lon = position.coords.longitude;
             lat = position.coords.latitude;
-            resolve({ lon, lat });
-          },
-          (error) => console.log(`${error.message}`)
-        );
-      });
-      const allData = await Foreca.getAllData(`${lon},${lat}`);
+            resolve({ lon, lat }); */
+              /* coordinates = `${position.coords.longitude},${position.coords.latitude}`; */
+              resolve(
+                `${position.coords.longitude},${position.coords.latitude}`
+              );
+            },
+            (error) => {
+              console.log(`${error.message}`);
+              resolve(getLocationByIp());
+            }
+          );
+        }));
+      const allData = await Foreca.getAllData(coordinates);
       const location = allData[0];
       const current = allData[1].current;
       const hourly = allData[2];
@@ -41,6 +60,7 @@ function App() {
       setData({ location, current, daily, hourly });
     };
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleChange = (e) => {
@@ -87,6 +107,25 @@ function App() {
     }
   };
 
+  const handleSettingsClick = () => {
+    setHidden(!hidden);
+  };
+
+  const handleAddCityClick = () => {
+    const repeatCheck = savedLocations.find((el) => el.id === data.location.id);
+    if (!repeatCheck) {
+      let cities = [...savedLocations, data.location];
+      setSavedLocations(cities);
+      localStorage.setItem('savedLocations', JSON.stringify(cities));
+    }
+  };
+
+  const handleChooseDefault = (id) => {
+    const newID = id === defaultCity ? '' : id;
+    setDefaultCity(newID);
+    localStorage.setItem('defaultCity', newID);
+  };
+
   const getWeather = async (id) => {
     let locInfo;
     if (!id) {
@@ -122,10 +161,31 @@ function App() {
             focusOut={focusOut}
             focusOn={focusOn}
           />
-          <div id='settings'>
-            <button>
+          <div id="settings-container">
+            <button id="menu" onClick={handleSettingsClick}>
               <IoMenu />
             </button>
+            <div id="settings" hidden={hidden}>
+              <span>Избранное:</span>
+              <ul id="savedList">
+                {savedLocations.length > 0 &&
+                  savedLocations.map((loc) => (
+                    <div className="city" key={loc.id}>
+                      <li onClick={() => getWeather(loc.id)}>{loc.name}</li>
+                      <IoStarOutline
+                        title="Выбрать по умолчанию"
+                        className={
+                          loc.id === defaultCity ? 'star gold' : 'star'
+                        }
+                        onClick={() => handleChooseDefault(loc.id)}
+                      />
+                    </div>
+                  ))}
+              </ul>
+              <button id="add-button" onClick={handleAddCityClick}>
+                Добавить текущий
+              </button>
+            </div>
           </div>
           <Current data={data} getDate={getDate} />
           <Hourly data={data} getDate={getDate} />
