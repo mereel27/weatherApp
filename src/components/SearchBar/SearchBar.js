@@ -11,7 +11,7 @@ const SearchBar = ({
   focusOn
 }) => {
   return (
-    <div>
+    <div id='search-bar'>
       <form onSubmit={handleSubmit}>
         <input
           type="text"

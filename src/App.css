@@ -7,6 +7,23 @@
   background-color: #1E232E;
 }
 
+#topbar {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+}
+
+#menu {
+  border: none;
+  color: rgb(167, 167, 167);
+  font-size: 20px;
+  grid-column: 3/4;
+  justify-self: end;
+  display: flex;
+  padding: 5px 10px;
+}
+
 #settings {
   display: flex;
   flex-direction: column;

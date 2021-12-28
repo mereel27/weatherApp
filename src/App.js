@@ -152,19 +152,21 @@ function App() {
     >
       {data && (
         <div className="day">
-          <SearchBar
-            searchResults={searchResults}
-            city={city}
-            handleSearchChoice={handleSearchChoice}
-            handleSubmit={handleSubmit}
-            handleChange={handleChange}
-            focusOut={focusOut}
-            focusOn={focusOn}
-          />
-          <div id="settings-container">
+          <div id='topbar'>
+            <SearchBar
+              searchResults={searchResults}
+              city={city}
+              handleSearchChoice={handleSearchChoice}
+              handleSubmit={handleSubmit}
+              handleChange={handleChange}
+              focusOut={focusOut}
+              focusOn={focusOn}
+            />
             <button id="menu" onClick={handleSettingsClick}>
               <IoMenu />
             </button>
+          </div>
+          <div id="settings-container">
             <div id="settings" hidden={hidden}>
               <span>Избранное:</span>
               <ul id="savedList">
