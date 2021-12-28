@@ -7,8 +7,8 @@ form {
 
 input {
   border: 1px solid rgba(255, 255, 255, 0.096);
-  border-radius: 20px;
-  background-color: rgba(0, 0, 0, 0.13);
+  border-radius: 2px;
+  background-color: #171A21;
   height: 25px;
   padding: 3px 10px 3px 15px;
   color: var(--main-color);
@@ -35,20 +35,23 @@ button {
   border: none;
   color: rgb(167, 167, 167);
   font-size: 20px;
-  right: 10px;
+  right: 15px;
   top: 16px;
 }
 
 #add-button {
-  border-radius: 20px;
+  border-radius: 2px;
   border: 1px solid rgba(255, 255, 255, 0.096);
-  padding: 8px;
+  padding: 8px 10px;
   margin: 5px 0;
-  font-size: 12px;
+  font-size: 16px;
+  transition: all 0.2s ease-in;
+  background-color: #1E232E;
 }
 
 #add-button:hover {
-  background-color: #2f4e7094;
+  color: #eeebe8;
+  background-color: hsl(221, 30%, 20%);
 }
 
 #search-button:hover {
@@ -65,9 +68,9 @@ button {
   width: fit-content;
   max-width: 90%;
   overflow: hidden;
-  border-radius: 20px;
-  box-shadow: rgba(26, 26, 26, 0.295) 0px 0px 2px 1px;
-  background: linear-gradient(to top, #141e30, #243b55);
+  border-radius: 2px;
+  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.664);
+  background-color: #171A21;
 }
 
 #search-results ul::-webkit-scrollbar {
@@ -76,14 +79,14 @@ button {
 
 #search-results ul::-webkit-scrollbar-track {
   background-color: transparent;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   margin: 0 30px;
 }
 
 #search-results ul::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.123);
   border: 3px solid transparent;
-  border-radius: 20px;
+  border-radius: 4px;
   box-sizing: border-box;
   background-clip: content-box;
 }
@@ -110,7 +113,7 @@ button {
   list-style: none;
   padding: 10px 0 10px 0;
   margin: 0 auto;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   overflow-x: hidden;
 }
 
