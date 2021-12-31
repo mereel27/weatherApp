@@ -1,4 +1,4 @@
-import { BiSearch } from 'react-icons/bi';
+import { IoSearch } from 'react-icons/io5';
 import './SearchBar.css';
 
 const SearchBar = ({
@@ -22,7 +22,7 @@ const SearchBar = ({
           onBlur={focusOut}
         ></input>
         <button id="search-button" type="submit" disabled={city ? false : true}>
-          <BiSearch />
+          <IoSearch />
         </button>
       </form>
       {searchResults && searchResults.length > 0 && (

@@ -4,7 +4,7 @@
 
 form {
   position: relative;
-  padding: 10px 0;
+  padding: 0;
   margin: 0 auto;
   width: 200px;
 }
@@ -35,12 +35,16 @@ button {
 }
 
 #search-button {
+  display: flex;
+  align-items: center;
   position: absolute;
   border: none;
+  padding: 5px;
   color: rgb(167, 167, 167);
-  font-size: 20px;
-  right: 15px;
-  top: 16px;
+  font-size: 24px;
+  right: 10px;
+  top: 0;
+  height: 100%;
 }
 
 #add-button {
@@ -58,8 +62,9 @@ button {
   background-color: hsl(221, 30%, 20%);
 }
 
-#search-button:hover {
-  transform: scale(1.2);
+#search-button:active {
+  /* transform: scale(1.2); */
+  animation: 0.5s linear magnifier;
 }
 
 #search-results {
@@ -133,6 +138,14 @@ button {
 
 #search-results li:hover {
   background-color: rgba(0, 0, 0, 0.377);
+}
+
+@keyframes magnifier {
+  0% {transform: scale(1);}
+  25% {transform: scale(1.1);}
+  50% {transform: scale(1.2);}
+  75% {transform: scale(1.1);}
+  100% {transform: scale(1);}
 }
 
 @media screen and (min-width: 640px) {

@@ -17,7 +17,7 @@
 #menu {
   border: none;
   color: rgb(167, 167, 167);
-  font-size: 20px;
+  font-size: 32px;
   grid-column: 3/4;
   justify-self: end;
   display: flex;
@@ -121,12 +121,6 @@ img {
 #more a {
   text-decoration: none;
   color: inherit;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }
 
 @media screen and (min-width: 640px) {
