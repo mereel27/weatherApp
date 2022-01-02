@@ -36,6 +36,11 @@
   box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.664);
   z-index: 3;
   color: #b8b6b4;
+  transition: right 0.3s ease-out;
+}
+
+.hidden {
+  right: -100% !important;
 }
 
 #savedList {

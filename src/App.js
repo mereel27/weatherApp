@@ -86,7 +86,7 @@ function App() {
   };
 
   const handleSearchChoice = (e) => {
-    getWeather(e.target.id);
+    getWeather(e.currentTarget.id);
     setCity('');
     setSearchResults('');
   };
@@ -167,7 +167,7 @@ function App() {
             </button>
           </div>
           <div id="settings-container">
-            <div id="settings" hidden={hidden}>
+            <div id="settings" /* hidden={hidden} */ className={hidden ? `hidden` : ''}>
               <span>Избранное:</span>
               <ul id="savedList">
                 {savedLocations.length > 0 &&

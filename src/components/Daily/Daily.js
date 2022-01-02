@@ -4,6 +4,8 @@ import {
   WiHumidity,
   WiBarometer,
   WiWindDeg,
+  WiUmbrella,
+  WiRaindrop
 } from 'react-icons/wi';
 import './Daily.css';
 
@@ -27,6 +29,12 @@ const Daily = ({ data, getDate }) => {
           <span className="info daily-temp">{`${Math.round(
             day.maxTemp
           )}° / ${Math.round(day.minTemp)}°`}</span>
+          <span className="info extra" title="Вероятность осадков">
+            <WiUmbrella size="2em" /> {day.precipProb} %
+          </span>
+          <span className="info extra" title="Количество осадков">
+            <WiRaindrop size="2em" /> {day.precipAccum} мм
+          </span>
           <span className="info extra" title="Скорость ветра">
             <WiStrongWind size="2em" /> {day.maxWindSpeed} m/s
           </span>
@@ -35,14 +43,14 @@ const Daily = ({ data, getDate }) => {
             title={`Направление ветра: ${getWindDirect(day.windDir)}`}
             style={{ transform: `rotate(${day.windDir}deg)` }}
           >
-            <WiWindDeg size="2.2em" />
+            <WiWindDeg size="2em" />
           </span>
           <span className="info extra" title="Относительная влажность">
-            <WiHumidity size="2.2em" />
+            <WiHumidity size="2em" />
             {day.minRelHumidity}%
           </span>
           <span className="info extra" title="Атмосферное давление">
-            <WiBarometer size="2.2em" />
+            <WiBarometer size="2em" />
             {day.pressure.toFixed()} hPa
           </span>
         </div>

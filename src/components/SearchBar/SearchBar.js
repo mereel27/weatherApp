@@ -30,7 +30,8 @@ const SearchBar = ({
           <ul>
             {searchResults.map((res) => (
               <li key={res.id} id={res.id} onClick={handleSearchChoice}>
-                <span>{res.name}</span>, {res.country}
+                <span className="location-name">{res.name}</span>
+                <span className="area">{res.country}{res.adminArea && `, ${res.adminArea}`}</span>
               </li>
             ))}
           </ul>
