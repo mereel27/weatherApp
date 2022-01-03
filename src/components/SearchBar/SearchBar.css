@@ -4,18 +4,24 @@
 
 form {
   position: relative;
-  padding: 0;
+  padding: 3px 10px 3px 10px;
   margin: 0 auto;
   width: 200px;
-}
-
-input {
   border: 1px solid rgba(255, 255, 255, 0.096);
   border-radius: 2px;
   background-color: #171A21;
+}
+
+form:focus-within {
+  outline: none;
+  box-shadow: 0 0 0 1px #4d597098;
+}
+
+input {
+  border: none;
   height: 25px;
-  padding: 3px 15px 3px 15px;
   color: var(--main-color);
+  background-color: inherit;
 }
 
 input::placeholder {
@@ -25,7 +31,7 @@ input::placeholder {
 
 input:focus {
   outline: none;
-  box-shadow: 0 0 0 1px #4d597098;
+  /* box-shadow: 0 0 0 1px #4d597098; */
 }
 
 button {
@@ -145,7 +151,7 @@ button {
 
 .area {
   color: #b8b6b4;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 #search-results li:hover {
