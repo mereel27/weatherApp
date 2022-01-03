@@ -1,11 +1,10 @@
 #search-bar {
   grid-column: 2/3;
-  justify-self: center;
 }
 
 form {
   position: relative;
-  padding: 0 20px 0 0;
+  padding: 0;
   margin: 0 auto;
   width: 200px;
 }
@@ -15,7 +14,7 @@ input {
   border-radius: 2px;
   background-color: #171A21;
   height: 25px;
-  padding: 3px 35px 3px 15px;
+  padding: 3px 15px 3px 15px;
   color: var(--main-color);
 }
 
