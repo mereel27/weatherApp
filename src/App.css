@@ -69,6 +69,13 @@
   color: #eeebe8;
 }
 
+#units-settings {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .city {
   display: flex;
   align-items: center;
@@ -127,6 +134,145 @@ img {
   text-decoration: none;
   color: inherit;
 }
+
+.switch {
+  position: relative;
+  display: flex;
+  width: 80px;
+  height: 38px;
+  cursor: pointer;
+}
+
+.switch-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  padding: 0;
+  margin: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #1E232E;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border: 1px solid rgba(255, 255, 255, 0.096);
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 30px;
+  width: 34px;
+  left: 4px;
+  background-color: hsl(221, 30%, 20%);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.switch input:checked + .slider {
+  background-color: #1E232E;
+}
+
+.switch input:checked + .slider:before {
+  -webkit-transform: translateX(36px);
+  -ms-transform: translateX(36px);
+  transform: translateX(36px);
+}
+
+.slider.round {
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.slider.round:before {
+  border-radius: 2px;
+}
+
+.switch span {
+  color: inherit;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  position: absolute;
+}
+
+#C {
+  left: 14px;
+  bottom: 0;
+  top: 0;
+}
+
+#F {
+  right: 14px;
+  bottom: 0;
+  top: 0;
+}
+
+.radio-field {
+  height: 38px;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  box-sizing: border-box;
+  padding: 0 4px;
+  background-color: #1E232E;
+  border: 1px solid rgba(255, 255, 255, 0.096);
+  border-radius: 2px;
+}
+
+.radio-field input{
+  position: absolute;
+	/* clip: rect(0, 0, 0, 0); */
+	height: 0;
+	width: 0;
+	border: 0;
+	overflow: hidden;
+}
+
+.radio-field label {
+  width: 70px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+	text-align: center;
+  /* padding: 7px 0; */
+  line-height: 1;
+  border-radius: 2px;
+	transition: all 0.1s ease-in-out;
+}
+
+.radio-field label:hover {
+	cursor: pointer;
+}
+
+.radio-field input:checked + label {
+	background-color: #242d42;
+	box-shadow: none;
+}
+
+/* .radio-field span {
+  display: flex;
+  align-items: center;
+} */
 
 @media screen and (min-width: 640px) {
   .App {

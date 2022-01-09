@@ -2,7 +2,7 @@
 import Logo from '../Logo';
 import './Current.css';
 
-const Current = ({ data, getDate }) => {
+const Current = ({ data, getDate, windUnit }) => {
   /* console.log(data) */
   return (
     <div className="current">
@@ -24,7 +24,7 @@ const Current = ({ data, getDate }) => {
       <div className="current-more-info">
         <span className="more" title="Скорость ветра">
           <span className="more-desc">Ветер:</span>
-          {`${data.current.windSpeed} - ${data.current.windGust}`} м/с
+          {`${data.current.windSpeed} - ${data.current.windGust} ${windUnit}`} 
         </span>
         <span className="more" title="Относительная влажность">
           <span className="more-desc">Влажность:</span>

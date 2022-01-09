@@ -9,6 +9,7 @@ import Hourly from './components/Hourly/Hourly';
 import Daily from './components/Daily/Daily';
 import SearchBar from './components/SearchBar/SearchBar';
 import { IoMenu, IoStarOutline } from 'react-icons/io5';
+import { windUnitsConverter, tempUnitsConverter, windText } from './utils/utils';
 
 moment.locale('ru');
 
@@ -20,6 +21,12 @@ function App() {
   const [data, setData] = useState(null);
   const [searchResults, setSearchResults] = useState([]);
   const [hidden, setHidden] = useState(true);
+  const [windUnits, setWindUnits] = useState(
+    localStorage.getItem('windUnits') || 'MS'
+  );
+  const [tempUnits, setTempUnits] = useState(
+    localStorage.getItem('tempUnits') || 'C'
+  );
   const [savedLocations, setSavedLocations] = useState(
     JSON.parse(localStorage.getItem('savedLocations')) || []
   );
@@ -29,7 +36,6 @@ function App() {
 
   useEffect(() => {
     console.log('i render');
-    /* let lon, lat; */
     let coordinates;
     const fetchData = async () => {
       coordinates =
@@ -37,10 +43,6 @@ function App() {
         (await new Promise((resolve) => {
           navigator.geolocation.getCurrentPosition(
             (position) => {
-              /* lon = position.coords.longitude;
-            lat = position.coords.latitude;
-            resolve({ lon, lat }); */
-              /* coordinates = `${position.coords.longitude},${position.coords.latitude}`; */
               resolve(
                 `${position.coords.longitude},${position.coords.latitude}`
               );
@@ -51,7 +53,7 @@ function App() {
             }
           );
         }));
-      const allData = await Foreca.getAllData(coordinates);
+      const allData = await Foreca.getAllData(coordinates, windUnits, tempUnits);
       const location = allData[0];
       const current = allData[1].current;
       const hourly = allData[2];
@@ -126,12 +128,74 @@ function App() {
     localStorage.setItem('defaultCity', newID);
   };
 
+  const handleWind = (e) => {
+    console.log(windUnits);
+    console.log(e.target.value);
+    const newSpeed = windUnitsConverter(
+      windUnits,
+      e.target.value,
+      data.current.windSpeed
+    );
+    const newGust = windUnitsConverter(
+      windUnits,
+      e.target.value,
+      data.current.windGust
+    );
+
+    localStorage.setItem('windUnits', e.target.value);
+    setWindUnits(e.target.value);
+
+    setData((prevState) => ({
+      ...prevState,
+      current: {
+        ...prevState.current,
+        windSpeed: Math.round(newSpeed),
+        windGust: Math.round(newGust),
+      },
+      daily: {
+        forecast: [...prevState.daily.forecast].map((day, index) => (
+          {
+            ...day, 
+            maxWindSpeed: Math.round(windUnitsConverter(windUnits, e.target.value, day.maxWindSpeed))
+          }))
+      }
+    }));
+  };
+
+  const handleTemp = (e) => {
+    console.log(tempUnits);
+    console.log(e.target.value);
+    const newTemp = tempUnitsConverter(
+      tempUnits,
+      e.target.value,
+      data.current.temperature
+    );
+    localStorage.setItem('tempUnits', e.target.value);
+    setTempUnits(e.target.value);
+
+    setData((prevState) => ({
+      ...prevState,
+      current: {
+        ...prevState.current,
+        temperature: Math.round(newTemp)
+      },
+      daily: {
+        forecast: [...prevState.daily.forecast].map((day, index) => (
+          {
+            ...day, 
+            maxTemp: tempUnitsConverter(tempUnits, e.target.value, day.maxTemp),
+            minTemp: tempUnitsConverter(tempUnits, e.target.value, day.minTemp)
+          }))
+      }
+    }));
+  };
+
   const getWeather = async (id) => {
     let locInfo;
     if (!id) {
       locInfo = await Foreca.getLocation(city);
     }
-    const allData = await Foreca.getAllData(id || locInfo[0].id);
+    const allData = await Foreca.getAllData(id || locInfo[0].id, windUnits, tempUnits);
     const location = allData[0];
     const current = allData[1].current;
     const hourly = allData[2];
@@ -152,7 +216,7 @@ function App() {
     >
       {data && (
         <div className="day">
-          <div id='topbar'>
+          <div id="topbar">
             <SearchBar
               searchResults={searchResults}
               city={city}
@@ -167,7 +231,7 @@ function App() {
             </button>
           </div>
           <div id="settings-container">
-            <div id="settings" /* hidden={hidden} */ className={hidden ? `hidden` : ''}>
+            <div id="settings" className={hidden ? `hidden` : ''}>
               <span>Избранное:</span>
               <ul id="savedList">
                 {savedLocations.length > 0 &&
@@ -187,11 +251,88 @@ function App() {
               <button id="add-button" onClick={handleAddCityClick}>
                 Добавить текущий
               </button>
+              <div id="units-settings">
+                <span>Единицы измерения:</span>
+                <div className="switch-container">
+                  <span>Температура:</span>
+                  {/* <label className="switch">
+                    <input type="checkbox" onChange={handleTemp}/>
+                    <span className="slider round"></span>
+                    <span id='C'>C°</span>
+                    <span id='F'>F°</span>
+                  </label> */}
+                  <div className="radio-field">
+                    <input
+                      className="radio-c"
+                      type="radio"
+                      id="radio-c"
+                      name="switch-one"
+                      value="C"
+                      defaultChecked={tempUnits === 'C'}
+                      onChange={handleTemp}
+                    />
+                    <label htmlFor="radio-c">
+                      <span>C°</span>
+                    </label>
+                    <input
+                      className="radio-f"
+                      type="radio"
+                      id="radio-f"
+                      name="switch-one"
+                      value="F"
+                      defaultChecked={tempUnits === 'F'}
+                      onChange={handleTemp}
+                    />
+                    <label htmlFor="radio-f">
+                      <span>F°</span>
+                    </label>
+                  </div>
+                </div>
+                <div className="switch-container">
+                  <span>Ветер:</span>
+                  <div className="radio-field">
+                    <input
+                      type="radio"
+                      id="radio-three"
+                      name="switch-two"
+                      value="MS"
+                      defaultChecked={windUnits === 'MS'}
+                      onChange={handleWind}
+                    />
+                    <label htmlFor="radio-three">
+                      <span>м/с</span>
+                    </label>
+                    <input
+                      className="radio-four"
+                      type="radio"
+                      id="radio-four"
+                      name="switch-two"
+                      value="KMH"
+                      defaultChecked={windUnits === 'KMH'}
+                      onChange={handleWind}
+                    />
+                    <label htmlFor="radio-four">
+                      <span>км/ч</span>
+                    </label>
+                    <input
+                      type="radio"
+                      id="radio-five"
+                      name="switch-two"
+                      value="MPH"
+                      defaultChecked={windUnits === 'MPH'}
+                      onChange={handleWind}
+                    />
+                    <label htmlFor="radio-five">
+                      <span>миль/ч</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <Current data={data} getDate={getDate} />
+          <Current data={data} getDate={getDate} windUnit={windText(windUnits)} />
           <Hourly data={data} getDate={getDate} />
-          <Daily data={data} getDate={getDate} />
+          <Daily data={data} getDate={getDate} windUnit={windText(windUnits)} />
           <div id="more">
             <a
               href={`https://www.foreca.com/ru/${data.location.id}/${data.location.name}-${data.location.adminArea}-${data.location.country}`}

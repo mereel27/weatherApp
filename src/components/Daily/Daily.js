@@ -9,7 +9,7 @@ import {
 } from 'react-icons/wi';
 import './Daily.css';
 
-const Daily = ({ data, getDate }) => {
+const Daily = ({ data, getDate, windUnit }) => {
   return (
     <div className="forecast">
       {data.daily.forecast.map((day, index) => (
@@ -36,7 +36,7 @@ const Daily = ({ data, getDate }) => {
             <WiRaindrop size="2em" /> {day.precipAccum} мм
           </span>
           <span className="info extra" title="Скорость ветра">
-            <WiStrongWind size="2em" /> {day.maxWindSpeed} m/s
+            <WiStrongWind size="2em" /> {day.maxWindSpeed} {windUnit}
           </span>
           <span
             className="info extra"

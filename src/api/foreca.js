@@ -29,12 +29,13 @@ const Foreca = {
     }
   },
 
-  async getAllData(coord) {
+  async getAllData(coord, windUnits, tempUnits) {
+    console.log(windUnits)
     const urls = [
       `${this.domain}/location/${coord}?lang=ru`,
-      `${this.domain}/current/${coord}?lang=ru`,
-      `${this.domain}/forecast/hourly/${coord}`,
-      `${this.domain}/forecast/daily/${coord}?dataset=full&periods=8&lang=ru`,
+      `${this.domain}/current/${coord}?lang=ru&tempunit=${tempUnits}&windunit=${windUnits}`,
+      `${this.domain}/forecast/hourly/${coord}?tempunit=${tempUnits}&windunit=${windUnits}`,
+      `${this.domain}/forecast/daily/${coord}?dataset=full&periods=8&lang=ru&tempunit=${tempUnits}&windunit=${windUnits}`,
     ];
     const data = await Promise.all(urls.map((url) => this.getData(url)));
     return data;
