@@ -60,7 +60,7 @@ export const windText = (unit) => {
 };
 
 export const tempUnitsConverter = (prevUnit, newUnit, value) => {
-  console.log(value);
+  /* console.log(value); */
   switch (true) {
     case prevUnit === 'C' && newUnit === 'F':
       return (value * 9/5) + 32;

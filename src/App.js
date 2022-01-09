@@ -9,7 +9,11 @@ import Hourly from './components/Hourly/Hourly';
 import Daily from './components/Daily/Daily';
 import SearchBar from './components/SearchBar/SearchBar';
 import { IoMenu, IoStarOutline } from 'react-icons/io5';
-import { windUnitsConverter, tempUnitsConverter, windText } from './utils/utils';
+import {
+  windUnitsConverter,
+  tempUnitsConverter,
+  windText,
+} from './utils/utils';
 
 moment.locale('ru');
 
@@ -53,7 +57,11 @@ function App() {
             }
           );
         }));
-      const allData = await Foreca.getAllData(coordinates, windUnits, tempUnits);
+      const allData = await Foreca.getAllData(
+        coordinates,
+        windUnits,
+        tempUnits
+      );
       const location = allData[0];
       const current = allData[1].current;
       const hourly = allData[2];
@@ -129,8 +137,8 @@ function App() {
   };
 
   const handleWind = (e) => {
-    console.log(windUnits);
-    console.log(e.target.value);
+    /* console.log(windUnits);
+    console.log(e.target.value); */
     const newSpeed = windUnitsConverter(
       windUnits,
       e.target.value,
@@ -153,18 +161,19 @@ function App() {
         windGust: Math.round(newGust),
       },
       daily: {
-        forecast: [...prevState.daily.forecast].map((day, index) => (
-          {
-            ...day, 
-            maxWindSpeed: Math.round(windUnitsConverter(windUnits, e.target.value, day.maxWindSpeed))
-          }))
-      }
+        forecast: [...prevState.daily.forecast].map((day) => ({
+          ...day,
+          maxWindSpeed: Math.round(
+            windUnitsConverter(windUnits, e.target.value, day.maxWindSpeed)
+          ),
+        })),
+      },
     }));
   };
 
   const handleTemp = (e) => {
-    console.log(tempUnits);
-    console.log(e.target.value);
+    /* console.log(tempUnits);
+    console.log(e.target.value); */
     const newTemp = tempUnitsConverter(
       tempUnits,
       e.target.value,
@@ -177,16 +186,15 @@ function App() {
       ...prevState,
       current: {
         ...prevState.current,
-        temperature: Math.round(newTemp)
+        temperature: Math.round(newTemp),
       },
       daily: {
-        forecast: [...prevState.daily.forecast].map((day, index) => (
-          {
-            ...day, 
-            maxTemp: tempUnitsConverter(tempUnits, e.target.value, day.maxTemp),
-            minTemp: tempUnitsConverter(tempUnits, e.target.value, day.minTemp)
-          }))
-      }
+        forecast: [...prevState.daily.forecast].map((day) => ({
+          ...day,
+          maxTemp: tempUnitsConverter(tempUnits, e.target.value, day.maxTemp),
+          minTemp: tempUnitsConverter(tempUnits, e.target.value, day.minTemp),
+        })),
+      },
     }));
   };
 
@@ -195,7 +203,11 @@ function App() {
     if (!id) {
       locInfo = await Foreca.getLocation(city);
     }
-    const allData = await Foreca.getAllData(id || locInfo[0].id, windUnits, tempUnits);
+    const allData = await Foreca.getAllData(
+      id || locInfo[0].id,
+      windUnits,
+      tempUnits
+    );
     const location = allData[0];
     const current = allData[1].current;
     const hourly = allData[2];
@@ -330,9 +342,17 @@ function App() {
               </div>
             </div>
           </div>
-          <Current data={data} getDate={getDate} windUnit={windText(windUnits)} />
+          <Current
+            data={data}
+            getDate={getDate}
+            windUnit={windText(windUnits)}
+          />
           <Hourly data={data} getDate={getDate} />
-          <Daily data={data} getDate={getDate} windUnit={windText(windUnits)} />
+          <Daily 
+            data={data} 
+            getDate={getDate} 
+            windUnit={windText(windUnits)} 
+          />
           <div id="more">
             <a
               href={`https://www.foreca.com/ru/${data.location.id}/${data.location.name}-${data.location.adminArea}-${data.location.country}`}
