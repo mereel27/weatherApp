@@ -195,6 +195,12 @@ function App() {
           minTemp: tempUnitsConverter(tempUnits, e.target.value, day.minTemp),
         })),
       },
+      hourly: {
+        forecast: [...prevState.hourly.forecast].map((day) => ({
+          ...day,
+          temperature: tempUnitsConverter(tempUnits, e.target.value, day.temperature),
+        })),
+      },
     }));
   };
 
@@ -238,7 +244,7 @@ function App() {
               focusOut={focusOut}
               focusOn={focusOn}
             />
-            <button id="menu" onClick={handleSettingsClick}>
+            <button className={hidden ? '' : 'menu-active'} id="menu" onClick={handleSettingsClick}>
               <IoMenu />
             </button>
           </div>
@@ -264,7 +270,6 @@ function App() {
                 Добавить текущий
               </button>
               <div id="units-settings">
-                <span>Единицы измерения:</span>
                 <div className="switch-container">
                   <span>Температура:</span>
                   {/* <label className="switch">

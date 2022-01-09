@@ -31,6 +31,10 @@
   /* font-weight: 500; */
 }
 
+.extra {
+  white-space: nowrap;
+}
+
 .weather-icon {
   height: 35px;
   width: 35px;
