@@ -8,7 +8,7 @@ import Current from './components/Current/Current';
 import Hourly from './components/Hourly/Hourly';
 import Daily from './components/Daily/Daily';
 import SearchBar from './components/SearchBar/SearchBar';
-import { IoMenu, IoStarOutline } from 'react-icons/io5';
+import { IoMenu, IoStarOutline, IoTrash } from 'react-icons/io5';
 import {
   windUnitsConverter,
   tempUnitsConverter,
@@ -204,6 +204,15 @@ function App() {
     }));
   };
 
+  const handleRemoveCity = (id) => {
+    if (id === defaultCity) {
+      handleChooseDefault(id);
+    }
+    const newList = savedLocations.filter(city => city.id !== id);
+    setSavedLocations(newList);
+    localStorage.setItem('savedLocations', JSON.stringify(newList));
+  };
+
   const getWeather = async (id) => {
     let locInfo;
     if (!id) {
@@ -255,13 +264,18 @@ function App() {
                 {savedLocations.length > 0 &&
                   savedLocations.map((loc) => (
                     <div className="city" key={loc.id}>
-                      <li onClick={() => getWeather(loc.id)}>{loc.name}</li>
                       <IoStarOutline
                         title="Выбрать по умолчанию"
                         className={
                           loc.id === defaultCity ? 'star gold' : 'star'
                         }
                         onClick={() => handleChooseDefault(loc.id)}
+                      />
+                      <li onClick={() => getWeather(loc.id)}>{loc.name}</li>
+                      <IoTrash
+                      title="Удалить"
+                      className="remove"
+                      onClick={() => handleRemoveCity(loc.id)}
                       />
                     </div>
                   ))}

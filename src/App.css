@@ -89,11 +89,19 @@
   align-items: center;
 }
 
-.star {
+.star, .remove {
   padding: 5px;
   cursor: pointer;
   color: rgba(224, 224, 224, 0.473);
+}
+
+.remove {
   margin-left: auto;
+  opacity: .4;
+}
+
+.remove:hover {
+  opacity: 1;
 }
 
 .gold {
@@ -270,6 +278,7 @@ img {
 
 .radio-field label:hover {
 	cursor: pointer;
+  color: #eeebe8;
 }
 
 .radio-field input:checked + label {
