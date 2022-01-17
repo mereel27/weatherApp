@@ -4,10 +4,16 @@
   flex-direction: column;
   place-items: center;
   font-weight: 400;
+  position: relative;
+  /* overflow: hidden; */
 }
 
 .current > *:not(:first-child) {
   padding: 10px 0;
+}
+
+.current > * {
+  z-index: 2;
 }
 
 #country-name {

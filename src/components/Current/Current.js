@@ -1,11 +1,13 @@
 /* import { WiStrongWind, WiUmbrella, WiHumidity } from 'react-icons/wi'; */
 import Logo from '../Logo';
 import './Current.css';
+import Snowfall from '../backgrounds/Snowfall';
 
 const Current = ({ data, getDate, windUnit }) => {
   /* console.log(data) */
   return (
     <div className="current">
+      <Snowfall />
       <span id="country-name">{data.location.country || ''}</span>
       <span id="name">{data.location.name || ''}</span>
       <div className="info">

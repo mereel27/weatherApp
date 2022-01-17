@@ -1,0 +1,78 @@
+#snow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* opacity: 0.7; */
+}
+
+#weather-background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  animation: animateCloud 40s linear infinite;
+  background-image: url('../../img/weather/cloud4.webp');
+  background-size: 800px;
+  background-repeat: no-repeat;
+  background-position-y: -50px;
+  opacity: 0.4;
+}
+
+#moon {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background-image: url('../../img/weather/moon.webp');
+  background-size: 100px;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+  z-index: -1;
+  /* backdrop-filter: saturate(200%); */
+  /* background-blend-mode: saturation; */
+}
+
+#sun {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  top: 0;
+  background-image: url('../../img/weather/sun.webp');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.6;
+  z-index: -1;
+  animation: animateSun 20s linear infinite;
+  /* backdrop-filter: saturate(200%); */
+  /* background-blend-mode: saturation; */
+}
+
+@keyframes animateCloud {
+  0% {
+    background-position-x: -200px;
+  }
+  50% {
+    background-position-x: 200px;
+  }
+  100% {
+    background-position-x: -200px;
+  }
+}
+
+@keyframes animateSun {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}

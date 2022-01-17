@@ -3,8 +3,15 @@
   /* text-align: center; */
   color: rgb(224, 224, 224);
   overflow: hidden;
-  /* background: linear-gradient(to bottom, #0f1c2f, #1281b3); */
-  background-color: #1E232E;
+  /* background: #bdc3c7; 
+  background: -webkit-linear-gradient(to top, #bdc3c7, #2c3e50); 
+  background: linear-gradient(to top, #374d63, #2c3e50); */
+  /* background-color: #1E232E; */
+  background: linear-gradient(to right, #1488cc, #2b32b2); /* sunny */
+  background: linear-gradient(to bottom, #536976, #292e49); /* cloudy */
+  /* background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364); */
+  background: linear-gradient(to bottom, #000000, #434343); /* night */
+  background: linear-gradient(to bottom, #000000, #434343); /* night */
 }
 
 #topbar {
