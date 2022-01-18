@@ -1,6 +1,6 @@
 import './Snow.css';
 import { useEffect } from 'react';
-import * as Snow from '../../utils/snow';
+/* import * as Snow from '../../utils/snow'; */
 import * as Stars from '../../utils/stars2';
 
 const Snowfall = () => {
