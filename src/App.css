@@ -3,15 +3,19 @@
   /* text-align: center; */
   color: rgb(224, 224, 224);
   overflow: hidden;
-  /* background: #bdc3c7; 
-  background: -webkit-linear-gradient(to top, #bdc3c7, #2c3e50); 
-  background: linear-gradient(to top, #374d63, #2c3e50); */
   /* background-color: #1E232E; */
   background: linear-gradient(to right, #1488cc, #2b32b2); /* sunny */
-  background: linear-gradient(to bottom, #536976, #292e49); /* cloudy */
-  /* background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364); */
+  --accent-color: rgb(43, 50, 178);
+}
+
+.cloudy {
+  background: linear-gradient(to top, #536976, #292e49); /* cloudy */
+  --accent-color: rgb(41, 46, 73);
+}
+
+.night {
   background: linear-gradient(to bottom, #000000, #434343); /* night */
-  background: linear-gradient(to bottom, #000000, #434343); /* night */
+  --accent-color: rgb(67, 67, 67);
 }
 
 #topbar {
@@ -46,12 +50,15 @@
   right: 0;
   top: 50px;
   height: 100vh;
-  background-color: #171A21;
-  border-radius: 2px;
-  box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.664);
+  /* background-color: #171A21; */
+  background-color: rgba(0, 0, 0, 0.404);
+  border-radius: 20px;
+  /* box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.521); */
   z-index: 3;
-  color: #b8b6b4;
+  color: #ffffff;
   transition: right 0.2s ease-in-out;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 
 .hidden {
@@ -129,7 +136,6 @@
 
 .day {
   margin: 0 auto;
-  border-radius: 20px;
   position: relative;
 }
 
@@ -256,9 +262,10 @@ img {
   position: relative;
   box-sizing: border-box;
   padding: 0 4px;
-  background-color: #1E232E;
+  /* background-color: #1E232E; */
+  background-color: rgba(245, 245, 245, 0.13);
   border: 1px solid rgba(255, 255, 255, 0.096);
-  border-radius: 2px;
+  border-radius: 20px;
 }
 
 .radio-field input{
@@ -279,7 +286,7 @@ img {
 	text-align: center;
   /* padding: 7px 0; */
   line-height: 1;
-  border-radius: 2px;
+  border-radius: 20px;
 	transition: all 0.1s ease-in-out;
 }
 
@@ -289,7 +296,7 @@ img {
 }
 
 .radio-field input:checked + label {
-	background-color: #242d42;
+	background-color: #2f39f3/* #242d42 */;
 	box-shadow: none;
 }
 

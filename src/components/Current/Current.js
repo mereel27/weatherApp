@@ -1,13 +1,14 @@
 /* import { WiStrongWind, WiUmbrella, WiHumidity } from 'react-icons/wi'; */
+/* import React from 'react'; */
+import { memo } from 'react';
 import Logo from '../Logo';
 import './Current.css';
-import Snowfall from '../backgrounds/Snowfall';
+import WeatherEffects from '../WeatherEffects/WeatherEffects';
 
-const Current = ({ data, getDate, windUnit }) => {
-  /* console.log(data) */
+const Current = memo(({ data, getDate, windUnit, conditions}) => {
   return (
     <div className="current">
-      <Snowfall />
+      <WeatherEffects conditions={conditions}/>
       <span id="country-name">{data.location.country || ''}</span>
       <span id="name">{data.location.name || ''}</span>
       <div className="info">
@@ -46,6 +47,6 @@ const Current = ({ data, getDate, windUnit }) => {
       </div>
     </div>
   );
-};
+});
 
 export default Current;

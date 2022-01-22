@@ -1,4 +1,4 @@
-class Snow {
+class PrecipEffect {
   constructor(options) {
     /* document.getElementById(options.id).style.position = 'fixed';
     document.getElementById(options.id).style.top = 0;
@@ -39,7 +39,7 @@ class Snow {
     //snowflake list
     this.snowflakes = [];
     for (let i = 0; i < 150; i++) {
-      this.snowflakes[i] = new Snowflake(
+      this.snowflakes[i] = new PrecipParticle(
         this.canvas,
         theme,
         min,
@@ -94,7 +94,7 @@ class Snow {
 }
 
 //snowflakes to use in snow
-class Snowflake {
+class PrecipParticle {
   constructor(canvas, theme, min, max, mode) {
     //snowflake elements
     this.radius = random(min, max);
@@ -177,4 +177,4 @@ class Snowflake {
   }
 }
 
-export default Snow;
+export default PrecipEffect;

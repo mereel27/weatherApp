@@ -1,5 +1,5 @@
 import './App.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import moment from 'moment';
 import 'moment/locale/ru';
 import Foreca from './api/foreca';
@@ -13,6 +13,7 @@ import {
   windUnitsConverter,
   tempUnitsConverter,
   windText,
+  effectsInfo
 } from './utils/utils';
 
 moment.locale('ru');
@@ -37,11 +38,13 @@ function App() {
   const [defaultCity, setDefaultCity] = useState(
     Number(localStorage.getItem('defaultCity')) || ''
   );
+  const [conditions, setConditions] = useState(null);
+  /* const [isLoading, setIsLoading] = useState(false); */
 
   useEffect(() => {
-    console.log('i render');
     let coordinates;
     const fetchData = async () => {
+      /* setIsLoading(true); */
       coordinates =
         defaultCity ||
         (await new Promise((resolve) => {
@@ -67,7 +70,9 @@ function App() {
       const hourly = allData[2];
       const daily = allData[3];
       console.log(allData);
+      setConditions(effectsInfo(current.symbol));
       setData({ location, current, daily, hourly });
+      /* setIsLoading(false); */
     };
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -137,8 +142,6 @@ function App() {
   };
 
   const handleWind = (e) => {
-    /* console.log(windUnits);
-    console.log(e.target.value); */
     const newSpeed = windUnitsConverter(
       windUnits,
       e.target.value,
@@ -172,8 +175,6 @@ function App() {
   };
 
   const handleTemp = (e) => {
-    /* console.log(tempUnits);
-    console.log(e.target.value); */
     const newTemp = tempUnitsConverter(
       tempUnits,
       e.target.value,
@@ -214,6 +215,7 @@ function App() {
   };
 
   const getWeather = async (id) => {
+    /* setIsLoading(true); */
     let locInfo;
     if (!id) {
       locInfo = await Foreca.getLocation(city);
@@ -227,19 +229,21 @@ function App() {
     const current = allData[1].current;
     const hourly = allData[2];
     const daily = allData[3];
+    setConditions(effectsInfo(current.symbol));
     setData({ location, current, daily, hourly });
+    /* setIsLoading(false); */
   };
 
-  const getDate = (date) => [
+  const getDate = useCallback((date) => [
     moment(date).format('dddd'),
     moment(date).format('DD.MM'),
     moment(date).format('HH:mm'),
-  ];
+  ], []);
 
   return (
     <div
-      className="App"
-      /* id={data ? data.current.symbol.replace(' ', '') : 'clear-day'} */
+      className={`App ${conditions && (conditions.night ? 'night' : conditions.cloudyDay ? 'cloudy' : '')}`}
+      id={data ? data.current.symbol.replace(' ', '') : 'clear-day'}
     >
       {data && (
         <div className="day">
@@ -286,12 +290,6 @@ function App() {
               <div id="units-settings">
                 <div className="switch-container">
                   <span>Температура:</span>
-                  {/* <label className="switch">
-                    <input type="checkbox" onChange={handleTemp}/>
-                    <span className="slider round"></span>
-                    <span id='C'>C°</span>
-                    <span id='F'>F°</span>
-                  </label> */}
                   <div className="radio-field">
                     <input
                       className="radio-c"
@@ -365,6 +363,7 @@ function App() {
             data={data}
             getDate={getDate}
             windUnit={windText(windUnits)}
+            conditions={conditions}
           />
           <Hourly data={data} getDate={getDate} />
           <Daily 

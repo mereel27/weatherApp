@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { getWindDirect } from '../../utils/utils';
 import {
   WiStrongWind,
@@ -9,7 +10,8 @@ import {
 } from 'react-icons/wi';
 import './Daily.css';
 
-const Daily = ({ data, getDate, windUnit }) => {
+const Daily = memo(({ data, getDate, windUnit }) => {
+  console.log('render daily')
   return (
     <div className="forecast">
       {data.daily.forecast.map((day, index) => (
@@ -57,6 +59,6 @@ const Daily = ({ data, getDate, windUnit }) => {
       ))}
     </div>
   );
-};
+});
 
 export default Daily;

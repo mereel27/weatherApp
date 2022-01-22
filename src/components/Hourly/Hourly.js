@@ -1,9 +1,10 @@
-import { useEffect } from 'react';
+import { useEffect, memo } from 'react';
 import { WiRaindrop } from 'react-icons/wi';
 import { move } from '../../utils/utils';
 import './Hourly.css';
 
-const Hourly = ({ data, getDate }) => {
+const Hourly = memo(({ data, getDate }) => {
+  console.log('hourly render')
   useEffect(() => {
     const scrollBar = document.querySelector('.hourly-forecast');
     scrollBar.addEventListener('wheel', move);
@@ -40,6 +41,6 @@ const Hourly = ({ data, getDate }) => {
       </div>
     </div>
   );
-};
+});
 
 export default Hourly;
