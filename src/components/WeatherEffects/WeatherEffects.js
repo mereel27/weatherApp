@@ -8,6 +8,8 @@ const WeatherEffects = ({conditions}) => {
   const clearNight = !cloudiness && night;
   const clearDay = !cloudiness && !night;
   const precip = rain || snow;
+  console.log(conditions)
+  console.log(clearNight)
   
   useEffect(() => {
       if(clearNight) {
@@ -26,7 +28,7 @@ const WeatherEffects = ({conditions}) => {
         precipEffect.start();
       }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [conditions]);
   return <div id="weather-effect">
           {cloudiness && <div id="clouds-effect"></div>}
           {clearNight && <div id="moon"></div>}
