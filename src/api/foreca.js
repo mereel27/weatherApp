@@ -30,7 +30,6 @@ const Foreca = {
   },
 
   async getAllData(coord, windUnits, tempUnits) {
-    console.log(windUnits)
     const urls = [
       `${this.domain}/location/${coord}?lang=ru`,
       `${this.domain}/current/${coord}?lang=ru&tempunit=${tempUnits}&windunit=${windUnits}`,

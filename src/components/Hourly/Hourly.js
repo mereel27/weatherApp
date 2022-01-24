@@ -4,7 +4,7 @@ import { move } from '../../utils/utils';
 import './Hourly.css';
 
 const Hourly = memo(({ data, getDate }) => {
-  console.log('hourly render')
+  /* console.log('hourly render') */
   useEffect(() => {
     const scrollBar = document.querySelector('.hourly-forecast');
     scrollBar.addEventListener('wheel', move);

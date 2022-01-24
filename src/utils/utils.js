@@ -27,7 +27,6 @@ export const move = (evt) => {
 }
 
 export const windUnitsConverter = (prevUnit, newUnit, value) => {
-  /* console.log(value) */
   switch (true) {
     case prevUnit === 'MS' && newUnit === 'KMH':
       return value * 3.6;
@@ -60,7 +59,6 @@ export const windText = (unit) => {
 };
 
 export const tempUnitsConverter = (prevUnit, newUnit, value) => {
-  /* console.log(value); */
   switch (true) {
     case prevUnit === 'C' && newUnit === 'F':
       return (value * 9/5) + 32;

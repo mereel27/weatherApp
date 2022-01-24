@@ -11,7 +11,7 @@ import {
 import './Daily.css';
 
 const Daily = memo(({ data, getDate, windUnit }) => {
-  console.log('render daily')
+  /* console.log('render daily') */
   return (
     <div className="forecast">
       {data.daily.forecast.map((day, index) => (

@@ -1,11 +1,10 @@
-/* import { WiStrongWind, WiUmbrella, WiHumidity } from 'react-icons/wi'; */
-/* import React from 'react'; */
 import { memo } from 'react';
 import Logo from '../Logo';
 import './Current.css';
 import WeatherEffects from '../WeatherEffects/WeatherEffects';
 
 const Current = memo(({ data, getDate, windUnit, conditions}) => {
+  /* console.log('current render') */
   return (
     <div className="current">
       <WeatherEffects conditions={conditions}/>
@@ -35,7 +34,6 @@ const Current = memo(({ data, getDate, windUnit, conditions}) => {
         </span>
         <span className="more" title="Вероятность осадков">
           <span className="more-desc">Осадки:</span>
-         {/*  <WiUmbrella size="1.25em" /> */}
           {data.current.precipProb}%
         </span>
       </div>
