@@ -306,6 +306,13 @@ img {
   align-items: center;
 } */
 
+canvas
+{
+    -webkit-transform: translate(0,0,0);
+    -moz-transform: translate(0,0,0);
+    transform: translate(0,0,0);
+}
+
 @media screen and (min-width: 640px) {
   .App {
     padding: 0 18%;

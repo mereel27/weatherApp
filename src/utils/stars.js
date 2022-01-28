@@ -15,8 +15,8 @@ class Star {
     context.beginPath();
     context.arc(this.x, this.y, this.r, 0, 2 * Math.PI, false);
     context.globalAlpha = this.opacity;
-    /* context.shadowBlur = 8; */
-    context.shadowColor = 'white';
+    /* context.shadowBlur = 8;
+    context.shadowColor = 'white'; */
     context.fillStyle = this.color;
     context.fill();
   }
@@ -37,6 +37,10 @@ class Starsky {
 
     var canvas = document.createElement('canvas');
     var context = canvas.getContext('2d');
+    let rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width * devicePixelRatio;
+    canvas.height = rect.height * devicePixelRatio;
+    context.scale(devicePixelRatio, devicePixelRatio);
     document.getElementById(options.id).appendChild(canvas);
 
     var C_WIDTH = (canvas.width = document.getElementById(options.id).offsetWidth);
@@ -51,7 +55,7 @@ class Starsky {
     for (let i = 0; i < 80; i++) {
       var randX = Math.floor(Math.random() * C_WIDTH);
       var randY = Math.floor(Math.random() * (C_HEIGHT));
-      var randR = Math.random() * (0.8 - 0.2) + 0.2;
+      var randR = Math.random() * (1 - 0.3) + 0.3;
 
       if(randX > 100 || randY > 100) {
         var star = new Star(context, randX, randY, randR, randomColor());
