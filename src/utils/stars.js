@@ -8,7 +8,7 @@ class Star {
     // this.vy = Math.floor(Math.random()*4+1);
     this.color = color;
     this.context = context;
-    this.opacity = 1;
+    this.opacity = Math.random() * (1 - 0.3) + 0.3;
   }
   render() {
     let context = this.context;
@@ -37,12 +37,7 @@ class Starsky {
 
     var canvas = document.createElement('canvas');
     var context = canvas.getContext('2d');
-    let rect = canvas.getBoundingClientRect();
-    canvas.width = rect.width * devicePixelRatio;
-    canvas.height = rect.height * devicePixelRatio;
-    context.scale(devicePixelRatio, devicePixelRatio);
     document.getElementById(options.id).appendChild(canvas);
-
     var C_WIDTH = (canvas.width = document.getElementById(options.id).offsetWidth);
     var C_HEIGHT = (canvas.height = document.getElementById(options.id).offsetHeight);
 
@@ -52,10 +47,10 @@ class Starsky {
     }
 
     const stars = [];
-    for (let i = 0; i < 80; i++) {
+    for (let i = 0; i < 40; i++) {
       var randX = Math.floor(Math.random() * C_WIDTH);
       var randY = Math.floor(Math.random() * (C_HEIGHT));
-      var randR = Math.random() * (1 - 0.3) + 0.3;
+      var randR = Math.random() * (1.5 - 1) + 1;
 
       if(randX > 100 || randY > 100) {
         var star = new Star(context, randX, randY, randR, randomColor());
