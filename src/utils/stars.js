@@ -8,7 +8,7 @@ class Star {
     // this.vy = Math.floor(Math.random()*4+1);
     this.color = color;
     this.context = context;
-    this.opacity = Math.random() * (1 - 0.3) + 0.3;
+    this.opacity = 1;
   }
   render() {
     let context = this.context;
@@ -47,10 +47,10 @@ class Starsky {
     }
 
     const stars = [];
-    for (let i = 0; i < 40; i++) {
+    for (let i = 0; i < 100; i++) {
       var randX = Math.floor(Math.random() * C_WIDTH);
       var randY = Math.floor(Math.random() * (C_HEIGHT));
-      var randR = Math.random() * (1.5 - 1) + 1;
+      var randR = Math.random() * (1 - 0.3) + 0.3;
 
       if(randX > 100 || randY > 100) {
         var star = new Star(context, randX, randY, randR, randomColor());
