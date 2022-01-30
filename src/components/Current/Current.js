@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import Logo from '../Logo';
 import './Current.css';
-import WeatherEffects from '../WeatherEffects/WeatherEffects';
+/* import WeatherEffects from '../WeatherEffects/WeatherEffects'; */
 
 const Current = memo(({ data, getDate, windUnit, conditions}) => {
   /* console.log('current render') */
