@@ -9,7 +9,7 @@ const WeatherEffects = memo(({conditions}) => {
   const clearNight = !cloudiness && night;
   const clearDay = !cloudiness && !night;
   const precip = rain || snow;
-  console.log('effect render')
+  /* console.log(`Clear day - ${clearDay}`) */
   
   useEffect(() => {
       if(clearNight) {
@@ -32,11 +32,13 @@ const WeatherEffects = memo(({conditions}) => {
         canvas && canvas.remove();
       }
   }, [clearNight, precip, snow]);
-  return <div id="weather-effect">
+  return (
+    <div id="weather-effect">
           {cloudyDay && <div id="clouds-sky"></div>}
           {clearNight && <div id="moon"></div>}
           {clearDay && <div id="sun"></div>}
-        </div>;
+    </div>
+  );
 });
 
 export default WeatherEffects;

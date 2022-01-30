@@ -50,11 +50,11 @@ form {
   transition: all 0.5s ease-in;
 }
 
-form:focus-within {
+.search-on:focus-within {
   outline: none;
   /* box-shadow: 0 0 0 1px #4d597098; */
   /* box-shadow: 0px 1px 3px 1px rgb(0 0 0 / 66%); */
-  /* border: 1px solid rgba(255, 255, 255, 0.096); */
+  border: 1px solid rgba(255, 255, 255, 0.096);
 }
 
 input {
