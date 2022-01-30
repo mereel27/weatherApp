@@ -1,30 +1,64 @@
 #search-bar {
-  grid-column: 2/3;
+  grid-column: 1/3;
+  padding-left: 15px;
 }
 
 form {
   position: relative;
-  padding:  5px 10px;
-  margin: 0 auto;
-  width: 200px;
-  /* border: 1px solid rgba(255, 255, 255, 0.096); */
+  margin: 0 0 0 auto;
+  border: 1px solid transparent;
   border-radius: 10px;
-  /* background-color: #171A21; */
+  box-sizing: border-box;
+}
+
+.search-off,
+.search-on {
+  transition: all 0.3s ease-in-out;
+}
+
+.search-on {
+  width: 100%;
+  padding:  5px 10px;
   background-color: rgba(255, 255, 255, 0.103);
-  -webkit-backdrop-filter: blur(25px);
   backdrop-filter: blur(25px);
+}
+
+.search-off {
+  width: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
+.search-off input {
+  width: 0;
+  height: 0;
+  padding: 0;
+}
+
+.search-on input {
+  height: 25px;
+  width: 100%;
+  padding: 0;
+}
+
+.search-off input::placeholder {
+  opacity: 0;
+}
+
+.search-on input::placeholder {
+  opacity: 0.5;
+  transition: all 0.5s ease-in;
 }
 
 form:focus-within {
   outline: none;
   /* box-shadow: 0 0 0 1px #4d597098; */
   /* box-shadow: 0px 1px 3px 1px rgb(0 0 0 / 66%); */
-  border: 1px solid rgba(255, 255, 255, 0.096);
+  /* border: 1px solid rgba(255, 255, 255, 0.096); */
 }
 
 input {
   border: none;
-  height: 25px;
   color: var(--main-color);
   /* background-color: inherit; */
   background-color: transparent;
@@ -32,7 +66,7 @@ input {
 
 input::placeholder {
   color: inherit;
-  opacity: 0.5;
+  /* opacity: 0.5; */
 }
 
 input:focus {
@@ -52,12 +86,17 @@ button {
   position: absolute;
   border: none;
   padding: 5px 10px;
-  color: rgb(167, 167, 167);
+  /* color: rgb(167, 167, 167); */
+  color: var(--font-color);
   font-size: 24px;
   right: 0;
   top: 0;
   bottom: 0;
   height: 100%;
+}
+
+#search-button:hover {
+  color: inherit;
 }
 
 #add-button {
@@ -77,11 +116,6 @@ button {
   /* color: #eeebe8; */
   /* background-color: hsl(221, 30%, 20%); */
   background-color: #2f39f3;
-}
-
-#search-button:active {
-  /* transform: scale(1.2); */
-  animation: 0.5s linear magnifier;
 }
 
 #search-results {

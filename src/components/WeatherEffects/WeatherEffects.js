@@ -5,7 +5,7 @@ import * as Stars from '../../utils/stars';
 import { memo } from 'react';
 
 const WeatherEffects = memo(({conditions}) => {
-  const {rain, snow, night, cloudiness} = conditions;
+  const {rain, snow, night, cloudiness, cloudyDay} = conditions;
   const clearNight = !cloudiness && night;
   const clearDay = !cloudiness && !night;
   const precip = rain || snow;
@@ -33,7 +33,7 @@ const WeatherEffects = memo(({conditions}) => {
       }
   }, [clearNight, precip, snow]);
   return <div id="weather-effect">
-          {cloudiness && <div id="clouds-effect"></div>}
+          {cloudyDay && <div id="clouds-sky"></div>}
           {clearNight && <div id="moon"></div>}
           {clearDay && <div id="sun"></div>}
         </div>;

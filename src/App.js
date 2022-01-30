@@ -9,6 +9,7 @@ import Hourly from './components/Hourly/Hourly';
 import Daily from './components/Daily/Daily';
 import SearchBar from './components/SearchBar/SearchBar';
 import Settings from './components/Settings/Settings';
+import WeatherEffects from './components/WeatherEffects/WeatherEffects';
 import { IoMenu } from 'react-icons/io5';
 import {
   windUnitsConverter,
@@ -41,6 +42,7 @@ function App() {
   );
   const [conditions, setConditions] = useState(null);
   /* const [isLoading, setIsLoading] = useState(false); */
+  const [searchOn, setSearchOn] = useState(false);
 
   useEffect(() => {
     let coordinates;
@@ -78,6 +80,10 @@ function App() {
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const handleSearchOn = () => {
+    setSearchOn(!searchOn);
+  };
 
   const handleChange = (e) => {
     setCity(e.target.value);
@@ -279,6 +285,8 @@ function App() {
               handleChange={handleChange}
               focusOut={focusOut}
               focusOn={focusOn}
+              searchOn={searchOn}
+              handleSearchOn={handleSearchOn}
             />
             <button
               className={hidden ? '' : 'menu-active'}
@@ -301,6 +309,7 @@ function App() {
             tempUnits={tempUnits}
             windUnits={windUnits}
           />
+          <WeatherEffects conditions={conditions}/>
           <Current
             data={data}
             getDate={getDate}

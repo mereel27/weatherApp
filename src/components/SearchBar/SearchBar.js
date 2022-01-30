@@ -2,6 +2,8 @@ import { IoSearch } from 'react-icons/io5';
 import './SearchBar.css';
 
 const SearchBar = ({
+  handleSearchOn,
+  searchOn,
   handleSubmit,
   handleChange,
   searchResults,
@@ -12,7 +14,7 @@ const SearchBar = ({
 }) => {
   return (
     <div id='search-bar'>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={searchOn ? 'search-on' : 'search-off'}>
         <input
           type="text"
           placeholder="Поиск"
@@ -21,7 +23,7 @@ const SearchBar = ({
           onFocus={focusOn}
           onBlur={focusOut}
         ></input>
-        <button id="search-button" type="submit" disabled={city ? false : true}>
+        <button id="search-button" type="button" /* disabled={city ? false : true} */ onClick={handleSearchOn}>
           <IoSearch />
         </button>
       </form>

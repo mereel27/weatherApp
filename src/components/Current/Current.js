@@ -7,7 +7,7 @@ const Current = memo(({ data, getDate, windUnit, conditions}) => {
   /* console.log('current render') */
   return (
     <div className="current">
-      <WeatherEffects conditions={conditions}/>
+      {/* <WeatherEffects conditions={conditions}/> */}
       <span id="country-name">{data.location.country || ''}</span>
       <span id="name">{data.location.name || ''}</span>
       <div className="info">
