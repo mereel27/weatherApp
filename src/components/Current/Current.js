@@ -14,14 +14,12 @@ const Current = memo(({ data, getDate, windUnit, conditions}) => {
         <span id="big-temp">{`${Math.round(data.current.temperature)}`}</span>
         <span id="celc">°</span>
       </div>
-      <img
+      {/* <img
         className="img-xl"
-        /* src={
-          require(`../../img/weather/${data.current.symbol}.svg`).default
-        } */ src={`${process.env.REACT_APP_ICON_URL}${data.current.symbol}.png`}
+         src={`${process.env.REACT_APP_ICON_URL}${data.current.symbol}.png`}
         alt={data.current.symbolPhrase}
         title={data.current.symbolPhrase}
-      />
+      /> */}
       <span id="description">{data.current.symbolPhrase || ''}</span>
       <div className="current-more-info">
         <span className="more" title="Скорость ветра">

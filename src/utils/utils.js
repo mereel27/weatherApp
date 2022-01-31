@@ -71,8 +71,8 @@ export const tempUnitsConverter = (prevUnit, newUnit, value) => {
 
 export const effectsInfo = (symbol) => {
   const cloudiness = Number(symbol.charAt(1)) > 2 ? true : false;
-  const snow = symbol.charAt(3) === '2' && Number(symbol.charAt(2)) > 2 ? true : false;
-  const rain = Number(symbol.charAt(3)) <= 1 && Number(symbol.charAt(2)) > 2 ? true : false;
+  const snow = symbol.charAt(3) === '2' && Number(symbol.charAt(2)) >= 2 ? true : false;
+  const rain = Number(symbol.charAt(3)) <= 1 && Number(symbol.charAt(2)) >= 2 ? true : false;
   const night = symbol.charAt(0) === 'n' ? true : false;
   const cloudyDay = !night && cloudiness;
   return {cloudiness, cloudyDay, snow, rain, night};

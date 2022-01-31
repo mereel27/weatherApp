@@ -87,7 +87,6 @@ button {
   border: none;
   padding: 5px 10px;
   /* color: rgb(167, 167, 167); */
-  color: var(--font-color);
   font-size: 24px;
   right: 0;
   top: 0;
@@ -96,7 +95,7 @@ button {
 }
 
 #search-button:hover {
-  color: inherit;
+  color: #fff;
 }
 
 #add-button {

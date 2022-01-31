@@ -36,8 +36,8 @@
 }
 
 .weather-icon {
-  height: 35px;
-  width: 35px;
+  height: 30px;
+  width: 30px;
 }
 
 .date-info {
@@ -59,17 +59,36 @@
   }
   .day-forecast {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1.5fr 1fr;
   }
   .daily-temp {
     justify-self: center;
     text-align: center;
+    /* white-space: nowrap; */
   }
   .weather-icon {
     justify-self: center;
   }
-  .extra {
+  .extra:not(.precipProb) {
     display: none;
+  }
+
+  .precipProb {
+    /* font-size: 14px; */
+    justify-content: initial;
+    align-items: initial;
+  }
+
+  .precipProb span {
+    /* font-size: 14px !important; */
+    /* margin-right: auto; */
+    /* width: 30%; */
+    justify-self: center;
+  }
+  
+  .precipProb svg {
+    height: 1.5em ;
+    width: 1.5em;
   }
 }
 

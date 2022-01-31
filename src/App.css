@@ -1,19 +1,19 @@
 .App {
   position: relative;
   /* text-align: center; */
-  --font-color: rgb(224, 224, 224);
-  color: var(--font-color);
+  /* --font-color: rgb(224, 224, 224); */
+  color: rgb(224, 224, 224);
   overflow: hidden;
   /* background-color: #1E232E; */
   background: linear-gradient(to right, #1488cc, #2b32b2); /* sunny */
 }
 
 .cloudy {
-  /* background: linear-gradient(to bottom, #536976, #292e49); */
-  background-image: linear-gradient(315deg, #5b6467 0%, #8b939a 74%);
+  background: linear-gradient(to top, #536976, #292e49);
+  /* background-image: linear-gradient(315deg, #5b6467 0%, #8b939a 74%); */
   --accent-color: rgb(41, 46, 73);
   /* color: rgb(36, 36, 36); */
-  --font-color: rgb(36, 36, 36);
+  /* --font-color: rgb(36, 36, 36); */
   /* font-weight: 500; */
 }
 
@@ -34,7 +34,6 @@
 #menu {
   border: none;
   /* color: rgb(167, 167, 167); */
-  color: var(--font-color);
   font-size: 32px;
   grid-column: 3/3;
   justify-self: end;
@@ -44,7 +43,7 @@
 }
 
 #menu:hover {
-  color: inherit;
+  color: #fff;
 }
 
 .menu-active {
@@ -66,7 +65,7 @@
   border: 1px solid rgba(255, 255, 255, 0.096);
   /* box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.521); */
   z-index: 3;
-  color: var(--font-color);
+  color: #fff;
   transition: right 0.2s ease-in-out;
   -webkit-backdrop-filter: blur(25px);
   backdrop-filter: blur(25px);

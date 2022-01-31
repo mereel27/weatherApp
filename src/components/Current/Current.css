@@ -7,11 +7,12 @@
   position: relative;
   /* overflow: hidden; */
   text-align: center;
+  padding-top: 50px;
 }
 
-.current > *:not(:first-child) {
+/* .current > *:not(:first-child) {
   padding: 10px 0;
-}
+} */
 
 .current > * {
   z-index: 2;
@@ -23,15 +24,15 @@
 }
 
 #name {
-  padding: 0 0 10px 0;
+  padding: 0 0 20px 0;
   font-size: 24px;
 }
 
 #big-temp {
-  font-size: 64px;
+  font-size: 85px;
   margin-bottom: 0;
   font-weight: 300;
-  padding: 10px 0;
+  padding: 20px 0;
   line-height: 55px;
 }
 
@@ -40,6 +41,10 @@
   margin-top: -20px;
   margin-left: 2px;
   font-weight: 300;
+}
+
+#description {
+  padding: 20px 0;
 }
 
 #description::first-letter {
@@ -56,6 +61,7 @@
   display: flex;
   gap: 30px;
   justify-content: center;
+  padding: 20px 0;
 }
 
 .more {
@@ -81,6 +87,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-bottom: 10px;
 }
 
 .meta img {
