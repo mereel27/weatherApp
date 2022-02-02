@@ -1,7 +1,7 @@
 #weather-effect {
   position: absolute;
   width: 100%;
-  height: 440px;
+  height: 445px;
 }
 
 #clouds-effect {
@@ -10,10 +10,40 @@
   height: 100%;
   animation: animateCloud 40s linear infinite;
   background-image: url('../../img/weather/cloud4.webp');
-  background-size: 800px;
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position-y: -50px;
+  background-position-y: -250px;
+  opacity: 0.8;
+}
+
+#clouds-effect2 {
+  position: absolute;
+  width: 800px;
+  height: 300px;
+  margin: 0 auto;
+  transform: rotate(180deg) translate(100%, 130px);
+  animation: 40s linear infinite animateCloud2;
+  background-image: url('../../img/weather/cloud4.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* background-position-y: -100px; */
+  /* transform: rotate(180deg) translate(100px, 100px); */
+  /* background-position-x: 200px; */
+  opacity: 0.2;
+}
+
+#clouds-effect3 {
+  position: absolute;
+  width: 800px;
+  height: 300px;
+  transform: /* rotate(180deg) */ translate(-100%, -130px);
+  animation: 40s linear 15s infinite animateCloud3;
+  background-image: url('../../img/weather/cloud.webp');
+  background-size: contain;
+  background-repeat: no-repeat;
+  /* background-position-y: -250px; */
   opacity: 0.4;
+  /* filter: brightness(0.5); */
 }
 
 #clouds-sky {
@@ -21,10 +51,10 @@
   width: 100%;
   height: 100%;
   background-image: url('../../img/weather/cloudysky.webp');
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
-  background-position: center -220px;
-  opacity: 0.6;
+  background-position: center -50px;
+  opacity: 0.1;
 }
 
 #moon {
@@ -85,4 +115,28 @@
   100% {
     transform: rotate(0deg);
   }
+}
+
+@keyframes animateCloud2 {
+  from {
+    transform: rotate(180deg) translate(100%, 130px);
+  }
+  to {
+    transform: rotate(180deg) translate(-100%, 130px);
+  }
+  /* 100% {
+    transform: translate(-100px, -100px);
+  } */
+}
+
+@keyframes animateCloud3 {
+  from {
+    transform: /* rotate(180deg)  */translate(-100%, -130px);
+  }
+  to {
+    transform: /* rotate(180deg)  */translate(100%, -130px);
+  }
+  /* 100% {
+    transform: rotate(180deg) translate(100px, 130px);
+  } */
 }

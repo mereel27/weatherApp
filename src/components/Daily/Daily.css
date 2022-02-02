@@ -76,7 +76,7 @@
   .precipProb {
     /* font-size: 14px; */
     justify-content: initial;
-    align-items: initial;
+    align-items: center;
   }
 
   .precipProb span {

@@ -34,7 +34,12 @@ const WeatherEffects = memo(({conditions}) => {
   }, [clearNight, precip, snow]);
   return (
     <div id="weather-effect">
-          {cloudyDay && <div id="clouds-sky"></div>}
+          {cloudyDay && 
+            <>
+            <div id="clouds-effect2"></div>
+            <div id="clouds-effect3"></div>
+            </>
+          }
           {clearNight && <div id="moon"></div>}
           {clearDay && <div id="sun"></div>}
     </div>
