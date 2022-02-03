@@ -75,8 +75,10 @@
 
   .precipProb {
     /* font-size: 14px; */
-    justify-content: initial;
-    align-items: center;
+    /* justify-content: initial; */
+    align-items: initial;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
   }
 
   .precipProb span {

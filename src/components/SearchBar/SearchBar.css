@@ -100,30 +100,25 @@ button {
 
 #add-button {
   border-radius: 20px;
-  /* border: 1px solid rgba(255, 255, 255, 0.096); */
   border: none;
   padding: 8px 10px;
   margin: 5px 0;
   font-size: 16px;
   transition: all 0.2s ease-in;
-  /* background-color: #1E232E; */
- /*  background-color: var(--accent-color); */
   background-color: rgba(245, 245, 245, 0.13);
 }
 
 #add-button:hover {
-  /* color: #eeebe8; */
-  /* background-color: hsl(221, 30%, 20%); */
   background-color: #2f39f3;
 }
 
 #search-results {
   position: absolute;
   z-index: 4;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
+  /* left: 0;
+  right: 0; */
+  /* margin-left: auto;
+  margin-right: auto; */
   margin-top: 5px;
   width: fit-content;
   max-width: 90%;
@@ -131,8 +126,6 @@ button {
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.096);
   color: #ffffff;
-  /* box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.664); */
-  /* background-color: #171A21; */
   background-color: rgba(255, 255, 255, 0.103);
   -webkit-backdrop-filter: blur(25px);
   backdrop-filter: blur(25px);

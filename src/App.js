@@ -11,6 +11,7 @@ import SearchBar from './components/SearchBar/SearchBar';
 import Settings from './components/Settings/Settings';
 import WeatherEffects from './components/WeatherEffects/WeatherEffects';
 import { IoMenu } from 'react-icons/io5';
+import { WiSunset, WiSunrise, WiMoonrise, WiMoonset } from 'react-icons/wi';
 import {
   windUnitsConverter,
   tempUnitsConverter,
@@ -72,7 +73,7 @@ function App() {
       const current = allData[1].current;
       const hourly = allData[2];
       const daily = allData[3];
-      /* console.log(allData); */
+      console.log(allData);
       setConditions(effectsInfo(current.symbol));
       setData({ location, current, daily, hourly });
       /* setIsLoading(false); */
@@ -326,6 +327,35 @@ function App() {
             >
               Детальный прогноз
             </a>
+          </div>
+          <div id="details-container">
+            <div id="details">
+              <span>Подробности</span>
+              <div id='sunrise'>
+                <div>
+                  <span>Восход</span>
+                  <span>{data.daily.forecast[0].sunrise.slice(0, 5)}</span>
+                  <WiSunrise size='5em'/>
+                </div>
+                <div>
+                  <span>Закат</span>
+                  <span>{data.daily.forecast[0].sunset.slice(0, 5)}</span>
+                  <WiSunset size='5em'/>
+                </div>
+              </div>
+              <div id='moonrise'>
+                <div>
+                  <span>Восход луны</span>
+                  <span>{data.daily.forecast[0].moonrise.slice(0, 5)}</span>
+                  <WiMoonrise size='5em'/>
+                </div>
+                <div>
+                  <span>Закат луны</span>
+                  <span>{data.daily.forecast[0].moonset.slice(0, 5)}</span>
+                  <WiMoonset size='5em'/>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}

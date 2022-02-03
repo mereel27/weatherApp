@@ -49,7 +49,7 @@ class Starsky {
     const stars = [];
     for (let i = 0; i < 100; i++) {
       var randX = Math.floor(Math.random() * C_WIDTH);
-      var randY = Math.floor(Math.random() * (C_HEIGHT));
+      var randY = Math.floor(Math.random() * C_HEIGHT);
       var randR = Math.random() * (1 - 0.3) + 0.3;
 
       if(randX > 100 || randY > 100) {

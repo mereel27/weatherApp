@@ -2,9 +2,10 @@
   position: absolute;
   width: 100%;
   height: 445px;
+  overflow: hidden;
 }
 
-#clouds-effect {
+/* #clouds-effect {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -14,36 +15,31 @@
   background-repeat: no-repeat;
   background-position-y: -250px;
   opacity: 0.8;
+} */
+
+#clouds-effect1 {
+  position: absolute;
+  width: 800px;
+  height: 300px;
+  margin: 0 auto;
+  transform: rotate(180deg) translate(100%, 130px);
+  animation: 80s linear infinite animateCloud2;
+  background-image: url('../../img/weather/cloud4.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.2;
 }
 
 #clouds-effect2 {
   position: absolute;
   width: 800px;
   height: 300px;
-  margin: 0 auto;
-  transform: rotate(180deg) translate(100%, 130px);
-  animation: 40s linear infinite animateCloud2;
-  background-image: url('../../img/weather/cloud4.webp');
-  background-size: cover;
-  background-repeat: no-repeat;
-  /* background-position-y: -100px; */
-  /* transform: rotate(180deg) translate(100px, 100px); */
-  /* background-position-x: 200px; */
-  opacity: 0.2;
-}
-
-#clouds-effect3 {
-  position: absolute;
-  width: 800px;
-  height: 300px;
   transform: /* rotate(180deg) */ translate(-100%, -130px);
-  animation: 40s linear 15s infinite animateCloud3;
+  animation: 80s linear 30s infinite animateCloud3;
   background-image: url('../../img/weather/cloud.webp');
   background-size: contain;
   background-repeat: no-repeat;
-  /* background-position-y: -250px; */
   opacity: 0.4;
-  /* filter: brightness(0.5); */
 }
 
 #clouds-sky {
@@ -67,8 +63,6 @@
   background-repeat: no-repeat;
   opacity: 0.8;
   z-index: -1;
-  /* backdrop-filter: saturate(200%); */
-  /* background-blend-mode: saturation; */
 }
 
 #sun {
@@ -83,8 +77,6 @@
   opacity: 0.6;
   z-index: 0;
   animation: animateSun 20s linear infinite;
-  /* backdrop-filter: saturate(200%); */
-  /* background-blend-mode: saturation; */
 }
 
 @keyframes animateCloud {

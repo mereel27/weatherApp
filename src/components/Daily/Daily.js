@@ -24,7 +24,7 @@ const Daily = memo(({ data, getDate, windUnit }) => {
             className="weather-icon"
             /* src={
               require(`../../img/weather/${day.symbol}.svg`).default
-            } */ src={`${process.env.REACT_APP_ICON_URL}${day.symbol}.png`}
+            } */ src={`${process.env.REACT_APP_ICON_URL}${day.symbol}.svg`}
             alt={day.symbolPhrase}
             title={day.symbolPhrase}
           />

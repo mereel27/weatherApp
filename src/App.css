@@ -315,12 +315,48 @@ img {
   align-items: center;
 } */
 
-canvas
-{
-    -webkit-transform: translate(0,0,0);
-    -moz-transform: translate(0,0,0);
-    transform: translate(0,0,0);
+#details-container {
+  width: 100%;
+  text-align: center;
 }
+
+#details {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.096);
+  border-top: 1px solid rgba(255, 255, 255, 0.096);
+  margin: 0 10px;
+  padding: 10px;
+}
+
+#details > * {
+  margin: 10px 0;
+}
+
+#details span {
+  display: block;
+}
+
+#sunrise, #moonrise {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#sunrise div, #moonrise div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#sunrise div > * {
+  padding: 5px 0;
+}
+
+canvas {
+  -webkit-transform: translate(0,0,0);
+  -moz-transform: translate(0,0,0);
+  transform: translate(0,0,0);
+}
+
+
 
 @media screen and (min-width: 640px) {
   .App {
