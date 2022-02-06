@@ -76,4 +76,22 @@ export const effectsInfo = (symbol) => {
   const night = symbol.charAt(0) === 'n' ? true : false;
   const cloudyDay = !night && cloudiness;
   return {cloudiness, cloudyDay, snow, rain, night};
-}
+};
+
+export const getSunPos = (sunrise, sunset, time) => {
+  const currentTime = Math.floor(Date.parse(time) / 1000);
+  /* console.log(`local time is ${time}`);
+  console.log(`local epoch time is ${currentTime}`);
+  console.log(`local sunset time is ${sunset}`) */
+  if (currentTime > sunset) {
+    return 127;
+  }
+  if(currentTime < sunrise) {
+    return 0;
+  }
+  const daytime = (sunset - sunrise) / 3600;
+  const timeFromSunrise = (currentTime - sunrise) / 3600;
+  const currentSunPos = 127 * (timeFromSunrise / daytime);
+  console.log(Math.round(currentSunPos))
+  return Math.round(currentSunPos);
+};

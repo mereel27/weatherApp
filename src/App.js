@@ -17,6 +17,7 @@ import {
   tempUnitsConverter,
   windText,
   effectsInfo,
+  getSunPos
 } from './utils/utils';
 
 moment.locale('ru');
@@ -44,6 +45,7 @@ function App() {
   const [conditions, setConditions] = useState(null);
   /* const [isLoading, setIsLoading] = useState(false); */
   const [searchOn, setSearchOn] = useState(false);
+  const [sunPos, setSunPos] = useState(0);
 
   useEffect(() => {
     let coordinates;
@@ -75,6 +77,7 @@ function App() {
       const daily = allData[3];
       console.log(allData);
       setConditions(effectsInfo(current.symbol));
+      setSunPos(getSunPos(daily.forecast[0].sunriseEpoch, daily.forecast[0].sunsetEpoch, current.time));
       setData({ location, current, daily, hourly });
       /* setIsLoading(false); */
     };
@@ -256,6 +259,7 @@ function App() {
     if (!sameCond) {
       setConditions(newCond);
     }
+    setSunPos(getSunPos(daily.forecast[0].sunriseEpoch, daily.forecast[0].sunsetEpoch, current.time));
     setData({ location, current, daily, hourly });
     /* setIsLoading(false); */
   };
@@ -335,23 +339,28 @@ function App() {
                 <div>
                   <span>Восход</span>
                   <span>{data.daily.forecast[0].sunrise.slice(0, 5)}</span>
-                  <WiSunrise size='5em'/>
+                  <WiSunrise size='3em'/>
+                </div>
+                <div id='graph'>
+                  <div id='sun-graph' style={{transform: `rotate(${sunPos}deg)`}}>
+                    <img src='https://developer.foreca.com/static/images/symbols/d000.svg' alt='' className='sun'/>
+                  </div>
                 </div>
                 <div>
                   <span>Закат</span>
                   <span>{data.daily.forecast[0].sunset.slice(0, 5)}</span>
-                  <WiSunset size='5em'/>
+                  <WiSunset size='3em'/>
                 </div>
               </div>
               <div id='moonrise'>
                 <div>
                   <span>Восход луны</span>
                   <span>{data.daily.forecast[0].moonrise.slice(0, 5)}</span>
-                  <WiMoonrise size='5em'/>
+                  <WiMoonrise size='3em'/>
                 </div>
                 <div>
                   <span>Закат луны</span>
-                  <span>{data.daily.forecast[0].moonset.slice(0, 5)}</span>
+                  <span>{data.daily.forecast[0].moonset && data.daily.forecast[0].moonset.slice(0, 5)}</span>
                   <WiMoonset size='5em'/>
                 </div>
               </div>

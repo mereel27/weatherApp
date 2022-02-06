@@ -323,8 +323,8 @@ img {
 #details {
   border-bottom: 1px solid rgba(255, 255, 255, 0.096);
   border-top: 1px solid rgba(255, 255, 255, 0.096);
-  margin: 0 10px;
-  padding: 10px;
+  margin: 0 calc(0.5vw + 5px);
+  padding: 10px 0;
 }
 
 #details > * {
@@ -337,18 +337,83 @@ img {
 
 #sunrise, #moonrise {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  overflow: hidden;
+  height: 200px;
 }
 
 #sunrise div, #moonrise div {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-items: center;
 }
 
-#sunrise div > * {
+/* #sunrise div > * {
   padding: 5px 0;
+  height: 100%;
+} */
+
+#graph {
+  position: relative;
+  overflow: hidden;
+  /* box-sizing: border-box; */
+  /* padding: 0 !important; */
+  /* border: 1px solid; */
+  display: grid !important;
+  height: 50%;
+  width: 280px;
+  border-bottom: 1px solid;
+  place-self: start;
+  /* transform: rotate(50deg); */
 }
+
+#sun-graph {
+  box-sizing: border-box;
+  position: absolute;
+  top: 35px;
+  /* padding: 0 !important; */
+  border: 2px dashed;
+  height: 250px;
+  width: 250px;
+  border-radius: 50%;
+  /* clip-path: ellipse(50% at 50%); */
+  /* transform: rotate(127deg); */
+  /* animation: spin 20s linear infinite; */
+}
+
+.sun {
+  position: absolute;
+  top: 53px;
+  left: -2px;
+  width: 30px;
+  transform: rotate(26deg);
+  /* padding: 0 !important; */
+  /* animation: spin 20s linear infinite; */
+}
+
+#horizon {
+  border-top: 1px solid;
+  position: absolute;
+  width: 110%;
+  height: 50%;
+  bottom: 0;
+  z-index: 10;
+}
+
+/* #sunline {
+  box-sizing: border-box;
+  padding: 0 !important;
+  position: absolute;
+  bottom: 20px;
+  height: 100px;
+  width: 200px;
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+  clip-path: ellipse(50% 35% at 50% 35%);
+  border: 1px dashed;
+  border-bottom: 0;
+} */
 
 canvas {
   -webkit-transform: translate(0,0,0);
@@ -361,5 +426,14 @@ canvas {
 @media screen and (min-width: 640px) {
   .App {
     padding: 0 18%;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
   }
 }
