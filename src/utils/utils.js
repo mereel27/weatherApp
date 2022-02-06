@@ -84,14 +84,14 @@ export const getSunPos = (sunrise, sunset, time) => {
   console.log(`local epoch time is ${currentTime}`);
   console.log(`local sunset time is ${sunset}`) */
   if (currentTime > sunset) {
-    return 127;
+    return 113;
   }
   if(currentTime < sunrise) {
     return 0;
   }
   const daytime = (sunset - sunrise) / 3600;
   const timeFromSunrise = (currentTime - sunrise) / 3600;
-  const currentSunPos = 127 * (timeFromSunrise / daytime);
+  const currentSunPos = 113 * (timeFromSunrise / daytime);
   console.log(Math.round(currentSunPos))
   return Math.round(currentSunPos);
 };

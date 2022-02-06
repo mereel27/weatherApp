@@ -334,26 +334,22 @@ function App() {
           </div>
           <div id="details-container">
             <div id="details">
-              <span>Подробности</span>
-              <div id='sunrise'>
-                <div>
-                  <span>Восход</span>
+              <span>Восход / Закат</span>
+              <div id='sun-info'>
+                <div id='sunrise'>
                   <span>{data.daily.forecast[0].sunrise.slice(0, 5)}</span>
-                  <WiSunrise size='3em'/>
                 </div>
                 <div id='graph'>
                   <div id='sun-graph' style={{transform: `rotate(${sunPos}deg)`}}>
                     <img src='https://developer.foreca.com/static/images/symbols/d000.svg' alt='' className='sun'/>
                   </div>
                 </div>
-                <div>
-                  <span>Закат</span>
+                <div id='sunset'>
                   <span>{data.daily.forecast[0].sunset.slice(0, 5)}</span>
-                  <WiSunset size='3em'/>
                 </div>
               </div>
               <div id='moonrise'>
-                <div>
+                {/* <div>
                   <span>Восход луны</span>
                   <span>{data.daily.forecast[0].moonrise.slice(0, 5)}</span>
                   <WiMoonrise size='3em'/>
@@ -362,7 +358,7 @@ function App() {
                   <span>Закат луны</span>
                   <span>{data.daily.forecast[0].moonset && data.daily.forecast[0].moonset.slice(0, 5)}</span>
                   <WiMoonset size='5em'/>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

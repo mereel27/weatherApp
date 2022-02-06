@@ -323,7 +323,7 @@ img {
 #details {
   border-bottom: 1px solid rgba(255, 255, 255, 0.096);
   border-top: 1px solid rgba(255, 255, 255, 0.096);
-  margin: 0 calc(0.5vw + 5px);
+  /* margin: 0 calc(0.5vw + 5px); */
   padding: 10px 0;
 }
 
@@ -335,61 +335,62 @@ img {
   display: block;
 }
 
-#sunrise, #moonrise {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  overflow: hidden;
-  height: 200px;
-}
-
-#sunrise div, #moonrise div {
+#sun-info, #moonrise {
+  position: relative;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-items: center;
+  justify-content: center;
+  overflow: hidden;
+  height: 120px;
+  width: 350px;
+  max-width: 95%;
+  margin: 0 auto;
 }
 
-/* #sunrise div > * {
-  padding: 5px 0;
-  height: 100%;
-} */
+#sunrise, #sunset {
+  position: absolute;
+  font-size: 12px;
+}
+
+#sunrise {
+  left: 0;
+  bottom: 3px;
+}
+
+#sunset {
+  right: 0;
+  bottom: 3px;
+}
 
 #graph {
+  display: flex;
+  justify-content: center;
   position: relative;
+  box-sizing: border-box;
   overflow: hidden;
-  /* box-sizing: border-box; */
-  /* padding: 0 !important; */
-  /* border: 1px solid; */
-  display: grid !important;
-  height: 50%;
-  width: 280px;
+  height: 100px;
+  width: 350px;
+  max-width: 100%;
   border-bottom: 1px solid;
   place-self: start;
-  /* transform: rotate(50deg); */
 }
 
 #sun-graph {
   box-sizing: border-box;
   position: absolute;
-  top: 35px;
-  /* padding: 0 !important; */
+  top: 25px;
   border: 2px dashed;
-  height: 250px;
-  width: 250px;
+  height: 350px;
+  width: 350px;
   border-radius: 50%;
   /* clip-path: ellipse(50% at 50%); */
-  /* transform: rotate(127deg); */
-  /* animation: spin 20s linear infinite; */
 }
 
 .sun {
   position: absolute;
-  top: 53px;
-  left: -2px;
+  top: 62px;
+  left: 14px;
   width: 30px;
-  transform: rotate(26deg);
-  /* padding: 0 !important; */
-  /* animation: spin 20s linear infinite; */
+  transform: rotate(10deg);
 }
 
 #horizon {
