@@ -11,7 +11,7 @@ import SearchBar from './components/SearchBar/SearchBar';
 import Settings from './components/Settings/Settings';
 import WeatherEffects from './components/WeatherEffects/WeatherEffects';
 import { IoMenu } from 'react-icons/io5';
-import { WiSunset, WiSunrise, WiMoonrise, WiMoonset } from 'react-icons/wi';
+/* import { WiSunset, WiSunrise, WiMoonrise, WiMoonset } from 'react-icons/wi'; */
 import {
   windUnitsConverter,
   tempUnitsConverter,
