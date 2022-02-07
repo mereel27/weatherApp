@@ -11,13 +11,14 @@ import SearchBar from './components/SearchBar/SearchBar';
 import Settings from './components/Settings/Settings';
 import WeatherEffects from './components/WeatherEffects/WeatherEffects';
 import { IoMenu } from 'react-icons/io5';
-/* import { WiSunset, WiSunrise, WiMoonrise, WiMoonset } from 'react-icons/wi'; */
+import * as Icons from 'react-icons/wi';
 import {
   windUnitsConverter,
   tempUnitsConverter,
   windText,
   effectsInfo,
-  getSunPos
+  getSunPos,
+  getMoonPhase
 } from './utils/utils';
 
 moment.locale('ru');
@@ -46,6 +47,7 @@ function App() {
   /* const [isLoading, setIsLoading] = useState(false); */
   const [searchOn, setSearchOn] = useState(false);
   const [sunPos, setSunPos] = useState(0);
+  const [moonIcon, setMoonIcon] = useState('');
 
   useEffect(() => {
     let coordinates;
@@ -75,9 +77,12 @@ function App() {
       const current = allData[1].current;
       const hourly = allData[2];
       const daily = allData[3];
+      const iconName = getMoonPhase(daily.forecast[0].moonPhase);
       console.log(allData);
       setConditions(effectsInfo(current.symbol));
       setSunPos(getSunPos(daily.forecast[0].sunriseEpoch, daily.forecast[0].sunsetEpoch, current.time));
+      const SuperIcon = Icons[iconName];
+      setMoonIcon(<SuperIcon size='2em'/>);
       setData({ location, current, daily, hourly });
       /* setIsLoading(false); */
     };
@@ -349,16 +354,7 @@ function App() {
                 </div>
               </div>
               <div id='moonrise'>
-                {/* <div>
-                  <span>Восход луны</span>
-                  <span>{data.daily.forecast[0].moonrise.slice(0, 5)}</span>
-                  <WiMoonrise size='3em'/>
-                </div>
-                <div>
-                  <span>Закат луны</span>
-                  <span>{data.daily.forecast[0].moonset && data.daily.forecast[0].moonset.slice(0, 5)}</span>
-                  <WiMoonset size='5em'/>
-                </div> */}
+                <span>{moonIcon}</span>
               </div>
             </div>
           </div>

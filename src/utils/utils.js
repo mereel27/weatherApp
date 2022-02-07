@@ -21,6 +21,100 @@ export const getWindDirect = (deg) => {
   }
 };
 
+export const getMoonPhase = (deg) => {
+  switch (true) {
+    case deg >= 0 && deg <= 13:
+      return 'WiMoonAltNew';
+
+    case deg > 13 && deg <= 26:
+      return 'WiMoonAltWaxingCrescent1';
+
+    case deg > 26 && deg <= 39:
+      return 'WiMoonAltWaxingCrescent2';
+
+    case deg > 39 && deg <= 51:
+      return 'WiMoonAltWaxingCrescent3';
+
+    case deg > 51 && deg <= 64:
+      return 'WiMoonAltWaxingCrescent4';
+
+    case deg > 64 && deg <= 77:
+      return 'WiMoonAltWaxingCrescent5';
+    
+    case deg > 77 && deg < 90:
+      return 'WiMoonAltWaxingCrescent6';
+
+    case deg >= 90 && deg <= 103:
+      return 'WiMoonAltFirstQuarter';
+
+    case deg > 103 && deg <= 116:
+      return 'WiMoonAltWaxingGibbous1';
+
+    case deg > 116 && deg <= 129:
+      return 'WiMoonAltWaxingGibbous2';
+    
+    case deg > 129 && deg <= 141:
+      return 'WiMoonAltWaxingGibbous3';
+
+    case deg > 141 && deg <= 154:
+      return 'WiMoonAltWaxingGibbous4';
+
+    case deg > 154 && deg <= 167:
+      return 'WiMoonAltWaxingGibbous5';
+
+    case deg > 167 && deg < 180:
+      return 'WiMoonAltWaxingGibbous6';
+
+    case deg >= 180 && deg <= 193:
+      return 'WiMoonAltFull';
+
+    case deg > 193 && deg <= 206:
+      return 'WiMoonAltWaningGibbous1';
+
+    case deg > 206 && deg <= 219:
+      return 'WiMoonAltWaningGibbous2';
+
+    case deg > 219 && deg <= 231:
+      return 'WiMoonAltWaningGibbous3';
+
+    case deg > 231 && deg <= 244:
+      return 'WiMoonAltWaningGibbous4';
+
+    case deg > 244 && deg <= 257:
+      return 'WiMoonAltWaningGibbous5';
+
+    case deg > 257 && deg < 270:
+      return 'WiMoonAltWaningGibbous6';
+    
+    case deg >= 270 && deg <= 283:
+      return 'WiMoonAltThirdQuarter';
+
+    case deg > 283 && deg <= 296:
+      return 'WiMoonAltWaningCrescent1';
+
+    case deg > 296 && deg <= 309:
+      return 'WiMoonAltWaningCrescent2';
+
+    case deg > 309 && deg <= 321:
+      return 'WiMoonAltWaningCrescent3';
+
+    case deg > 321 && deg <= 334:
+      return 'WiMoonAltWaningCrescent4';
+
+    case deg > 334 && deg <= 347:
+      return 'WiMoonAltWaningCrescent5';
+
+    case deg > 347 && deg < 360:
+      return 'WiMoonAltWaningCrescent6';
+
+    case deg > 347 && deg <= 360:
+      return 'WiMoonAltWaningCrescent6';
+    default:
+
+      return null;
+  }
+};
+
 export const move = (evt) => {
   evt.preventDefault();
   evt.currentTarget.scrollLeft += evt.deltaY;
