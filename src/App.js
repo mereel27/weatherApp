@@ -10,15 +10,14 @@ import Daily from './components/Daily/Daily';
 import SearchBar from './components/SearchBar/SearchBar';
 import Settings from './components/Settings/Settings';
 import WeatherEffects from './components/WeatherEffects/WeatherEffects';
+import MoonIcon from './components/MoonIcon/MoonIcon';
 import { IoMenu } from 'react-icons/io5';
-import * as Icons from 'react-icons/wi';
 import {
   windUnitsConverter,
   tempUnitsConverter,
   windText,
   effectsInfo,
-  getSunPos,
-  getMoonPhase
+  getSunPos
 } from './utils/utils';
 
 moment.locale('ru');
@@ -47,7 +46,6 @@ function App() {
   /* const [isLoading, setIsLoading] = useState(false); */
   const [searchOn, setSearchOn] = useState(false);
   const [sunPos, setSunPos] = useState(0);
-  const [moonIcon, setMoonIcon] = useState('');
 
   useEffect(() => {
     let coordinates;
@@ -77,12 +75,9 @@ function App() {
       const current = allData[1].current;
       const hourly = allData[2];
       const daily = allData[3];
-      const iconName = getMoonPhase(daily.forecast[0].moonPhase);
       console.log(allData);
       setConditions(effectsInfo(current.symbol));
       setSunPos(getSunPos(daily.forecast[0].sunriseEpoch, daily.forecast[0].sunsetEpoch, current.time));
-      const SuperIcon = Icons[iconName];
-      setMoonIcon(<SuperIcon size='2em'/>);
       setData({ location, current, daily, hourly });
       /* setIsLoading(false); */
     };
@@ -354,7 +349,7 @@ function App() {
                 </div>
               </div>
               <div id='moonrise'>
-                <span>{moonIcon}</span>
+                <span><MoonIcon  phase={data.daily.forecast[0].moonPhase} size='2em'/></span>
               </div>
             </div>
           </div>

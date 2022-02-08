@@ -423,6 +423,10 @@ canvas {
 }
 
 
+/* .moonIcon {
+  transform: rotate(180deg)
+} */
+
 
 @media screen and (min-width: 640px) {
   .App {

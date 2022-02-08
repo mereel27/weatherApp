@@ -24,91 +24,91 @@ export const getWindDirect = (deg) => {
 export const getMoonPhase = (deg) => {
   switch (true) {
     case deg >= 0 && deg <= 13:
-      return 'WiMoonAltNew';
+      return 'WiMoonNew';
 
     case deg > 13 && deg <= 26:
-      return 'WiMoonAltWaxingCrescent1';
+      return 'WiMoonWaxingCrescent1';
 
     case deg > 26 && deg <= 39:
-      return 'WiMoonAltWaxingCrescent2';
+      return 'WiMoonWaxingCrescent2';
 
     case deg > 39 && deg <= 51:
-      return 'WiMoonAltWaxingCrescent3';
+      return 'WiMoonWaxingCrescent3';
 
     case deg > 51 && deg <= 64:
-      return 'WiMoonAltWaxingCrescent4';
+      return 'WiMoonWaxingCrescent4';
 
     case deg > 64 && deg <= 77:
-      return 'WiMoonAltWaxingCrescent5';
+      return 'WiMoonWaxingCrescent5';
     
     case deg > 77 && deg < 90:
-      return 'WiMoonAltWaxingCrescent6';
+      return 'WiMoonWaxingCrescent6';
 
     case deg >= 90 && deg <= 103:
-      return 'WiMoonAltFirstQuarter';
+      return 'WiMoonFirstQuarter';
 
     case deg > 103 && deg <= 116:
-      return 'WiMoonAltWaxingGibbous1';
+      return 'WiMoonWaxingGibbous1';
 
     case deg > 116 && deg <= 129:
-      return 'WiMoonAltWaxingGibbous2';
+      return 'WiMoonWaxingGibbous2';
     
     case deg > 129 && deg <= 141:
-      return 'WiMoonAltWaxingGibbous3';
+      return 'WiMoonWaxingGibbous3';
 
     case deg > 141 && deg <= 154:
-      return 'WiMoonAltWaxingGibbous4';
+      return 'WiMoonWaxingGibbous4';
 
     case deg > 154 && deg <= 167:
-      return 'WiMoonAltWaxingGibbous5';
+      return 'WiMoonWaxingGibbous5';
 
     case deg > 167 && deg < 180:
-      return 'WiMoonAltWaxingGibbous6';
+      return 'WiMoonWaxingGibbous6';
 
     case deg >= 180 && deg <= 193:
-      return 'WiMoonAltFull';
+      return 'WiMoonFull';
 
     case deg > 193 && deg <= 206:
-      return 'WiMoonAltWaningGibbous1';
+      return 'WiMoonWaningGibbous1';
 
     case deg > 206 && deg <= 219:
-      return 'WiMoonAltWaningGibbous2';
+      return 'WiMoonWaningGibbous2';
 
     case deg > 219 && deg <= 231:
-      return 'WiMoonAltWaningGibbous3';
+      return 'WiMoonWaningGibbous3';
 
     case deg > 231 && deg <= 244:
-      return 'WiMoonAltWaningGibbous4';
+      return 'WiMoonWaningGibbous4';
 
     case deg > 244 && deg <= 257:
-      return 'WiMoonAltWaningGibbous5';
+      return 'WiMoonWaningGibbous5';
 
     case deg > 257 && deg < 270:
-      return 'WiMoonAltWaningGibbous6';
+      return 'WiMoonWaningGibbous6';
     
     case deg >= 270 && deg <= 283:
-      return 'WiMoonAltThirdQuarter';
+      return 'WiMoonThirdQuarter';
 
     case deg > 283 && deg <= 296:
-      return 'WiMoonAltWaningCrescent1';
+      return 'WiMoonWaningCrescent1';
 
     case deg > 296 && deg <= 309:
-      return 'WiMoonAltWaningCrescent2';
+      return 'WiMoonWaningCrescent2';
 
     case deg > 309 && deg <= 321:
-      return 'WiMoonAltWaningCrescent3';
+      return 'WiMoonWaningCrescent3';
 
     case deg > 321 && deg <= 334:
-      return 'WiMoonAltWaningCrescent4';
+      return 'WiMoonWaningCrescent4';
 
     case deg > 334 && deg <= 347:
-      return 'WiMoonAltWaningCrescent5';
+      return 'WiMoonWaningCrescent5';
 
     case deg > 347 && deg < 360:
-      return 'WiMoonAltWaningCrescent6';
+      return 'WiMoonWaningCrescent6';
 
     case deg > 347 && deg <= 360:
-      return 'WiMoonAltWaningCrescent6';
+      return 'WiMoonWaningCrescent6';
     default:
 
       return null;
