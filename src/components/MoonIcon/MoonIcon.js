@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { getMoonPhase } from '../../utils/utils';
+import { getMoonInfo } from '../../utils/utils';
 
 export const MoonIcon = ({ phase, size }) => {
   const [icon, setIcon] = useState(null);
   useEffect(() => {
     console.log('moon render');
-    const iconName = getMoonPhase(phase);
+    const iconName = getMoonInfo(phase).iconName;
     console.log(iconName);
     (async () => {
       const Icon = (await import('react-icons/wi'))[iconName];
@@ -16,6 +16,7 @@ export const MoonIcon = ({ phase, size }) => {
   return (
     <>
     {icon}
+    <span>{getMoonInfo(phase).phaseName}</span>
     </>
   )
 };

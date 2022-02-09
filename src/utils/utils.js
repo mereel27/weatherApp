@@ -21,98 +21,159 @@ export const getWindDirect = (deg) => {
   }
 };
 
-export const getMoonPhase = (deg) => {
+export const getMoonInfo = (deg) => {
+  let iconName;
+  let phaseName;
   switch (true) {
     case deg >= 0 && deg <= 13:
-      return 'WiMoonNew';
+      iconName = 'WiMoonNew';
+      break;
 
     case deg > 13 && deg <= 26:
-      return 'WiMoonWaxingCrescent1';
+      iconName = 'WiMoonWaxingCrescent1';
+      break;
 
     case deg > 26 && deg <= 39:
-      return 'WiMoonWaxingCrescent2';
+      iconName = 'WiMoonWaxingCrescent2';
+      break;
 
     case deg > 39 && deg <= 51:
-      return 'WiMoonWaxingCrescent3';
+      iconName = 'WiMoonWaxingCrescent3';
+      break;
 
     case deg > 51 && deg <= 64:
-      return 'WiMoonWaxingCrescent4';
+      iconName = 'WiMoonWaxingCrescent4';
+      break;
 
     case deg > 64 && deg <= 77:
-      return 'WiMoonWaxingCrescent5';
+      iconName = 'WiMoonWaxingCrescent5';
+      break;
     
     case deg > 77 && deg < 90:
-      return 'WiMoonWaxingCrescent6';
+      iconName = 'WiMoonWaxingCrescent6';
+      break;
 
     case deg >= 90 && deg <= 103:
-      return 'WiMoonFirstQuarter';
+      iconName = 'WiMoonFirstQuarter';
+      break;
 
     case deg > 103 && deg <= 116:
-      return 'WiMoonWaxingGibbous1';
+      iconName = 'WiMoonWaxingGibbous1';
+      break;
 
     case deg > 116 && deg <= 129:
-      return 'WiMoonWaxingGibbous2';
+      iconName = 'WiMoonWaxingGibbous2';
+      break;
     
     case deg > 129 && deg <= 141:
-      return 'WiMoonWaxingGibbous3';
+      iconName = 'WiMoonWaxingGibbous3';
+      break;
 
     case deg > 141 && deg <= 154:
-      return 'WiMoonWaxingGibbous4';
+      iconName = 'WiMoonWaxingGibbous4';
+      break;
 
     case deg > 154 && deg <= 167:
-      return 'WiMoonWaxingGibbous5';
+      iconName = 'WiMoonWaxingGibbous5';
+      break;
 
     case deg > 167 && deg < 180:
-      return 'WiMoonWaxingGibbous6';
+      iconName = 'WiMoonWaxingGibbous6';
+      break;
 
     case deg >= 180 && deg <= 193:
-      return 'WiMoonFull';
+      iconName = 'WiMoonFull';
+      break;
 
     case deg > 193 && deg <= 206:
-      return 'WiMoonWaningGibbous1';
+      iconName = 'WiMoonWaningGibbous1';
+      break;
 
     case deg > 206 && deg <= 219:
-      return 'WiMoonWaningGibbous2';
+      iconName = 'WiMoonWaningGibbous2';
+      break;
 
     case deg > 219 && deg <= 231:
-      return 'WiMoonWaningGibbous3';
+      iconName = 'WiMoonWaningGibbous3';
+      break;
 
     case deg > 231 && deg <= 244:
-      return 'WiMoonWaningGibbous4';
+      iconName = 'WiMoonWaningGibbous4';
+      break;
 
     case deg > 244 && deg <= 257:
-      return 'WiMoonWaningGibbous5';
+      iconName = 'WiMoonWaningGibbous5';
+      break;
 
     case deg > 257 && deg < 270:
-      return 'WiMoonWaningGibbous6';
+      iconName = 'WiMoonWaningGibbous6';
+      break;
     
     case deg >= 270 && deg <= 283:
-      return 'WiMoonThirdQuarter';
+      iconName = 'WiMoonThirdQuarter';
+      break;
 
     case deg > 283 && deg <= 296:
-      return 'WiMoonWaningCrescent1';
+      iconName = 'WiMoonWaningCrescent1';
+      break;
 
     case deg > 296 && deg <= 309:
-      return 'WiMoonWaningCrescent2';
+      iconName = 'WiMoonWaningCrescent2';
+      break;
 
     case deg > 309 && deg <= 321:
-      return 'WiMoonWaningCrescent3';
+      iconName = 'WiMoonWaningCrescent3';
+      break;
 
     case deg > 321 && deg <= 334:
-      return 'WiMoonWaningCrescent4';
+      iconName = 'WiMoonWaningCrescent4';
+      break;
 
     case deg > 334 && deg <= 347:
-      return 'WiMoonWaningCrescent5';
+      iconName = 'WiMoonWaningCrescent5';
+      break;
 
     case deg > 347 && deg < 360:
-      return 'WiMoonWaningCrescent6';
-
+      iconName = 'WiMoonWaningCrescent6';
+      break;
+      
     case deg > 347 && deg <= 360:
-      return 'WiMoonWaningCrescent6';
+      iconName = 'WiMoonWaningCrescent6';
+      break;
+      
     default:
-
-      return null;
+      break;
+  };
+  switch (true) {
+    case deg >= 0 && deg <= 13:
+      phaseName = 'Новолуние'
+      break;
+    case deg > 13 && deg < 90:
+      phaseName = 'Молодая луна'
+      break;
+    case deg >= 90 && deg <= 103:
+      phaseName = 'Первая четверть';
+      break;
+    case deg > 103 && deg < 180:
+      phaseName = 'Прибывающая луна';
+      break;
+    case deg >= 180 && deg <= 193:
+      phaseName = 'Полнолуние';
+      break;
+    case deg > 193 && deg < 270:
+      phaseName = 'Убывающая луна';
+      break;
+    case deg >= 270 && deg <= 283:
+      phaseName = 'Последняя четверть';
+      break;
+    case deg > 283 && deg <= 296:
+      phaseName = 'Старая луна';
+      break;
+    default:
+      break;
   }
+
+  return { iconName, phaseName };
 };
 
 export const move = (evt) => {
