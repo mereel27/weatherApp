@@ -317,7 +317,7 @@ img {
 
 #details-container {
   width: 100%;
-  text-align: center;
+  /* text-align: center; */
 }
 
 #details {
@@ -325,6 +325,7 @@ img {
   border-top: 1px solid rgba(255, 255, 255, 0.096);
   /* margin: 0 calc(0.5vw + 5px); */
   padding: 10px 0;
+  margin: 0 10px;
 }
 
 #details > * {
@@ -346,19 +347,23 @@ img {
   margin: 0 auto;
 }
 
+#moonrise {
+  text-align: center;
+}
+
 #sunrise, #sunset {
   position: absolute;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 #sunrise {
   left: 0;
-  bottom: 3px;
+  bottom: 0;
 }
 
 #sunset {
   right: 0;
-  bottom: 3px;
+  bottom: 0;
 }
 
 #graph {
@@ -401,32 +406,6 @@ img {
   bottom: 0;
   z-index: 10;
 }
-
-/* #sunline {
-  box-sizing: border-box;
-  padding: 0 !important;
-  position: absolute;
-  bottom: 20px;
-  height: 100px;
-  width: 200px;
-  border-top-left-radius: 100px;
-  border-top-right-radius: 100px;
-  clip-path: ellipse(50% 35% at 50% 35%);
-  border: 1px dashed;
-  border-bottom: 0;
-} */
-
-canvas {
-  -webkit-transform: translate(0,0,0);
-  -moz-transform: translate(0,0,0);
-  transform: translate(0,0,0);
-}
-
-
-/* .moonIcon {
-  transform: rotate(180deg)
-} */
-
 
 @media screen and (min-width: 640px) {
   .App {

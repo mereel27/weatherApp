@@ -52,10 +52,8 @@ class Starsky {
       var randY = Math.floor(Math.random() * C_HEIGHT);
       var randR = Math.random() * (1 - 0.3) + 0.3;
 
-      if(randX > 100 || randY > 100) {
-        var star = new Star(context, randX, randY, randR, randomColor());
-        stars.push(star);
-      }
+      var star = new Star(context, randX, randY, randR, randomColor());
+      stars.push(star);
     }
     /* function update() {
       for (let i = 0; i < arrStars.length; i++) {

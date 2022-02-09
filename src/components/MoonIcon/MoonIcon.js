@@ -14,10 +14,10 @@ export const MoonIcon = ({ phase, size }) => {
   }, [phase, size]);
 
   return (
-    <>
-    {icon}
-    <span>{getMoonInfo(phase).phaseName}</span>
-    </>
+    <div>
+      {icon}
+      <span>{getMoonInfo(phase).phaseName}</span>
+    </div>
   )
 };
 

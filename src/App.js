@@ -17,7 +17,7 @@ import {
   tempUnitsConverter,
   windText,
   effectsInfo,
-  getSunPos
+  getSunInfo
 } from './utils/utils';
 
 moment.locale('ru');
@@ -77,7 +77,7 @@ function App() {
       const daily = allData[3];
       console.log(allData);
       setConditions(effectsInfo(current.symbol));
-      setSunPos(getSunPos(daily.forecast[0].sunriseEpoch, daily.forecast[0].sunsetEpoch, current.time));
+      setSunPos(getSunInfo(daily.forecast[0].sunriseEpoch, daily.forecast[0].sunsetEpoch, current.time).sunPos);
       setData({ location, current, daily, hourly });
       /* setIsLoading(false); */
     };
@@ -259,7 +259,7 @@ function App() {
     if (!sameCond) {
       setConditions(newCond);
     }
-    setSunPos(getSunPos(daily.forecast[0].sunriseEpoch, daily.forecast[0].sunsetEpoch, current.time));
+    setSunPos(getSunInfo(daily.forecast[0].sunriseEpoch, daily.forecast[0].sunsetEpoch, current.time).sunPos);
     setData({ location, current, daily, hourly });
     /* setIsLoading(false); */
   };
@@ -334,7 +334,7 @@ function App() {
           </div>
           <div id="details-container">
             <div id="details">
-              <span>Восход / Закат</span>
+              <span>СОЛНЦЕ И ЛУНА</span>
               <div id='sun-info'>
                 <div id='sunrise'>
                   <span>{data.daily.forecast[0].sunrise.slice(0, 5)}</span>
@@ -349,7 +349,7 @@ function App() {
                 </div>
               </div>
               <div id='moonrise'>
-                <span><MoonIcon  phase={data.daily.forecast[0].moonPhase} size='2em'/></span>
+                <MoonIcon  phase={data.daily.forecast[0].moonPhase} size='2em'/>
               </div>
             </div>
           </div>

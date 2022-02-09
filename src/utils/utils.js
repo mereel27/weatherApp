@@ -28,122 +28,94 @@ export const getMoonInfo = (deg) => {
     case deg >= 0 && deg <= 13:
       iconName = 'WiMoonNew';
       break;
-
     case deg > 13 && deg <= 26:
       iconName = 'WiMoonWaxingCrescent1';
       break;
-
     case deg > 26 && deg <= 39:
       iconName = 'WiMoonWaxingCrescent2';
       break;
-
     case deg > 39 && deg <= 51:
       iconName = 'WiMoonWaxingCrescent3';
       break;
-
     case deg > 51 && deg <= 64:
       iconName = 'WiMoonWaxingCrescent4';
       break;
-
     case deg > 64 && deg <= 77:
       iconName = 'WiMoonWaxingCrescent5';
       break;
-    
     case deg > 77 && deg < 90:
       iconName = 'WiMoonWaxingCrescent6';
       break;
-
     case deg >= 90 && deg <= 103:
       iconName = 'WiMoonFirstQuarter';
       break;
-
     case deg > 103 && deg <= 116:
       iconName = 'WiMoonWaxingGibbous1';
       break;
-
     case deg > 116 && deg <= 129:
       iconName = 'WiMoonWaxingGibbous2';
       break;
-    
     case deg > 129 && deg <= 141:
       iconName = 'WiMoonWaxingGibbous3';
       break;
-
     case deg > 141 && deg <= 154:
       iconName = 'WiMoonWaxingGibbous4';
       break;
-
     case deg > 154 && deg <= 167:
       iconName = 'WiMoonWaxingGibbous5';
       break;
-
     case deg > 167 && deg < 180:
       iconName = 'WiMoonWaxingGibbous6';
       break;
-
     case deg >= 180 && deg <= 193:
       iconName = 'WiMoonFull';
       break;
-
     case deg > 193 && deg <= 206:
       iconName = 'WiMoonWaningGibbous1';
       break;
-
     case deg > 206 && deg <= 219:
       iconName = 'WiMoonWaningGibbous2';
       break;
-
     case deg > 219 && deg <= 231:
       iconName = 'WiMoonWaningGibbous3';
       break;
-
     case deg > 231 && deg <= 244:
       iconName = 'WiMoonWaningGibbous4';
       break;
-
     case deg > 244 && deg <= 257:
       iconName = 'WiMoonWaningGibbous5';
       break;
-
     case deg > 257 && deg < 270:
       iconName = 'WiMoonWaningGibbous6';
-      break;
-    
+      break;  
     case deg >= 270 && deg <= 283:
       iconName = 'WiMoonThirdQuarter';
       break;
-
     case deg > 283 && deg <= 296:
       iconName = 'WiMoonWaningCrescent1';
       break;
-
     case deg > 296 && deg <= 309:
       iconName = 'WiMoonWaningCrescent2';
       break;
-
     case deg > 309 && deg <= 321:
       iconName = 'WiMoonWaningCrescent3';
       break;
-
     case deg > 321 && deg <= 334:
       iconName = 'WiMoonWaningCrescent4';
       break;
-
     case deg > 334 && deg <= 347:
       iconName = 'WiMoonWaningCrescent5';
       break;
-
     case deg > 347 && deg < 360:
       iconName = 'WiMoonWaningCrescent6';
       break;
-      
     case deg > 347 && deg <= 360:
       iconName = 'WiMoonWaningCrescent6';
       break;
-      
     default:
       break;
   };
+
   switch (true) {
     case deg >= 0 && deg <= 13:
       phaseName = 'Новолуние'
@@ -233,20 +205,18 @@ export const effectsInfo = (symbol) => {
   return {cloudiness, cloudyDay, snow, rain, night};
 };
 
-export const getSunPos = (sunrise, sunset, time) => {
+export const getSunInfo = (sunrise, sunset, time) => {
+  let sunPos;
   const currentTime = Math.floor(Date.parse(time) / 1000);
-  /* console.log(`local time is ${time}`);
-  console.log(`local epoch time is ${currentTime}`);
-  console.log(`local sunset time is ${sunset}`) */
-  if (currentTime > sunset) {
-    return 113;
-  }
-  if(currentTime < sunrise) {
-    return 0;
-  }
   const daytime = (sunset - sunrise) / 3600;
-  const timeFromSunrise = (currentTime - sunrise) / 3600;
-  const currentSunPos = 113 * (timeFromSunrise / daytime);
-  console.log(Math.round(currentSunPos))
-  return Math.round(currentSunPos);
+  if (currentTime > sunset) {
+    sunPos = 113;
+  } else if(currentTime < sunrise) {
+    sunPos = 0;
+  } else {
+    const timeFromSunrise = (currentTime - sunrise) / 3600;
+    sunPos = Math.round(113 * (timeFromSunrise / daytime));
+  }
+  
+  return { sunPos, daytime };
 };
