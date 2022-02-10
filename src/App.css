@@ -328,15 +328,18 @@ img {
   margin: 0 10px;
 }
 
-#details > * {
+/* #details > * {
   margin: 10px 0;
-}
+} */
 
-#details span {
+.details-cat-name {
   display: block;
+  width: 350px;
+  max-width: 95%;
+  margin: 0 auto;
 }
 
-#sun-info, #moonrise {
+#sun-info {
   position: relative;
   display: flex;
   justify-content: center;
@@ -349,11 +352,17 @@ img {
 
 #moonrise {
   text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+#moonrise span, #sun-info span {
+  display: block;
+  font-size: 14px;
 }
 
 #sunrise, #sunset {
   position: absolute;
-  font-size: 14px;
 }
 
 #sunrise {
@@ -405,6 +414,13 @@ img {
   height: 50%;
   bottom: 0;
   z-index: 10;
+}
+
+#daytime {
+  position: absolute;
+  text-align: center;
+  margin: 0 auto;
+  bottom: 24px;
 }
 
 @media screen and (min-width: 640px) {

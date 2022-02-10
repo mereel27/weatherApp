@@ -1,14 +1,12 @@
 import { memo } from 'react';
 import Logo from '../Logo';
 import './Current.css';
-/* import WeatherEffects from '../WeatherEffects/WeatherEffects'; */
 import { WiSmallCraftAdvisory, WiHumidity, WiUmbrella } from 'react-icons/wi';
 
-const Current = memo(({ data, getDate, windUnit, conditions}) => {
+const Current = memo(({ data, getDate, windUnit}) => {
   /* console.log('current render') */
   return (
     <div className="current">
-      {/* <WeatherEffects conditions={conditions}/> */}
       <span id="country-name">{data.location.country || ''}</span>
       <span id="name">{data.location.name || ''}</span>
       <div className="info">

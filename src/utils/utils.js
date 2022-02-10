@@ -206,17 +206,16 @@ export const effectsInfo = (symbol) => {
 };
 
 export const getSunInfo = (sunrise, sunset, time) => {
-  let sunPos;
   const currentTime = Math.floor(Date.parse(time) / 1000);
-  const daytime = (sunset - sunrise) / 3600;
   if (currentTime > sunset) {
-    sunPos = 113;
-  } else if(currentTime < sunrise) {
-    sunPos = 0;
-  } else {
-    const timeFromSunrise = (currentTime - sunrise) / 3600;
-    sunPos = Math.round(113 * (timeFromSunrise / daytime));
+    return 113;
   }
+  if (currentTime < sunrise) {
+    return 0;
+  }
+  const daytime = (sunset - sunrise) / 3600;
+  const timeFromSunrise = (currentTime - sunrise) / 3600;
+  const sunPos = Math.round(113 * (timeFromSunrise / daytime));
   
-  return { sunPos, daytime };
+  return sunPos;
 };

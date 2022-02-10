@@ -77,7 +77,7 @@ function App() {
       const daily = allData[3];
       console.log(allData);
       setConditions(effectsInfo(current.symbol));
-      setSunPos(getSunInfo(daily.forecast[0].sunriseEpoch, daily.forecast[0].sunsetEpoch, current.time).sunPos);
+      setSunPos(getSunInfo(daily.forecast[0].sunriseEpoch, daily.forecast[0].sunsetEpoch, current.time));
       setData({ location, current, daily, hourly });
       /* setIsLoading(false); */
     };
@@ -256,10 +256,13 @@ function App() {
     const daily = allData[3];
     const newCond = effectsInfo(current.symbol);
     const sameCond = JSON.stringify(newCond) === JSON.stringify(conditions);
+    console.log(JSON.stringify(newCond))
+    console.log(JSON.stringify(conditions))
+    console.log(sameCond)
     if (!sameCond) {
       setConditions(newCond);
     }
-    setSunPos(getSunInfo(daily.forecast[0].sunriseEpoch, daily.forecast[0].sunsetEpoch, current.time).sunPos);
+    setSunPos(getSunInfo(daily.forecast[0].sunriseEpoch, daily.forecast[0].sunsetEpoch, current.time));
     setData({ location, current, daily, hourly });
     /* setIsLoading(false); */
   };
@@ -319,7 +322,6 @@ function App() {
             data={data}
             getDate={getDate}
             windUnit={windText(windUnits)}
-            conditions={conditions}
           />
           <Hourly data={data} getDate={getDate} />
           <Daily data={data} getDate={getDate} windUnit={windText(windUnits)} />
@@ -334,18 +336,22 @@ function App() {
           </div>
           <div id="details-container">
             <div id="details">
-              <span>СОЛНЦЕ И ЛУНА</span>
+              <span className='details-cat-name'>СОЛНЦЕ И ЛУНА</span>
               <div id='sun-info'>
                 <div id='sunrise'>
                   <span>{data.daily.forecast[0].sunrise.slice(0, 5)}</span>
                 </div>
+                <div id='sunset'>
+                  <span>{data.daily.forecast[0].sunset.slice(0, 5)}</span>
+                </div>
+                <div id='daytime'>
+                  <span>Долгота дня</span>
+                  <span>{moment.utc((data.daily.forecast[0].sunsetEpoch - data.daily.forecast[0].sunriseEpoch)*1000).format('h:mm')}</span>
+                  </div>
                 <div id='graph'>
                   <div id='sun-graph' style={{transform: `rotate(${sunPos}deg)`}}>
                     <img src='https://developer.foreca.com/static/images/symbols/d000.svg' alt='' className='sun'/>
                   </div>
-                </div>
-                <div id='sunset'>
-                  <span>{data.daily.forecast[0].sunset.slice(0, 5)}</span>
                 </div>
               </div>
               <div id='moonrise'>
