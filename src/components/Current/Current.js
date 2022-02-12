@@ -9,7 +9,7 @@ const Current = memo(({ data, getDate, windUnit}) => {
     <div className="current">
       <span id="country-name">{data.location.country || ''}</span>
       <span id="name">{data.location.name || ''}</span>
-      <div className="info">
+      <div className="info temp">
         <span id="big-temp">{`${Math.round(data.current.temperature)}`}</span>
         <span id="celc">°</span>
       </div>
