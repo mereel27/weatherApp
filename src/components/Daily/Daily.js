@@ -11,7 +11,7 @@ import {
 import './Daily.css';
 
 const Daily = memo(({ data, getDate, windUnit }) => {
-  const precibIcon = window.innerWidth <= 640 ? <WiRaindrop /> : <WiUmbrella size="2em"/>;
+  const iconSize = window.innerWidth <= 640 ? '1.5em' : '2em';
   return (
     <div className="forecast">
       {data.daily.forecast.map((day, index) => (
@@ -31,11 +31,11 @@ const Daily = memo(({ data, getDate, windUnit }) => {
           <span className="info daily-temp">{`${Math.round(
             day.maxTemp
           )}° / ${Math.round(day.minTemp)}°`}</span>
-          <div className="info extra precipProb" title="Вероятность осадков">
-            {precibIcon} <span>{day.precipProb}%</span>
+          <div className="info extra" title="Вероятность осадков">
+            <WiUmbrella size="2em"/> <span>{day.precipProb}%</span>
           </div>
-          <span className="info extra" title="Количество осадков">
-            <WiRaindrop size="2em" /> {day.precipAccum} мм
+          <span className="info extra precipRate" title="Количество осадков">
+            <WiRaindrop size={iconSize} viewBox="0 -2 30 30" /> {Math.round(day.precipAccum)}мм
           </span>
           <span className="info extra" title="Скорость ветра">
             <WiStrongWind size="2em" /> {day.maxWindSpeed} {windUnit}

@@ -52,45 +52,35 @@
 
 @media screen and (max-width: 640px) {
   .small {
-    font-size: 12px;
+    font-size: 14px;
   }
   .forecast {
     flex-direction: column;
   }
   .day-forecast {
     display: grid;
-    grid-template-columns: 2fr 1fr 1.5fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
   .daily-temp {
     justify-self: center;
     text-align: center;
-    /* white-space: nowrap; */
+    white-space: nowrap;
   }
   .weather-icon {
     justify-self: center;
   }
-  .extra:not(.precipProb) {
+  .extra:not(.precipRate) {
     display: none;
   }
 
-  .precipProb {
+  .precipRate {
     /* font-size: 14px; */
     /* justify-content: initial; */
     align-items: initial;
     display: grid;
-    grid-template-columns: 1fr 2fr;
-  }
-
-  .precipProb span {
-    /* font-size: 14px !important; */
-    /* margin-right: auto; */
-    /* width: 30%; */
-    justify-self: center;
-  }
-  
-  .precipProb svg {
-    height: 1.5em ;
-    width: 1.5em;
+    grid-template-columns: 25% 75%;
+    place-items: center;
+    height: 100%;
   }
 }
 
