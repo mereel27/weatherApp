@@ -127,7 +127,7 @@ export const getMoonInfo = (deg) => {
       phaseName = 'Первая четверть';
       break;
     case deg > 103 && deg < 180:
-      phaseName = 'Прибывающая луна';
+      phaseName = 'Растущая луна';
       break;
     case deg >= 180 && deg <= 193:
       phaseName = 'Полнолуние';
@@ -207,15 +207,32 @@ export const effectsInfo = (symbol) => {
 
 export const getSunInfo = (sunrise, sunset, time) => {
   const currentTime = Math.floor(Date.parse(time) / 1000);
-  if (currentTime > sunset) {
-    return 113;
-  }
-  if (currentTime < sunrise) {
+  if (currentTime > sunset || currentTime < sunrise) {
     return 0;
   }
+  /* if (currentTime < sunrise) {
+    return 0;
+  } */
   const daytime = (sunset - sunrise) / 3600;
   const timeFromSunrise = (currentTime - sunrise) / 3600;
-  const sunPos = Math.round(113 * (timeFromSunrise / daytime));
+  const sunPos = Math.round(180 * (timeFromSunrise / daytime));
   
   return sunPos;
 };
+
+export const uvIndex = (index) => {
+  switch (true) {
+    case index >= 0 && index <= 2:
+      return 'Низкий'
+    case index >= 3 && index <= 5:
+      return 'Умереный'
+    case index >= 6 && index <= 7:
+      return 'Высокий'
+    case index >= 8 && index <= 10:
+      return 'Очень высокий'
+    case index >= 11:
+      return 'Чрезмерный'
+    default:
+      break;
+  }
+}

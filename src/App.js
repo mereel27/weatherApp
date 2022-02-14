@@ -20,7 +20,9 @@ import {
   windText,
   effectsInfo,
   getSunInfo,
-  getWindDirect
+  getWindDirect,
+  getMoonInfo,
+  uvIndex
 } from './utils/utils';
 
 moment.locale('ru');
@@ -338,25 +340,45 @@ function App() {
             <div className="details-block">
               <span className='details-cat-name'>СОЛНЦЕ И ЛУНА</span>
               <div id='sun-info'>
-                <div id='sunrise'>
+                <div id='sunrise' className='details-desc'>
+                  {/* <WiSunrise size='2.2em'/> */}
+                  {/* <span>ВОСХОД</span> */}
                   <span>{data.daily.forecast[0].sunrise.slice(0, 5)}</span>
                 </div>
-                <div id='sunset'>
+                <div id='sunset' className='details-desc'>
+                  {/* <WiSunset size='2.2em'/> */}
+                  {/* <span>ЗАКАТ</span> */}
                   <span>{data.daily.forecast[0].sunset.slice(0, 5)}</span>
                 </div>
-                <div id='daytime'>
-                  <span>Долгота дня</span>
-                  <span>{moment.utc((data.daily.forecast[0].sunsetEpoch - data.daily.forecast[0].sunriseEpoch)*1000).format('h:mm')}</span>
+                <div className='details-desc' id='daytime'>
+                  {/* <span className='details-heading'>Долгота дня</span> */}
+                  <span>{moment.utc((data.daily.forecast[0].sunsetEpoch - data.daily.forecast[0].sunriseEpoch)*1000).format('h ч mm мин')}</span>
                   </div>
                 <div id='graph'>
                   <div id='sun-graph' style={{transform: `rotate(${sunPos}deg)`}}>
-                    <img src='https://developer.foreca.com/static/images/symbols/d000.svg' alt='' className='sun'/>
+                    {sunPos ? <WiDaySunny size='2.5em' className='sun'/> : ''}
                   </div>
                 </div>
               </div>
-              <div id='moonrise'>
-                <MoonIcon  phase={data.daily.forecast[0].moonPhase} size='2em'/>
-              </div>
+                <div className="grid-block">
+                  <div className='details-section col1 row1'>
+                    <MoonIcon  name={getMoonInfo(data.daily.forecast[0].moonPhase).iconName} size='2.5em'/>
+                    <div className='details-desc'>
+                      <span className='details-heading'>ФАЗА ЛУНЫ</span>
+                      <span>{getMoonInfo(data.daily.forecast[0].moonPhase).phaseName}</span>
+                    </div>
+                  </div>
+                  <div className='details-section col2 row1'>
+                    <WiDaySunny size='2.5em'/>
+                    <div className='details-desc'>
+                      <span className='details-heading'>УФ-ИНДЕКС</span>
+                      <span>{data.daily.forecast[0].uvIndex} - {uvIndex(data.daily.forecast[0].uvIndex)}</span>
+                    </div>
+                  </div>
+                </div>
+              {/* <div id='moonrise'>
+                <MoonIcon  phase={data.daily.forecast[0].moonPhase} size='2.5em'/>
+              </div> */}
             </div>
             <div className="details-block">
               <span className='details-cat-name'>ПОДРОБНОСТИ</span>

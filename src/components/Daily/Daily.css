@@ -56,6 +56,7 @@
   }
   .forecast {
     flex-direction: column;
+    /* font-size: 14px; */
   }
   .day-forecast {
     display: grid;
@@ -76,9 +77,9 @@
   .precipRate {
     /* font-size: 14px; */
     /* justify-content: initial; */
-    align-items: initial;
+    /* align-items: initial; */
     display: grid;
-    grid-template-columns: 25% 75%;
+   /*  grid-template-columns: 25% 75%; */
     place-items: center;
     height: 100%;
   }

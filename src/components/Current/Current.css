@@ -76,11 +76,11 @@
   place-items: center;
   gap: 5px;
   flex-basis: 25%;
-  white-space: nowrap;
 }
 
 .more-desc {
   font-size: 12px;
+  white-space: nowrap;
 }
 
 .current-more-info svg {

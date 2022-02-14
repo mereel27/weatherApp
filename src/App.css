@@ -6,6 +6,7 @@
   overflow: hidden;
   /* background-color: #1E232E; */
   background: linear-gradient(to right, #1488cc, #2b32b2); /* sunny */
+  /* font-weight: 500; */
 }
 
 .cloudy {
@@ -314,18 +315,19 @@ img {
 
 .details-block {
   border-top: 1px solid rgba(255, 255, 255, 0.096);
-  padding: 15px 0;
+  padding: 20px 0;
   margin: 0 10px;
 }
 
 .grid-block {
   display: grid;
-  grid-template: [row1] 50px  [row2] 50px / [col1] 50% [col2] 50%;
+  grid-template: [row1] fit-content(50px)  [row2] fit-content(50px) / [col1] 50% [col2] 50%;
+  margin: 20px 0;
 }
 
 .col1 {
   grid-column: col1 / col2;
-  border-right: 1px solid rgba(255, 255, 255, 0.096);
+  /* border-right: 1px solid rgba(255, 255, 255, 0.096); */
 }
 
 .col2 {
@@ -333,7 +335,7 @@ img {
 }
 
 .row1 {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.096);
+  /* border-bottom: 1px solid rgba(255, 255, 255, 0.096); */
 }
 
 .row2 {
@@ -344,15 +346,11 @@ img {
   display: grid;
   grid-template-columns: 1fr 4fr;
   align-items: center;
-  padding: 5px 0;
-}
-
-.details-section span {
-  font-size: 14px;
+  padding: 10px 0;
 }
 
 .details-section svg {
-  padding: 5px;
+  margin-right: 10px;
   place-self: center;
 }
 
@@ -363,21 +361,41 @@ img {
   margin-bottom: 10px;
 }
 
+.details-desc {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.details-desc span {
+  display: block;
+  padding: 3px 0;
+}
+
+.details-heading {
+  font-size: 12px;
+  color:rgb(207, 207, 207)
+}
+
 #sun-info {
   position: relative;
   display: flex;
   justify-content: center;
   overflow: hidden;
-  height: 120px;
+  height: 170px;
   width: 350px;
   max-width: 95%;
   margin: 0 auto;
 }
 
 #moonrise {
+  display: flex;
   text-align: center;
   justify-content: center;
   align-items: center;
+}
+
+#moonrise svg {
+  padding: 5px;
 }
 
 #moonrise span, #sun-info span {
@@ -387,16 +405,16 @@ img {
 
 #sunrise, #sunset {
   position: absolute;
+  bottom: 22px;
+  text-align: center;
 }
 
 #sunrise {
   left: 0;
-  bottom: 0;
 }
 
 #sunset {
   right: 0;
-  bottom: 0;
 }
 
 #graph {
@@ -405,10 +423,10 @@ img {
   position: relative;
   box-sizing: border-box;
   overflow: hidden;
-  height: 100px;
+  height: 125px;
   width: 350px;
   max-width: 100%;
-  border-bottom: 1px solid;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.397);
   place-self: start;
 }
 
@@ -416,19 +434,21 @@ img {
   box-sizing: border-box;
   position: absolute;
   top: 25px;
-  border: 2px dashed rgba(224, 224, 224, 0.397);
-  height: 350px;
-  width: 350px;
+  border: 1px dashed rgba(224, 224, 224, 0.397);
+  height: 200px;
+  width: 200px;
   border-radius: 50%;
   /* clip-path: ellipse(50% at 50%); */
+  /* transform: rotate(180deg); */
 }
 
 .sun {
   position: absolute;
-  top: 62px;
-  left: 14px;
-  width: 30px;
-  transform: rotate(10deg);
+  top: 77px;
+  left: -21px;
+  /* width: 30px; */
+  color: rgb(232,183,32);
+  /* transform: rotate(-9deg); */
 }
 
 #horizon {
@@ -444,7 +464,7 @@ img {
   position: absolute;
   text-align: center;
   margin: 0 auto;
-  bottom: 24px;
+  bottom: 22px;
 }
 
 @media screen and (min-width: 640px) {

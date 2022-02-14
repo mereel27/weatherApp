@@ -35,7 +35,7 @@ const Daily = memo(({ data, getDate, windUnit }) => {
             <WiUmbrella size="2em"/> <span>{day.precipProb}%</span>
           </div>
           <span className="info extra precipRate" title="Количество осадков">
-            <WiRaindrop size={iconSize} viewBox="0 -2 30 30" /> {Math.round(day.precipAccum)}мм
+            <WiRaindrop size={iconSize} viewBox="0 -2 30 30" /> {Math.round(day.precipAccum)} мм
           </span>
           <span className="info extra" title="Скорость ветра">
             <WiStrongWind size="2em" /> {day.maxWindSpeed} {windUnit}
