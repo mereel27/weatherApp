@@ -2,11 +2,12 @@
   position: relative;
   /* text-align: center; */
   /* --font-color: rgb(224, 224, 224); */
-  color: rgb(224, 224, 224);
+  color: rgb(231, 231, 231);
   overflow: hidden;
   /* background-color: #1E232E; */
   background: linear-gradient(to right, #1488cc, #2b32b2); /* sunny */
   /* font-weight: 500; */
+  /* font-size: 14px; */
 }
 
 .cloudy {
@@ -335,7 +336,8 @@ img {
 }
 
 .row1 {
-  /* border-bottom: 1px solid rgba(255, 255, 255, 0.096); */
+  grid-row: row1 / row2;
+  margin-bottom: 10px;
 }
 
 .row2 {

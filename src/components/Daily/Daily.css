@@ -50,6 +50,10 @@
   text-transform: capitalize;
 }
 
+.daily-temp {
+  font-weight: 500;
+}
+
 @media screen and (max-width: 640px) {
   .small {
     font-size: 14px;

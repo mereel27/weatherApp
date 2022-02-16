@@ -11,7 +11,7 @@ import SearchBar from './components/SearchBar/SearchBar';
 import Settings from './components/Settings/Settings';
 import WeatherEffects from './components/WeatherEffects/WeatherEffects';
 import MoonIcon from './components/MoonIcon/MoonIcon';
-import { WiDaySunny, WiBarometer, WiWindDeg } from 'react-icons/wi';
+import { WiDaySunny, WiBarometer, WiWindDeg, WiRaindrops, WiMoonrise, WiMoonset } from 'react-icons/wi';
 import { IoMenu } from 'react-icons/io5';
 import { RiEyeLine } from 'react-icons/ri'
 import {
@@ -207,6 +207,7 @@ function App() {
         current: {
           ...prevState.current,
           temperature: Math.round(newTemp),
+          dewPoint: tempUnitsConverter(tempUnits, e.target.value, prevState.current.temperature),
         },
         daily: {
           forecast: [...prevState.daily.forecast].map((day) => ({
@@ -242,7 +243,7 @@ function App() {
     (id) => {
       getWeather(id);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [conditions]);
+    }, [conditions, windUnits, tempUnits]);
 
   const getWeather = async (id) => {
     /* setIsLoading(true); */
@@ -341,13 +342,9 @@ function App() {
               <span className='details-cat-name'>СОЛНЦЕ И ЛУНА</span>
               <div id='sun-info'>
                 <div id='sunrise' className='details-desc'>
-                  {/* <WiSunrise size='2.2em'/> */}
-                  {/* <span>ВОСХОД</span> */}
                   <span>{data.daily.forecast[0].sunrise.slice(0, 5)}</span>
                 </div>
                 <div id='sunset' className='details-desc'>
-                  {/* <WiSunset size='2.2em'/> */}
-                  {/* <span>ЗАКАТ</span> */}
                   <span>{data.daily.forecast[0].sunset.slice(0, 5)}</span>
                 </div>
                 <div className='details-desc' id='daytime'>
@@ -362,17 +359,31 @@ function App() {
               </div>
                 <div className="grid-block">
                   <div className='details-section col1 row1'>
+                    <WiDaySunny size='2.5em'/>
+                    <div className='details-desc'>
+                      <span className='details-heading'>УФ-ИНДЕКС</span>
+                      <span>{data.current.uvIndex} - {uvIndex(data.current.uvIndex)}</span>
+                    </div>
+                  </div>
+                  <div className='details-section col2 row1'>
                     <MoonIcon  name={getMoonInfo(data.daily.forecast[0].moonPhase).iconName} size='2.5em'/>
                     <div className='details-desc'>
                       <span className='details-heading'>ФАЗА ЛУНЫ</span>
                       <span>{getMoonInfo(data.daily.forecast[0].moonPhase).phaseName}</span>
                     </div>
                   </div>
-                  <div className='details-section col2 row1'>
-                    <WiDaySunny size='2.5em'/>
+                  <div className='details-section col1 row2'>
+                    <WiMoonrise size='2.5em' viewBox="5 3 20 23"/>
                     <div className='details-desc'>
-                      <span className='details-heading'>УФ-ИНДЕКС</span>
-                      <span>{data.daily.forecast[0].uvIndex} - {uvIndex(data.daily.forecast[0].uvIndex)}</span>
+                      <span className='details-heading'>ВОСХОД ЛУНЫ</span>
+                      <span>{data.daily.forecast[0].moonrise.slice(0, 5)}</span>
+                    </div>
+                  </div>
+                  <div className='details-section col2 row2'>
+                    <WiMoonset size='2.5em' viewBox="5 3 20 23"/>
+                    <div className='details-desc'>
+                      <span className='details-heading'>ЗАКАТ ЛУНЫ</span>
+                      <span>{(data.daily.forecast[0].moonset && data.daily.forecast[0].moonset.slice(0, 5)) || 'Весь день'}</span>
                     </div>
                   </div>
                 </div>
@@ -383,24 +394,35 @@ function App() {
             <div className="details-block">
               <span className='details-cat-name'>ПОДРОБНОСТИ</span>
               <div className="grid-block">
-                <div className='details-section col1 row1'>
-                    <WiDaySunny size='2em'/>
-                    <span>УФ-Индекс: {data.daily.forecast[0].uvIndex}</span>
+                  <div className='details-section col1 row1'>
+                    <WiBarometer size='2.5em' />
+                    <div className='details-desc'>
+                      <span className='details-heading'>ДАВЛЕНИЕ</span>
+                      <span>{Math.round(data.current.pressure)} hPa</span>
+                    </div>
+                  </div>
+                  <div className='details-section col2 row1'>
+                    <WiRaindrops size='2.5em' viewBox="5 3 20 20"/>
+                    <div className='details-desc'>
+                      <span className='details-heading'>ТОЧКА РОСЫ</span>
+                      <span>{Math.round(data.current.dewPoint)} {tempUnits}°</span>
+                    </div>
+                  </div>
+                  <div className='details-section col1 row2'>
+                    <RiEyeLine size='2.5em' viewBox="0 -3 24 31" />
+                    <div className='details-desc'>
+                      <span className='details-heading'>ВИДИМОСТЬ</span>
+                      <span>{Math.round((data.current.visibility) / 1000)} км</span>
+                    </div>
+                  </div>
+                  <div className='details-section col2 row2'>
+                    <WiWindDeg size='2.5em' style={{transform: `rotate(${data.current.windDir}deg)`}}/>
+                    <div className='details-desc'>
+                      <span className='details-heading'>НАПР. ВЕТРА</span>
+                      <span>{getWindDirect(data.current.windDir)}</span>
+                    </div>
+                  </div>
                 </div>
-                <div className='details-section col2 row1'>
-                    <WiBarometer size='2em'/>
-                    <span>Давление: {Math.round(data.daily.forecast[0].pressure)} hPA</span>
-                </div>
-
-                <div className='details-section col1 row2'>
-                    <RiEyeLine size='1.8em' id='Layer1' viewBox='0 -3 23 30'/>
-                    <span>Видимость: {Math.round((data.current.visibility)/1000)} км</span>
-                </div>
-                <div className='details-section col2 row2'>
-                    <WiWindDeg size='1.8em' style={{ transform: `rotate(${data.current.windDir}deg)` }}/>
-                    <span>Напр. ветра: {getWindDirect(data.current.windDir)}</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>
