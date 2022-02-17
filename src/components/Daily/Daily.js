@@ -1,7 +1,6 @@
 import { memo } from 'react';
 import { getWindDirect } from '../../utils/utils';
 import {
-  WiStrongWind,
   WiHumidity,
   WiBarometer,
   WiWindDeg,
@@ -37,15 +36,12 @@ const Daily = memo(({ data, getDate, windUnit }) => {
           <span className="info extra precipRate" title="Количество осадков">
             <WiRaindrop size={iconSize} viewBox="0 -2 30 30" /> {Math.round(day.precipAccum)} мм
           </span>
-          <span className="info extra" title="Скорость ветра">
-            <WiStrongWind size="2em" /> {day.maxWindSpeed} {windUnit}
-          </span>
-          <span
-            className="info extra"
-            title={`Направление ветра: ${getWindDirect(day.windDir)}`}
-            style={{ transform: `rotate(${day.windDir}deg)` }}
-          >
-            <WiWindDeg size="2em" />
+          <span className="info extra windSpeed" title="Скорость ветра">
+            <WiWindDeg 
+              style={{ transform: `rotate(${day.windDir}deg)` }} 
+              title={`Направление ветра: ${getWindDirect(day.windDir)}`}
+            /> 
+            {day.maxWindSpeed} {windUnit}
           </span>
           <span className="info extra" title="Относительная влажность">
             <WiHumidity size="2em" />

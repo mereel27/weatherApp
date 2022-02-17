@@ -474,6 +474,12 @@ img {
     padding: 0 18%;
   }
 }
+@media screen and (max-width: 300px) {
+  .App {
+    font-size: 14px;
+  }
+}
+
 
 @keyframes spin {
   from {
