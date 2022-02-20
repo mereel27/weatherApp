@@ -29,7 +29,6 @@ class Star {
   }
 }
 
-
 class Starsky {
   constructor(options) {
     document.getElementById(options.id).style.zIndex = 0;
@@ -38,8 +37,12 @@ class Starsky {
     var canvas = document.createElement('canvas');
     var context = canvas.getContext('2d');
     document.getElementById(options.id).appendChild(canvas);
-    var C_WIDTH = (canvas.width = document.getElementById(options.id).offsetWidth);
-    var C_HEIGHT = (canvas.height = document.getElementById(options.id).offsetHeight);
+    var C_WIDTH = (canvas.width = document.getElementById(
+      options.id
+    ).offsetWidth);
+    var C_HEIGHT = (canvas.height = document.getElementById(
+      options.id
+    ).offsetHeight);
 
     function randomColor() {
       var arrColors = ['ffffff', 'ffecd3', 'bfcfff'];
@@ -60,7 +63,7 @@ class Starsky {
         arrStars[i].update();
       }
     } */
-    this.animate = function() {
+    this.animate = function () {
       /* update(); */
       /*
         Remove comments below these for a cool trailing effect & comment
@@ -73,12 +76,12 @@ class Starsky {
         stars[i].update();
         stars[i].render();
       }
-      setTimeout(() => requestAnimationFrame(() => this.animate()), Math.random() * (200 - 100) + 100);
-      
-    }
+      setTimeout(
+        () => requestAnimationFrame(() => this.animate()),
+        Math.random() * (200 - 100) + 100
+      );
+    };
   }
-  
 }
 
 export default Starsky;
-

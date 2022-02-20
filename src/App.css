@@ -1,22 +1,13 @@
 .App {
   position: relative;
-  /* text-align: center; */
-  /* --font-color: rgb(224, 224, 224); */
   color: rgb(231, 231, 231);
   overflow: hidden;
-  /* background-color: #1E232E; */
   background: linear-gradient(to right, #1488cc, #2b32b2); /* sunny */
-  /* font-weight: 500; */
-  /* font-size: 14px; */
 }
 
 .cloudy {
   background: linear-gradient(to top, #536976, #292e49);
-  /* background-image: linear-gradient(315deg, #5b6467 0%, #8b939a 74%); */
   --accent-color: rgb(41, 46, 73);
-  /* color: rgb(36, 36, 36); */
-  /* --font-color: rgb(36, 36, 36); */
-  /* font-weight: 500; */
 }
 
 .night {
@@ -35,7 +26,6 @@
 
 #menu {
   border: none;
-  /* color: rgb(167, 167, 167); */
   font-size: 32px;
   grid-column: 3/3;
   justify-self: end;
@@ -61,11 +51,9 @@
   right: 0;
   top: 60px;
   height: fit-content;
-  /* background-color: #171A21; */
   background-color: rgba(255, 255, 255, 0.103);
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.096);
-  /* box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.521); */
   z-index: 3;
   color: #fff;
   transition: right 0.2s ease-in-out;
@@ -86,8 +74,6 @@
 }
 
 #savedList li {
-  /* padding: 0 10px 5px 10px; */
-  /* border-radius: 10px; */
   height: 40px;
   padding: 0 5px;
   display: flex;
@@ -97,7 +83,6 @@
 }
 
 #savedList li:hover {
-  /* background-color: rgba(0, 0, 0, 0.158); */
   cursor: pointer;
   border-bottom: 2px solid #eeebe8;
   color: #eeebe8;
@@ -176,95 +161,6 @@ img {
   color: inherit;
 }
 
-.switch {
-  position: relative;
-  display: flex;
-  width: 80px;
-  height: 38px;
-  cursor: pointer;
-}
-
-.switch-container {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-/* Hide default HTML checkbox */
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-  padding: 0;
-  margin: 0;
-}
-
-/* The slider */
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #1E232E;
-  -webkit-transition: .4s;
-  transition: .4s;
-  border: 1px solid rgba(255, 255, 255, 0.096);
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 30px;
-  width: 34px;
-  left: 4px;
-  background-color: hsl(221, 30%, 20%);
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.switch input:checked + .slider {
-  background-color: #1E232E;
-}
-
-.switch input:checked + .slider:before {
-  -webkit-transform: translateX(36px);
-  -ms-transform: translateX(36px);
-  transform: translateX(36px);
-}
-
-.slider.round {
-  border-radius: 2px;
-  display: flex;
-  align-items: center;
-  padding: 0;
-}
-
-.slider.round:before {
-  border-radius: 2px;
-}
-
-.switch span {
-  color: inherit;
-  z-index: 20;
-  display: flex;
-  align-items: center;
-  position: absolute;
-}
-
-#C {
-  left: 14px;
-  bottom: 0;
-  top: 0;
-}
-
-#F {
-  right: 14px;
-  bottom: 0;
-  top: 0;
-}
-
 .radio-field {
   height: 38px;
   width: fit-content;
@@ -311,7 +207,6 @@ img {
 
 #details-container {
   width: 100%;
-  /* text-align: center; */
 }
 
 .details-block {
@@ -328,7 +223,6 @@ img {
 
 .col1 {
   grid-column: col1 / col2;
-  /* border-right: 1px solid rgba(255, 255, 255, 0.096); */
 }
 
 .col2 {

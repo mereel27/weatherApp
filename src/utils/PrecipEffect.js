@@ -1,15 +1,10 @@
 class PrecipEffect {
   constructor(options) {
-    /* document.getElementById(options.id).style.position = 'fixed';
-    document.getElementById(options.id).style.top = 0;
-    document.getElementById(options.id).style.left = 0;
-    document.getElementById(options.id).style.right = 0;
-    document.getElementById(options.id).style.bottom = 0; */
     document.getElementById(options.id).style.zIndex = 0;
     document.getElementById(options.id).style.pointerEvents = 'none';
 
     //create canvas
-    this.canvas = document.createElement('canvas'); //add random number to change canvas id
+    this.canvas = document.createElement('canvas');
     this.canvas.width = document.getElementById(options.id).offsetWidth;
     this.canvas.height = document.getElementById(options.id).offsetHeight;
     document.getElementById(options.id).appendChild(this.canvas);

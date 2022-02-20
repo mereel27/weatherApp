@@ -10,11 +10,14 @@ const SearchBar = ({
   handleSearchChoice,
   city,
   focusOut,
-  focusOn
+  focusOn,
 }) => {
   return (
-    <div id='search-bar'>
-      <form onSubmit={handleSubmit} className={searchOn ? 'search-on' : 'search-off'}>
+    <div id="search-bar">
+      <form
+        onSubmit={handleSubmit}
+        className={searchOn ? 'search-on' : 'search-off'}
+      >
         <input
           type="text"
           placeholder="Поиск"
@@ -23,7 +26,7 @@ const SearchBar = ({
           onFocus={focusOn}
           onBlur={focusOut}
         ></input>
-        <button id="search-button" type="button" /* disabled={city ? false : true} */ onClick={handleSearchOn}>
+        <button id="search-button" type="button" onClick={handleSearchOn}>
           <IoSearch />
         </button>
       </form>
@@ -33,7 +36,10 @@ const SearchBar = ({
             {searchResults.map((res) => (
               <li key={res.id} id={res.id} onClick={handleSearchChoice}>
                 <span className="location-name">{res.name}</span>
-                <span className="area">{res.country}{res.adminArea && `, ${res.adminArea}`}</span>
+                <span className="area">
+                  {res.country}
+                  {res.adminArea && `, ${res.adminArea}`}
+                </span>
               </li>
             ))}
           </ul>

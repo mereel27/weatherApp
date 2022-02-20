@@ -10,20 +10,15 @@ import Daily from './components/Daily/Daily';
 import SearchBar from './components/SearchBar/SearchBar';
 import Settings from './components/Settings/Settings';
 import WeatherEffects from './components/WeatherEffects/WeatherEffects';
-import MoonIcon from './components/MoonIcon/MoonIcon';
-import { WiDaySunny, WiBarometer, WiWindDeg, WiRaindrops, WiMoonrise, WiMoonset } from 'react-icons/wi';
 import { IoMenu } from 'react-icons/io5';
-import { RiEyeLine } from 'react-icons/ri'
 import {
   windUnitsConverter,
   tempUnitsConverter,
   windText,
   effectsInfo,
-  getSunInfo,
   getWindDirect,
-  getMoonInfo,
-  uvIndex
 } from './utils/utils';
+import Details from './components/Details/Details';
 
 moment.locale('ru');
 
@@ -32,6 +27,10 @@ let blurTimeout;
 
 function App() {
   const [city, setCity] = useState('');
+  const [defaultCity, setDefaultCity] = useState(
+    Number(localStorage.getItem('defaultCity')) || ''
+  );
+  const [currentLocation, setCurrentLocation] = useState(defaultCity || '');
   const [data, setData] = useState(null);
   const [searchResults, setSearchResults] = useState([]);
   const [hidden, setHidden] = useState(true);
@@ -44,20 +43,14 @@ function App() {
   const [savedLocations, setSavedLocations] = useState(
     JSON.parse(localStorage.getItem('savedLocations')) || []
   );
-  const [defaultCity, setDefaultCity] = useState(
-    Number(localStorage.getItem('defaultCity')) || ''
-  );
   const [conditions, setConditions] = useState(null);
-  /* const [isLoading, setIsLoading] = useState(false); */
   const [searchOn, setSearchOn] = useState(false);
-  const [sunPos, setSunPos] = useState(0);
 
   useEffect(() => {
     let coordinates;
     const fetchData = async () => {
-      /* setIsLoading(true); */
       coordinates =
-        defaultCity ||
+        currentLocation ||
         (await new Promise((resolve) => {
           navigator.geolocation.getCurrentPosition(
             (position) => {
@@ -80,15 +73,24 @@ function App() {
       const current = allData[1].current;
       const hourly = allData[2];
       const daily = allData[3];
-      console.log(allData);
-      setConditions(effectsInfo(current.symbol));
-      setSunPos(getSunInfo(daily.forecast[0].sunriseEpoch, daily.forecast[0].sunsetEpoch, current.time));
+      const newCond = effectsInfo(current.symbol);
+      const sameCond = JSON.stringify(newCond) === JSON.stringify(conditions);
+      if (!sameCond) {
+        setConditions(newCond);
+      }
       setData({ location, current, daily, hourly });
-      /* setIsLoading(false); */
     };
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [currentLocation]);
+
+  const changeLocation = async (id) => {
+    let locInfo;
+    if (!id) {
+      locInfo = await Foreca.getLocation(city);
+    }
+    setCurrentLocation(id || locInfo[0].id);
+  };
 
   const handleSearchOn = () => {
     setSearchOn(!searchOn);
@@ -112,12 +114,12 @@ function App() {
     clearTimeout(timeoutID);
     timeoutID = null;
     setSearchResults('');
-    getWeather();
+    changeLocation();
     setCity('');
   };
 
   const handleSearchChoice = (e) => {
-    getWeather(e.currentTarget.id);
+    changeLocation(e.currentTarget.id);
     setCity('');
     setSearchResults('');
   };
@@ -156,7 +158,9 @@ function App() {
       const newID = id === defaultCity ? '' : id;
       setDefaultCity(newID);
       localStorage.setItem('defaultCity', newID);
-    }, [defaultCity]);
+    },
+    [defaultCity]
+  );
 
   const handleWind = useCallback(
     (e) => {
@@ -190,7 +194,9 @@ function App() {
           })),
         },
       }));
-    }, [data, windUnits]);
+    },
+    [data, windUnits]
+  );
 
   const handleTemp = useCallback(
     (e) => {
@@ -207,7 +213,11 @@ function App() {
         current: {
           ...prevState.current,
           temperature: Math.round(newTemp),
-          dewPoint: tempUnitsConverter(tempUnits, e.target.value, prevState.current.temperature),
+          dewPoint: tempUnitsConverter(
+            tempUnits,
+            e.target.value,
+            prevState.current.temperature
+          ),
         },
         daily: {
           forecast: [...prevState.daily.forecast].map((day) => ({
@@ -227,7 +237,9 @@ function App() {
           })),
         },
       }));
-    }, [data, tempUnits]);
+    },
+    [data, tempUnits]
+  );
 
   const handleRemoveCity = useCallback(
     (id) => {
@@ -237,45 +249,26 @@ function App() {
       const newList = savedLocations.filter((city) => city.id !== id);
       setSavedLocations(newList);
       localStorage.setItem('savedLocations', JSON.stringify(newList));
-    }, [defaultCity, savedLocations, handleChooseDefault]);
+    },
+    [defaultCity, savedLocations, handleChooseDefault]
+  );
 
   const handleCityClick = useCallback(
     (id) => {
-      getWeather(id);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [conditions, windUnits, tempUnits]);
-
-  const getWeather = async (id) => {
-    /* setIsLoading(true); */
-    let locInfo;
-    if (!id) {
-      locInfo = await Foreca.getLocation(city);
-    }
-    const allData = await Foreca.getAllData(
-      id || locInfo[0].id,
-      windUnits,
-      tempUnits
-    );
-    const location = allData[0];
-    const current = allData[1].current;
-    const hourly = allData[2];
-    const daily = allData[3];
-    const newCond = effectsInfo(current.symbol);
-    const sameCond = JSON.stringify(newCond) === JSON.stringify(conditions);
-    if (!sameCond) {
-      setConditions(newCond);
-    }
-    setSunPos(getSunInfo(daily.forecast[0].sunriseEpoch, daily.forecast[0].sunsetEpoch, current.time));
-    setData({ location, current, daily, hourly });
-    /* setIsLoading(false); */
-  };
+      changeLocation(id);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [conditions, windUnits, tempUnits]
+  );
 
   const getDate = useCallback(
     (date) => [
       moment(date).format('ddd'),
       moment(date).format('DD.MM'),
       moment(date).format('HH:mm'),
-    ], []);
+    ],
+    []
+  );
 
   return (
     <div
@@ -320,14 +313,19 @@ function App() {
             tempUnits={tempUnits}
             windUnits={windUnits}
           />
-          <WeatherEffects conditions={conditions}/>
+          <WeatherEffects conditions={conditions} />
           <Current
             data={data}
             getDate={getDate}
             windUnit={windText(windUnits)}
           />
           <Hourly data={data} getDate={getDate} />
-          <Daily data={data} getDate={getDate} windUnit={windText(windUnits)} />
+          <Daily
+            data={data}
+            getDate={getDate}
+            windUnit={windText(windUnits)}
+            getWindDirect={getWindDirect}
+          />
           <div id="more">
             <a
               href={`https://www.foreca.com/ru/${data.location.id}/${data.location.name}-${data.location.adminArea}-${data.location.country}`}
@@ -337,94 +335,12 @@ function App() {
               Детальный прогноз
             </a>
           </div>
-          <div id="details-container">
-            <div className="details-block">
-              <span className='details-cat-name'>СОЛНЦЕ И ЛУНА</span>
-              <div id='sun-info'>
-                <div id='sunrise' className='details-desc'>
-                  <span>{data.daily.forecast[0].sunrise.slice(0, 5)}</span>
-                </div>
-                <div id='sunset' className='details-desc'>
-                  <span>{data.daily.forecast[0].sunset.slice(0, 5)}</span>
-                </div>
-                <div className='details-desc' id='daytime'>
-                  {/* <span className='details-heading'>Долгота дня</span> */}
-                  <span>{moment.utc((data.daily.forecast[0].sunsetEpoch - data.daily.forecast[0].sunriseEpoch)*1000).format('h ч mm мин')}</span>
-                  </div>
-                <div id='graph'>
-                  <div id='sun-graph' style={{transform: `rotate(${sunPos}deg)`}}>
-                    {sunPos ? <WiDaySunny size='2.5em' className='sun'/> : ''}
-                  </div>
-                </div>
-              </div>
-                <div className="grid-block">
-                  <div className='details-section col1 row1'>
-                    <WiDaySunny size='2.5em'/>
-                    <div className='details-desc'>
-                      <span className='details-heading'>УФ-ИНДЕКС</span>
-                      <span>{data.current.uvIndex} - {uvIndex(data.current.uvIndex)}</span>
-                    </div>
-                  </div>
-                  <div className='details-section col2 row1'>
-                    <MoonIcon  name={getMoonInfo(data.daily.forecast[0].moonPhase).iconName} size='2.5em'/>
-                    <div className='details-desc'>
-                      <span className='details-heading'>ФАЗА ЛУНЫ</span>
-                      <span>{getMoonInfo(data.daily.forecast[0].moonPhase).phaseName}</span>
-                    </div>
-                  </div>
-                  <div className='details-section col1 row2'>
-                    <WiMoonrise size='2.5em' viewBox="5 3 20 23"/>
-                    <div className='details-desc'>
-                      <span className='details-heading'>ВОСХОД ЛУНЫ</span>
-                      <span>{data.daily.forecast[0].moonrise.slice(0, 5)}</span>
-                    </div>
-                  </div>
-                  <div className='details-section col2 row2'>
-                    <WiMoonset size='2.5em' viewBox="5 3 20 23"/>
-                    <div className='details-desc'>
-                      <span className='details-heading'>ЗАКАТ ЛУНЫ</span>
-                      <span>{(data.daily.forecast[0].moonset && data.daily.forecast[0].moonset.slice(0, 5)) || 'Весь день'}</span>
-                    </div>
-                  </div>
-                </div>
-              {/* <div id='moonrise'>
-                <MoonIcon  phase={data.daily.forecast[0].moonPhase} size='2.5em'/>
-              </div> */}
-            </div>
-            <div className="details-block">
-              <span className='details-cat-name'>ПОДРОБНОСТИ</span>
-              <div className="grid-block">
-                  <div className='details-section col1 row1'>
-                    <WiBarometer size='2.5em' />
-                    <div className='details-desc'>
-                      <span className='details-heading'>ДАВЛЕНИЕ</span>
-                      <span>{Math.round(data.current.pressure)} hPa</span>
-                    </div>
-                  </div>
-                  <div className='details-section col2 row1'>
-                    <WiRaindrops size='2.5em' viewBox="5 3 20 20"/>
-                    <div className='details-desc'>
-                      <span className='details-heading'>ТОЧКА РОСЫ</span>
-                      <span>{Math.round(data.current.dewPoint)} {tempUnits}°</span>
-                    </div>
-                  </div>
-                  <div className='details-section col1 row2'>
-                    <RiEyeLine size='2.5em' viewBox="0 -3 24 31" />
-                    <div className='details-desc'>
-                      <span className='details-heading'>ВИДИМОСТЬ</span>
-                      <span>{Math.round((data.current.visibility) / 1000)} км</span>
-                    </div>
-                  </div>
-                  <div className='details-section col2 row2'>
-                    <WiWindDeg size='2.5em' style={{transform: `rotate(${data.current.windDir}deg)`}}/>
-                    <div className='details-desc'>
-                      <span className='details-heading'>НАПР. ВЕТРА</span>
-                      <span>{getWindDirect(data.current.windDir)}</span>
-                    </div>
-                  </div>
-                </div>
-            </div>
-          </div>
+          <Details
+            data={data}
+            moment={moment}
+            tempUnits={tempUnits}
+            getWindDirect={getWindDirect}
+          />
         </div>
       )}
     </div>

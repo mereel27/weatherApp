@@ -1,9 +1,9 @@
 import { memo } from 'react';
 import Logo from '../Logo';
 import './Current.css';
-import { /* WiSmallCraftAdvisory, */ WiHumidity, WiUmbrella, WiStrongWind } from 'react-icons/wi';
+import { WiHumidity, WiUmbrella, WiStrongWind } from 'react-icons/wi';
 
-const Current = memo(({ data, getDate, windUnit}) => {
+const Current = memo(({ data, getDate, windUnit }) => {
   /* console.log('current render') */
   return (
     <div className="current">
@@ -22,17 +22,23 @@ const Current = memo(({ data, getDate, windUnit}) => {
       <span id="description">{data.current.symbolPhrase || ''}</span>
       <div className="current-more-info">
         <div className="more" title="Скорость ветра">
-          <span className="more-desc"><WiStrongWind size='2em' /></span>
+          <span className="more-desc">
+            <WiStrongWind size="2em" />
+          </span>
           <span className="more-desc">Ветер:</span>
           <span className="more-desc">{`${data.current.windSpeed} - ${data.current.windGust} ${windUnit}`}</span>
         </div>
         <div className="more" title="Относительная влажность">
-          <span className="more-desc"><WiHumidity size='2em' /></span>
+          <span className="more-desc">
+            <WiHumidity size="2em" />
+          </span>
           <span className="more-desc">Влажность:</span>
           <span className="more-desc">{data.current.relHumidity}%</span>
         </div>
         <div className="more" title="Вероятность осадков">
-          <span className="more-desc"><WiUmbrella size='2em'/></span>
+          <span className="more-desc">
+            <WiUmbrella size="2em" />
+          </span>
           <span className="more-desc">Осадки:</span>
           <span className="more-desc">{data.current.precipProb}%</span>
         </div>

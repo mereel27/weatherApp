@@ -87,7 +87,7 @@ export const getMoonInfo = (deg) => {
       break;
     case deg > 257 && deg < 270:
       iconName = 'WiMoonWaningGibbous6';
-      break;  
+      break;
     case deg >= 270 && deg <= 283:
       iconName = 'WiMoonThirdQuarter';
       break;
@@ -114,14 +114,14 @@ export const getMoonInfo = (deg) => {
       break;
     default:
       break;
-  };
+  }
 
   switch (true) {
     case deg >= 0 && deg <= 13:
-      phaseName = 'Новолуние'
+      phaseName = 'Новолуние';
       break;
     case deg > 13 && deg < 90:
-      phaseName = 'Молодая луна'
+      phaseName = 'Молодая луна';
       break;
     case deg >= 90 && deg <= 103:
       phaseName = 'Первая четверть';
@@ -151,7 +151,7 @@ export const getMoonInfo = (deg) => {
 export const move = (evt) => {
   evt.preventDefault();
   evt.currentTarget.scrollLeft += evt.deltaY;
-}
+};
 
 export const windUnitsConverter = (prevUnit, newUnit, value) => {
   switch (true) {
@@ -179,7 +179,7 @@ export const windText = (unit) => {
     case unit === 'KMH':
       return 'км/ч';
     case unit === 'MPH':
-    return 'миль/ч';
+      return 'миль/ч';
     default:
       break;
   }
@@ -188,9 +188,9 @@ export const windText = (unit) => {
 export const tempUnitsConverter = (prevUnit, newUnit, value) => {
   switch (true) {
     case prevUnit === 'C' && newUnit === 'F':
-      return (value * 9/5) + 32;
+      return (value * 9) / 5 + 32;
     case prevUnit === 'F' && newUnit === 'C':
-      return (value - 32) * 5/9;
+      return ((value - 32) * 5) / 9;
     default:
       break;
   }
@@ -198,41 +198,42 @@ export const tempUnitsConverter = (prevUnit, newUnit, value) => {
 
 export const effectsInfo = (symbol) => {
   const cloudiness = Number(symbol.charAt(1)) > 2 ? true : false;
-  const snow = symbol.charAt(3) === '2' && Number(symbol.charAt(2)) >= 2 ? true : false;
-  const rain = Number(symbol.charAt(3)) <= 1 && Number(symbol.charAt(2)) >= 2 ? true : false;
+  const snow =
+    symbol.charAt(3) === '2' && Number(symbol.charAt(2)) >= 2 ? true : false;
+  const rain =
+    Number(symbol.charAt(3)) <= 1 && Number(symbol.charAt(2)) >= 2
+      ? true
+      : false;
   const night = symbol.charAt(0) === 'n' ? true : false;
   const cloudyDay = !night && cloudiness;
-  return {cloudiness, cloudyDay, snow, rain, night};
+  return { cloudiness, cloudyDay, snow, rain, night };
 };
 
-export const getSunInfo = (sunrise, sunset, time) => {
+export const getSunPos = (sunrise, sunset, time) => {
   const currentTime = Math.floor(Date.parse(time) / 1000);
   if (currentTime > sunset || currentTime < sunrise) {
     return 0;
   }
-  /* if (currentTime < sunrise) {
-    return 0;
-  } */
   const daytime = (sunset - sunrise) / 3600;
   const timeFromSunrise = (currentTime - sunrise) / 3600;
   const sunPos = Math.round(180 * (timeFromSunrise / daytime));
-  
+
   return sunPos;
 };
 
 export const uvIndex = (index) => {
   switch (true) {
     case index >= 0 && index <= 2:
-      return 'Низкий'
+      return 'Низкий';
     case index >= 3 && index <= 5:
-      return 'Умереный'
+      return 'Умереный';
     case index >= 6 && index <= 7:
-      return 'Высокий'
+      return 'Высокий';
     case index >= 8 && index <= 10:
-      return 'Очень высокий'
+      return 'Очень высокий';
     case index >= 11:
-      return 'Чрезмерный'
+      return 'Чрезмерный';
     default:
       break;
   }
-}
+};
