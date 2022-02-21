@@ -73,7 +73,11 @@ const Details = memo(({ data, moment, tempUnits, getWindDirect }) => {
             <WiMoonrise size="2.5em" viewBox="5 3 20 23" />
             <div className="details-desc">
               <span className="details-heading">ВОСХОД ЛУНЫ</span>
-              <span>{data.daily.forecast[0].moonrise.slice(0, 5)}</span>
+              <span>
+                {data.daily.forecast[0].moonrise
+                  ? data.daily.forecast[0].moonrise.slice(0, 5)
+                  : 'Вчера'}
+              </span>
             </div>
           </div>
           <div className="details-section col2 row2">
@@ -81,9 +85,9 @@ const Details = memo(({ data, moment, tempUnits, getWindDirect }) => {
             <div className="details-desc">
               <span className="details-heading">ЗАКАТ ЛУНЫ</span>
               <span>
-                {(data.daily.forecast[0].moonset &&
-                  data.daily.forecast[0].moonset.slice(0, 5)) ||
-                  'Весь день'}
+                {data.daily.forecast[0].moonset
+                  ? data.daily.forecast[0].moonset.slice(0, 5)
+                  : 'Весь день'}
               </span>
             </div>
           </div>

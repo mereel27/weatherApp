@@ -69,6 +69,7 @@ function App() {
         windUnits,
         tempUnits
       );
+      /* console.log(allData) */
       const location = allData[0];
       const current = allData[1].current;
       const hourly = allData[2];
