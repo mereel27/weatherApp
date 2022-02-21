@@ -26,12 +26,11 @@ const Hourly = memo(({ data, getDate }) => {
               </div>
             )}
             <img
-              className="img-sm "
+              className="img-sm"
               /* src={
                 require(`../../img/weather/${hour.symbol}.svg`).default
               }  */ src={`${process.env.REACT_APP_ICON_URL}${hour.symbol}.svg`}
-              alt={hour.symbolPhrase}
-              title={hour.symbolPhrase}
+              alt=""
             />
             <span className="info hourly-info">
               {`${Math.round(hour.temperature)}°`}
