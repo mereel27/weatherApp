@@ -176,6 +176,7 @@ img {
 }
 
 .radio-field input{
+  appearance: none;
   position: absolute;
 	height: 0;
 	width: 0;
@@ -194,6 +195,7 @@ img {
   border-radius: 20px;
 	transition: all 0.1s ease-in-out;
 }
+
 
 .radio-field label:hover {
 	cursor: pointer;

@@ -138,7 +138,7 @@ export const getMoonInfo = (deg) => {
     case deg >= 270 && deg <= 283:
       phaseName = 'Последняя четверть';
       break;
-    case deg > 283 && deg <= 296:
+    case deg > 283 && deg <= 360:
       phaseName = 'Старая луна';
       break;
     default:

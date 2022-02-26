@@ -24,6 +24,7 @@ form {
 }
 
 .search-off {
+  height: 40px;
   width: 0;
   padding: 0;
   background-color: transparent;
