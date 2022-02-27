@@ -369,6 +369,9 @@ img {
   .App {
     padding: 0 18%;
   }
+  .info {
+    gap: 5px;
+  }
 }
 @media screen and (max-width: 300px) {
   .App {
