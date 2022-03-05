@@ -1,0 +1,149 @@
+#settings {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  padding: 15px;
+  position: absolute;
+  right: 0;
+  top: 60px;
+  height: fit-content;
+  background-color: rgba(255, 255, 255, 0.103);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.096);
+  z-index: 3;
+  color: #fff;
+  transition: right 0.2s ease-in-out;
+  -webkit-backdrop-filter: blur(25px);
+  backdrop-filter: blur(25px);
+}
+
+.hidden {
+  right: -100% !important;
+}
+
+#savedList {
+  list-style: none;
+  text-align: left;
+  padding: 0;
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+#savedList li {
+  height: 40px;
+  padding: 0 5px;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid transparent;
+  transition: all 0.1s ease-in;
+}
+
+#savedList li:hover {
+  cursor: pointer;
+  border-bottom: 2px solid #eeebe8;
+  color: #eeebe8;
+}
+
+#add-button {
+  border-radius: 20px;
+  border: none;
+  padding: 8px 10px;
+  margin: 5px 0;
+  font-size: 16px;
+  transition: all 0.2s ease-in;
+  background-color: rgba(245, 245, 245, 0.13);
+}
+
+#add-button:hover {
+  background-color: #2f39f3;
+}
+
+#units-settings {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.city {
+  display: flex;
+  align-items: center;
+}
+
+.star,
+.remove {
+  padding: 5px;
+  cursor: pointer;
+  color: rgba(224, 224, 224, 0.473);
+}
+
+.remove {
+  margin-left: auto;
+  opacity: 0.4;
+}
+
+.remove:hover {
+  opacity: 1;
+}
+
+.gold {
+  color: #fcf06b;
+}
+
+.gold path {
+  fill: #fcf06b;
+}
+
+.star path:hover {
+  fill: rgb(224, 224, 224);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.radio-field {
+  height: 38px;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+  box-sizing: border-box;
+  padding: 0 4px;
+  margin-top: 10px;
+  background-color: rgba(245, 245, 245, 0.13);
+  border: 1px solid rgba(255, 255, 255, 0.096);
+  border-radius: 20px;
+}
+
+.radio-field input {
+  appearance: none;
+  position: absolute;
+  height: 0;
+  width: 0;
+  border: 0;
+  overflow: hidden;
+}
+
+.radio-field label {
+  width: 70px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1;
+  border-radius: 20px;
+  transition: all 0.1s ease-in-out;
+}
+
+.radio-field label:hover {
+  cursor: pointer;
+  color: #eeebe8;
+}
+
+.radio-field input:checked + label {
+  background-color: #2f39f3 /* #242d42 */;
+  box-shadow: none;
+}

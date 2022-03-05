@@ -99,20 +99,6 @@ button {
   color: #fff;
 }
 
-#add-button {
-  border-radius: 20px;
-  border: none;
-  padding: 8px 10px;
-  margin: 5px 0;
-  font-size: 16px;
-  transition: all 0.2s ease-in;
-  background-color: rgba(245, 245, 245, 0.13);
-}
-
-#add-button:hover {
-  background-color: #2f39f3;
-}
-
 #search-results {
   position: absolute;
   z-index: 4;

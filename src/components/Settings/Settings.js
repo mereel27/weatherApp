@@ -1,5 +1,6 @@
 import { memo } from 'react';
 import { IoStarOutline, IoTrash } from 'react-icons/io5';
+import './Settings.css';
 
 const Settings = memo(
   ({
