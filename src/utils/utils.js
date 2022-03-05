@@ -179,7 +179,7 @@ export const windText = (unit) => {
     case unit === 'KMH':
       return 'км/ч';
     case unit === 'MPH':
-      return 'миль/ч';
+      return 'ми/ч';
     default:
       break;
   }

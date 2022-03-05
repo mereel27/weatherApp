@@ -81,6 +81,7 @@
 .more-desc {
   font-size: 12px;
   white-space: nowrap;
+  text-transform: uppercase;
 }
 
 .current-more-info svg {
@@ -120,5 +121,12 @@
   .more {
     flex-basis: 15%;
     max-width: 140px;
+  }
+  .meta {
+    padding: 0;
+  }
+  .more-desc {
+    text-transform: uppercase;
+    font-size: 14px;
   }
 }

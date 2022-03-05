@@ -170,6 +170,7 @@ img {
   position: relative;
   box-sizing: border-box;
   padding: 0 4px;
+  margin-top: 10px;
   background-color: rgba(245, 245, 245, 0.13);
   border: 1px solid rgba(255, 255, 255, 0.096);
   border-radius: 20px;
