@@ -1,0 +1,72 @@
+const translations = {
+  search: { en: 'Search', ru: 'Поиск' },
+  //Current
+  windSpeed: { en: 'Wind speed', ru: 'Скорость ветра' },
+  wind: { en: 'Wind', ru: 'Ветер' },
+  relHumidity: { en: 'Relative humidity', ru: 'Относительная влажность' },
+  humidity: { en: 'Humidity', ru: 'Влажность' },
+  updated: { en: 'Updated', ru: 'Обновлено' },
+  //Hourly
+  precipProb: { en: 'Precipation chance', ru: 'Вероятность осадков' },
+  precipProbShort: { en: 'Precipation', ru: 'Осадки' },
+  //Daily
+  today: { en: 'Today', ru: 'Сегодня' },
+  precipRate: { en: 'Precipation rate', ru: 'Кол-во осадков' },
+  windDir: { en: 'Wind direction', ru: 'Направление ветра' },
+  pressure: { en: 'Pressure', ru: 'Давление' },
+  //Units
+  mm: { en: 'mm', ru: 'мм' },
+  hpa: { en: 'hPa', ru: 'гПа' },
+  ms: { en: 'ms', ru: 'м/с' },
+  kmh: { en: 'kmh', ru: 'км/ч' },
+  km: { en: 'km', ru: 'км'},
+  mph: { en: 'mph', ru: 'ми/ч' },
+  h: { en: 'h', ru: 'ч' },
+  min: { en: 'min', ru: 'мин' },
+  //Details
+  sunMoon: { en: 'sun and moon', ru: 'солнце и луна' },
+  uv: { en: 'uv-index', ru: 'уф-индекс' },
+  moonPhase: { en: 'moon phase', ru: 'фаза луны' },
+  moonrise: { en: 'moon rise', ru: 'восход луны,' },
+  moonset: { en: 'moon set', ru: 'закат луны' },
+  allDay: { en: 'All day', ru: 'Весь день' },
+  yesterday: { en: 'Yesterday', ru: 'Вчера' },
+  details: { en: 'details', ru: 'Детали' },
+  forecast: { en: 'Detailed forecast', ru: 'Детальный прогноз'},
+  dewPoint: { en: 'dew point', ru: 'точка росы' },
+  visibility: { en: 'visibility', ru: 'видимость' },
+  windDirShort: { en: 'wind dir.', ru: 'напр.ветра' },
+  //Settings
+  favorites: { en: 'Favorites', ru: 'Избранное' },
+  default: { en: 'Select default', ru: 'Выбрать по-умолчанию' },
+  temp: { en: 'Temperature', ru: 'Температура' },
+  delete: { en: 'Delete', ru: 'Удалить' },
+  current: { en: 'Add current', ru: 'Добавить текущий' },
+  lang: { en: 'Language', ru: 'Язык' },
+  //wind direction
+  N: { en: 'North', ru: 'Север' },
+  NE: { en: 'Northeast', ru: 'Северо-восток' },
+  E: { en: 'East', ru: 'Восток' },
+  SE: { en: 'Southeast', ru: 'Юго-восток' },
+  S: { en: 'South', ru: 'Юг' },
+  SW: { en: 'Southwest', ru: 'Юго-запад' },
+  W: { en: 'West', ru: 'Запад' },
+  NW: { en: 'Northwest', ru: 'Северо-запад' },
+  //uv-index
+  low: { en: 'Low', ru: 'Низкий' },
+  moderate: { en: 'Moderate', ru: 'Умеренный' },
+  high: { en: 'High', ru: 'Высокий' },
+  veryhigh: { en: 'Very high', ru: 'Очень высокий' },
+  excessive: { en: 'Excessive', ru: 'Чрезмерный' },
+  //moon phases
+  nMoon: { en: 'New Moon', ru: 'Новая Луна' },
+  yMoon: { en: 'Young Moon', ru: 'Молодая Луна' },
+  fQuarter: { en: 'First Quarter', ru: 'Первая Четверть' },
+  wCresent: { en: 'Waning Crescent', ru: 'Убывающая Луна' },
+  fMoon: { en: 'Full Moon', ru: 'Полнолуние' },
+  wGibbous: { en: 'Waning Gibbous', ru: 'Убывающая луна' },
+  lQuarter: { en: 'Last Quarter', ru: 'Последняя четверть' },
+  oMoon: { en: 'Old Moon', ru: 'Старая луна' },
+};
+
+export default translations;

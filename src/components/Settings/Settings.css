@@ -12,13 +12,13 @@
   border: 1px solid rgba(255, 255, 255, 0.096);
   z-index: 3;
   color: #fff;
-  transition: right 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
   -webkit-backdrop-filter: blur(25px);
   backdrop-filter: blur(25px);
 }
 
 .hidden {
-  right: -100% !important;
+  transform: translateX(200%) !important;
 }
 
 #savedList {

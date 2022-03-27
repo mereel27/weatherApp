@@ -11,6 +11,8 @@ const SearchBar = ({
   city,
   focusOut,
   focusOn,
+  translations,
+  lang
 }) => {
   return (
     <div id="search-bar">
@@ -20,7 +22,7 @@ const SearchBar = ({
       >
         <input
           type="text"
-          placeholder="Поиск"
+          placeholder={translations.search[lang]}
           value={city}
           onChange={handleChange}
           onFocus={focusOn}

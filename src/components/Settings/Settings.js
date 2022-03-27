@@ -15,24 +15,27 @@ const Settings = memo(
     tempUnits,
     handleWind,
     windUnits,
+    lang,
+    handleLang,
+    translations,
   }) => {
     /* console.log('settings render') */
     return (
       <div id="settings-container">
         <div id="settings" className={hidden ? `hidden` : ''}>
-          <span>Избранное:</span>
+          <span>{translations.favorites[lang]}</span>
           <ul id="savedList">
             {savedLocations.length > 0 &&
               savedLocations.map((loc) => (
                 <div className="city" key={loc.id}>
                   <IoStarOutline
-                    title="Выбрать по умолчанию"
+                    title={translations.default[lang]}
                     className={loc.id === defaultCity ? 'star gold' : 'star'}
                     onClick={() => handleChooseDefault(loc.id)}
                   />
                   <li onClick={() => handleCityClick(loc.id)}>{loc.name}</li>
                   <IoTrash
-                    title="Удалить"
+                    title={translations.delete[lang]}
                     className="remove"
                     onClick={() => handleRemoveCity(loc.id)}
                   />
@@ -40,11 +43,11 @@ const Settings = memo(
               ))}
           </ul>
           <button id="add-button" onClick={handleAddCityClick}>
-            Добавить текущий
+            {translations.current[lang]}
           </button>
           <div id="units-settings">
             <div className="switch-container">
-              <span>Температура:</span>
+              <span>{translations.temp[lang]}</span>
               <div className="radio-field">
                 <input
                   className="radio-c"
@@ -73,41 +76,70 @@ const Settings = memo(
               </div>
             </div>
             <div className="switch-container">
-              <span>Ветер:</span>
+              <span>{translations.wind[lang]}</span>
               <div className="radio-field">
                 <input
                   type="radio"
                   id="radio-three"
                   name="switch-two"
-                  value="MS"
-                  defaultChecked={windUnits === 'MS'}
+                  value="ms"
+                  defaultChecked={windUnits === 'ms'}
                   onChange={handleWind}
                 />
                 <label htmlFor="radio-three">
-                  <span>м/с</span>
+                  <span>{translations.ms[lang]}</span>
                 </label>
                 <input
                   className="radio-four"
                   type="radio"
                   id="radio-four"
                   name="switch-two"
-                  value="KMH"
-                  defaultChecked={windUnits === 'KMH'}
+                  value="kmh"
+                  defaultChecked={windUnits === 'kmh'}
                   onChange={handleWind}
                 />
                 <label htmlFor="radio-four">
-                  <span>км/ч</span>
+                  <span>{translations.kmh[lang]}</span>
                 </label>
                 <input
                   type="radio"
                   id="radio-five"
                   name="switch-two"
-                  value="MPH"
-                  defaultChecked={windUnits === 'MPH'}
+                  value="mph"
+                  defaultChecked={windUnits === 'mph'}
                   onChange={handleWind}
                 />
                 <label htmlFor="radio-five">
-                  <span>миль/ч</span>
+                  <span>{translations.mph[lang]}</span>
+                </label>
+              </div>
+            </div>
+            <div className="switch-container">
+              <span>{translations.lang[lang]}</span>
+              <div className="radio-field">
+                <input
+                  /* className="radio-c" */
+                  type="radio"
+                  id="en"
+                  name="switch-three"
+                  value="en"
+                  defaultChecked={lang === 'en'}
+                  onChange={handleLang}
+                />
+                <label htmlFor="en">
+                  <span>EN</span>
+                </label>
+                <input
+                  /* className="radio-f" */
+                  type="radio"
+                  id="ru"
+                  name="switch-three"
+                  value="ru"
+                  defaultChecked={lang === 'ru'}
+                  onChange={handleLang}
+                />
+                <label htmlFor="ru">
+                  <span>RU</span>
                 </label>
               </div>
             </div>

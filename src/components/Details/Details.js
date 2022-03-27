@@ -11,7 +11,7 @@ import { RiEyeLine } from 'react-icons/ri';
 import { getMoonInfo, uvIndex, getSunPos } from '../../utils/utils';
 import { memo } from 'react';
 
-const Details = memo(({ data, moment, tempUnits, getWindDirect }) => {
+const Details = memo(({ data, moment, tempUnits, getWindDirect, translations, lang }) => {
   const sunPos = getSunPos(
     data.daily.forecast[0].sunriseEpoch,
     data.daily.forecast[0].sunsetEpoch,
@@ -21,7 +21,7 @@ const Details = memo(({ data, moment, tempUnits, getWindDirect }) => {
   return (
     <div id="details-container">
       <div className="details-block">
-        <span className="details-cat-name">СОЛНЦЕ И ЛУНА</span>
+        <span className="details-cat-name">{translations.sunMoon[lang]}</span>
         <div id="sun-info">
           <div id="sunrise" className="details-desc">
             <span>{data.daily.forecast[0].sunrise.slice(0, 5)}</span>
@@ -38,7 +38,7 @@ const Details = memo(({ data, moment, tempUnits, getWindDirect }) => {
                     data.daily.forecast[0].sunriseEpoch) *
                     1000
                 )
-                .format('h ч mm мин')}
+                .format(`h [${translations.h[lang]}] mm [${translations.min[lang]}]`)}
             </span>
           </div>
           <div id="graph">
@@ -51,9 +51,9 @@ const Details = memo(({ data, moment, tempUnits, getWindDirect }) => {
           <div className="details-section col1 row1">
             <WiDaySunny size="2.5em" />
             <div className="details-desc">
-              <span className="details-heading">УФ-ИНДЕКС</span>
+              <span className="details-heading">{translations.uv[lang]}</span>
               <span>
-                {data.current.uvIndex} - {uvIndex(data.current.uvIndex)}
+                {data.current.uvIndex} - {translations[uvIndex(data.current.uvIndex)][lang]}
               </span>
             </div>
           </div>
@@ -63,50 +63,50 @@ const Details = memo(({ data, moment, tempUnits, getWindDirect }) => {
               size="2.5em"
             />
             <div className="details-desc">
-              <span className="details-heading">ФАЗА ЛУНЫ</span>
+              <span className="details-heading">{translations.moonPhase[lang]}</span>
               <span>
-                {getMoonInfo(data.daily.forecast[0].moonPhase).phaseName}
+                {translations[getMoonInfo(data.daily.forecast[0].moonPhase).phaseName][lang]}
               </span>
             </div>
           </div>
           <div className="details-section col1 row2">
             <WiMoonrise size="2.5em" viewBox="5 3 20 23" />
             <div className="details-desc">
-              <span className="details-heading">ВОСХОД ЛУНЫ</span>
+              <span className="details-heading">{translations.moonrise[lang]}</span>
               <span>
                 {data.daily.forecast[0].moonrise
                   ? data.daily.forecast[0].moonrise.slice(0, 5)
-                  : 'Вчера'}
+                  : translations.yesterday[lang]}
               </span>
             </div>
           </div>
           <div className="details-section col2 row2">
             <WiMoonset size="2.5em" viewBox="5 3 20 23" />
             <div className="details-desc">
-              <span className="details-heading">ЗАКАТ ЛУНЫ</span>
+              <span className="details-heading">{translations.moonset[lang]}</span>
               <span>
                 {data.daily.forecast[0].moonset
                   ? data.daily.forecast[0].moonset.slice(0, 5)
-                  : 'Весь день'}
+                  : translations.allDay[lang]}
               </span>
             </div>
           </div>
         </div>
       </div>
       <div className="details-block">
-        <span className="details-cat-name">ПОДРОБНОСТИ</span>
+        <span className="details-cat-name">{translations.details[lang]}</span>
         <div className="grid-block">
           <div className="details-section col1 row1">
             <WiBarometer size="2.5em" />
             <div className="details-desc">
-              <span className="details-heading">ДАВЛЕНИЕ</span>
-              <span>{Math.round(data.current.pressure)} hPa</span>
+              <span className="details-heading">{translations.pressure[lang]}</span>
+              <span>{Math.round(data.current.pressure)} {translations.hpa[lang]}</span>
             </div>
           </div>
           <div className="details-section col2 row1">
             <WiRaindrops size="2.5em" viewBox="5 3 20 20" />
             <div className="details-desc">
-              <span className="details-heading">ТОЧКА РОСЫ</span>
+              <span className="details-heading">{translations.dewPoint[lang]}</span>
               <span>
                 {Math.round(data.current.dewPoint)} {tempUnits}°
               </span>
@@ -115,8 +115,8 @@ const Details = memo(({ data, moment, tempUnits, getWindDirect }) => {
           <div className="details-section col1 row2">
             <RiEyeLine size="2.5em" viewBox="0 -3 24 31" />
             <div className="details-desc">
-              <span className="details-heading">ВИДИМОСТЬ</span>
-              <span>{Math.round(data.current.visibility / 1000)} км</span>
+              <span className="details-heading">{translations.visibility[lang]}</span>
+              <span>{Math.round(data.current.visibility / 1000)} {translations.km[lang]}</span>
             </div>
           </div>
           <div className="details-section col2 row2">
@@ -125,8 +125,8 @@ const Details = memo(({ data, moment, tempUnits, getWindDirect }) => {
               style={{ transform: `rotate(${data.current.windDir}deg)` }}
             />
             <div className="details-desc">
-              <span className="details-heading">НАПР. ВЕТРА</span>
-              <span>{getWindDirect(data.current.windDir)}</span>
+              <span className="details-heading">{translations.windDir[lang]}</span>
+              <span>{translations[getWindDirect(data.current.windDir)][lang]}</span>
             </div>
           </div>
         </div>

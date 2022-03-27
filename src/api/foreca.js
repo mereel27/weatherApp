@@ -6,9 +6,9 @@ const Foreca = {
       'x-rapidapi-key': process.env.REACT_APP_API_KEY,
     },
   },
-  async getLocation(city) {
+  async getLocation(city, lang) {
     const response = await fetch(
-      `${this.domain}/location/search/${city}?lang=ru`,
+      `${this.domain}/location/search/${city}?lang=${lang || 'en'}`,
       this.headers
     );
     const jsonReponse = await response.json();
@@ -29,12 +29,12 @@ const Foreca = {
     }
   },
 
-  async getAllData(coord, windUnits, tempUnits) {
+  async getAllData(coord, windUnits, tempUnits, lang) {
     const urls = [
-      `${this.domain}/location/${coord}?lang=ru`,
-      `${this.domain}/current/${coord}?lang=ru&tempunit=${tempUnits}&windunit=${windUnits}`,
+      `${this.domain}/location/${coord}?lang=${lang}`,
+      `${this.domain}/current/${coord}?lang=${lang}&tempunit=${tempUnits}&windunit=${windUnits}`,
       `${this.domain}/forecast/hourly/${coord}?tempunit=${tempUnits}&windunit=${windUnits}`,
-      `${this.domain}/forecast/daily/${coord}?dataset=full&periods=8&lang=ru&tempunit=${tempUnits}&windunit=${windUnits}`,
+      `${this.domain}/forecast/daily/${coord}?dataset=full&periods=8&lang=${lang}&tempunit=${tempUnits}&windunit=${windUnits}`,
     ];
     const data = await Promise.all(urls.map((url) => this.getData(url)));
     return data;

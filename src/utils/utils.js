@@ -1,21 +1,21 @@
 export const getWindDirect = (deg) => {
   switch (true) {
     case deg > 350 || deg <= 10:
-      return 'Север';
+      return 'N';
     case deg > 10 && deg < 80:
-      return 'Северо-восток';
+      return 'NE';
     case deg >= 80 && deg <= 100:
-      return 'Восток';
+      return 'E';
     case deg > 100 && deg < 170:
-      return 'Юго-восток';
+      return 'SE';
     case deg >= 170 && deg <= 190:
-      return 'Юг';
+      return 'S';
     case deg > 190 && deg < 260:
-      return 'Юго-запад';
+      return 'SW';
     case deg >= 260 && deg <= 280:
-      return 'Запад';
+      return 'W';
     case deg > 280 && deg < 350:
-      return 'Северо-запад';
+      return 'NW';
     default:
       return 'N/A';
   }
@@ -118,28 +118,28 @@ export const getMoonInfo = (deg) => {
 
   switch (true) {
     case deg >= 0 && deg <= 13:
-      phaseName = 'Новолуние';
+      phaseName = 'nMoon';
       break;
     case deg > 13 && deg < 90:
-      phaseName = 'Молодая луна';
+      phaseName = 'yMoon';
       break;
     case deg >= 90 && deg <= 103:
-      phaseName = 'Первая четверть';
+      phaseName = 'fQuarter';
       break;
     case deg > 103 && deg < 180:
-      phaseName = 'Растущая луна';
+      phaseName = 'wCresent';
       break;
     case deg >= 180 && deg <= 193:
-      phaseName = 'Полнолуние';
+      phaseName = 'fMoon';
       break;
     case deg > 193 && deg < 270:
-      phaseName = 'Убывающая луна';
+      phaseName = 'wGibbous';
       break;
     case deg >= 270 && deg <= 283:
-      phaseName = 'Последняя четверть';
+      phaseName = 'lQuarter';
       break;
     case deg > 283 && deg <= 360:
-      phaseName = 'Старая луна';
+      phaseName = 'oMoon';
       break;
     default:
       break;
@@ -155,17 +155,17 @@ export const move = (evt) => {
 
 export const windUnitsConverter = (prevUnit, newUnit, value) => {
   switch (true) {
-    case prevUnit === 'MS' && newUnit === 'KMH':
+    case prevUnit === 'ms' && newUnit === 'kmh':
       return value * 3.6;
-    case prevUnit === 'MS' && newUnit === 'MPH':
+    case prevUnit === 'ms' && newUnit === 'mph':
       return value * 2.237;
-    case prevUnit === 'KMH' && newUnit === 'MS':
+    case prevUnit === 'kmh' && newUnit === 'ms':
       return value / 3.6;
-    case prevUnit === 'KMH' && newUnit === 'MPH':
+    case prevUnit === 'kmh' && newUnit === 'mph':
       return value / 1.609;
-    case prevUnit === 'MPH' && newUnit === 'MS':
+    case prevUnit === 'mph' && newUnit === 'ms':
       return value / 2.237;
-    case prevUnit === 'MPH' && newUnit === 'KMH':
+    case prevUnit === 'mph' && newUnit === 'kmh':
       return value * 1.609;
     default:
       break;
@@ -224,15 +224,15 @@ export const getSunPos = (sunrise, sunset, time) => {
 export const uvIndex = (index) => {
   switch (true) {
     case index >= 0 && index <= 2:
-      return 'Низкий';
+      return 'low';
     case index >= 3 && index <= 5:
-      return 'Умереный';
+      return 'moderate';
     case index >= 6 && index <= 7:
-      return 'Высокий';
+      return 'high';
     case index >= 8 && index <= 10:
-      return 'Очень высокий';
+      return 'veryhigh';
     case index >= 11:
-      return 'Чрезмерный';
+      return 'excessive';
     default:
       break;
   }

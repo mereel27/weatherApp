@@ -3,7 +3,7 @@ import Logo from '../Logo';
 import './Current.css';
 import { WiHumidity, WiUmbrella, WiStrongWind } from 'react-icons/wi';
 
-const Current = memo(({ data, getDate, windUnit }) => {
+const Current = memo(({ data, getDate, windUnit, translations, lang }) => {
   /* console.log('current render') */
   return (
     <div className="current">
@@ -21,25 +21,25 @@ const Current = memo(({ data, getDate, windUnit }) => {
       /> */}
       <span id="description">{data.current.symbolPhrase || ''}</span>
       <div className="current-more-info">
-        <div className="more" title="Скорость ветра">
+        <div className="more" title={translations.windSpeed[lang]}>
           <span className="more-desc">
             <WiStrongWind size="2em" />
           </span>
-          <span className="more-desc">Ветер</span>
-          <span className="more-desc">{`${data.current.windSpeed} - ${data.current.windGust} ${windUnit}`}</span>
+          <span className="more-desc">{translations.wind[lang]}</span>
+          <span className="more-desc">{`${data.current.windSpeed} - ${data.current.windGust} ${translations[windUnit][lang]}`}</span>
         </div>
-        <div className="more" title="Относительная влажность">
+        <div className="more" title={translations.relHumidity[lang]}>
           <span className="more-desc">
             <WiHumidity size="2em" />
           </span>
-          <span className="more-desc">Влажность</span>
+          <span className="more-desc">{translations.humidity[lang]}</span>
           <span className="more-desc">{data.current.relHumidity}%</span>
         </div>
-        <div className="more" title="Вероятность осадков">
+        <div className="more" title={translations.precipProb[lang]}>
           <span className="more-desc">
             <WiUmbrella size="2em" />
           </span>
-          <span className="more-desc">Осадки</span>
+          <span className="more-desc">{translations.precipProbShort[lang]}</span>
           <span className="more-desc">{data.current.precipProb}%</span>
         </div>
       </div>
@@ -47,7 +47,7 @@ const Current = memo(({ data, getDate, windUnit }) => {
         <a href="https://www.foreca.com/ru" rel="noreferrer" target="_blank">
           <Logo className="logo" />
         </a>
-        <span>{`Обновлено: ${getDate(data.current.time)[2]}`}</span>
+        <span>{translations.updated[lang]}: {getDate(data.current.time)[2]}</span>
       </div>
     </div>
   );

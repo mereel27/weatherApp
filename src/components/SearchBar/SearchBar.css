@@ -21,6 +21,7 @@ form {
   padding:  5px 10px;
   background-color: rgba(255, 255, 255, 0.103);
   backdrop-filter: blur(25px);
+  transform: translateZ(0);
 }
 
 .search-off {
@@ -28,18 +29,21 @@ form {
   width: 0;
   padding: 0;
   background-color: transparent;
+  transform: translateZ(0);
 }
 
 .search-off input {
   width: 0;
   height: 0;
   padding: 0;
+  transform: translateZ(0);
 }
 
 .search-on input {
   height: 25px;
   width: 100%;
   padding: 0;
+  transform: translateZ(0);
 }
 
 .search-off input::placeholder {

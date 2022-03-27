@@ -1,6 +1,7 @@
 import './App.css';
 import { useEffect, useState, useCallback } from 'react';
 import moment from 'moment';
+import translations from './utils/translations';
 import 'moment/locale/ru';
 import Foreca from './api/foreca';
 import getLocationByIp from './api/whois';
@@ -14,13 +15,11 @@ import { IoMenu } from 'react-icons/io5';
 import {
   windUnitsConverter,
   tempUnitsConverter,
-  windText,
+  /* windText, */
   effectsInfo,
   getWindDirect,
 } from './utils/utils';
 import Details from './components/Details/Details';
-
-moment.locale('ru');
 
 let timeoutID;
 let blurTimeout;
@@ -35,7 +34,7 @@ function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [hidden, setHidden] = useState(true);
   const [windUnits, setWindUnits] = useState(
-    localStorage.getItem('windUnits') || 'MS'
+    localStorage.getItem('windUnits') || 'ms'
   );
   const [tempUnits, setTempUnits] = useState(
     localStorage.getItem('tempUnits') || 'C'
@@ -45,8 +44,10 @@ function App() {
   );
   const [conditions, setConditions] = useState(null);
   const [searchOn, setSearchOn] = useState(false);
+  const [lang, setLang] = useState(localStorage.getItem('weatherAppLang') || 'en');
 
   useEffect(() => {
+    moment.locale(lang);
     let coordinates;
     const fetchData = async () => {
       coordinates =
@@ -66,8 +67,9 @@ function App() {
         }));
       const allData = await Foreca.getAllData(
         coordinates,
-        windUnits,
-        tempUnits
+        windUnits.toUpperCase(),
+        tempUnits,
+        lang
       );
       /* console.log(allData) */
       const location = allData[0];
@@ -83,12 +85,12 @@ function App() {
     };
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentLocation]);
+  }, [currentLocation, lang]);
 
   const changeLocation = async (id) => {
     let locInfo;
     if (!id) {
-      locInfo = await Foreca.getLocation(city);
+      locInfo = await Foreca.getLocation(city, lang);
     }
     setCurrentLocation(id || locInfo[0].id);
   };
@@ -104,7 +106,7 @@ function App() {
       timeoutID = null;
     }
     timeoutID = setTimeout(() => {
-      Foreca.getLocation(e.target.value).then((response) => {
+      Foreca.getLocation(e.target.value, lang).then((response) => {
         setSearchResults(response);
       });
     }, 1000);
@@ -162,6 +164,11 @@ function App() {
     },
     [defaultCity]
   );
+
+  const handleLang = useCallback((e) => {
+    localStorage.setItem('weatherAppLang', e.target.value);
+    setLang(e.target.value);
+  }, []);
 
   const handleWind = useCallback(
     (e) => {
@@ -292,6 +299,8 @@ function App() {
               focusOn={focusOn}
               searchOn={searchOn}
               handleSearchOn={handleSearchOn}
+              translations={translations}
+              lang={lang}
             />
             <button
               className={hidden ? '' : 'menu-active'}
@@ -313,27 +322,34 @@ function App() {
             handleWind={handleWind}
             tempUnits={tempUnits}
             windUnits={windUnits}
+            lang={lang}
+            handleLang={handleLang}
+            translations={translations}
           />
           <WeatherEffects conditions={conditions} />
           <Current
             data={data}
             getDate={getDate}
-            windUnit={windText(windUnits)}
+            windUnit={windUnits}
+            translations={translations}
+            lang={lang}
           />
           <Hourly data={data} getDate={getDate} />
           <Daily
             data={data}
             getDate={getDate}
-            windUnit={windText(windUnits)}
+            windUnits={windUnits}
             getWindDirect={getWindDirect}
+            translations={translations}
+            lang={lang}
           />
           <div id="more">
             <a
-              href={`https://www.foreca.com/ru/${data.location.id}/${data.location.name}-${data.location.adminArea}-${data.location.country}`}
+              href={`https://www.foreca.com/${lang}/${data.location.id}/${data.location.name}-${data.location.adminArea}-${data.location.country}`}
               rel="noreferrer"
               target="_blank"
             >
-              Детальный прогноз
+              {translations.forecast[lang]}
             </a>
           </div>
           <Details
@@ -341,6 +357,8 @@ function App() {
             moment={moment}
             tempUnits={tempUnits}
             getWindDirect={getWindDirect}
+            translations={translations}
+            lang={lang}
           />
         </div>
       )}
