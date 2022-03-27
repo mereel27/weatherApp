@@ -23,6 +23,7 @@ import Details from './components/Details/Details';
 
 let timeoutID;
 let blurTimeout;
+localStorage.removeItem('windUnits');
 
 function App() {
   const [city, setCity] = useState('');
@@ -47,8 +48,6 @@ function App() {
   const [lang, setLang] = useState(localStorage.getItem('weatherAppLang') || 'en');
 
   useEffect(() => {
-    const hui = localStorage.getItem('windUnits');
-    localStorage.setItem('windUnits', hui.toLowerCase());
     moment.locale(lang);
     let coordinates;
     const fetchData = async () => {
