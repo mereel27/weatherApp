@@ -23,7 +23,6 @@ import Details from './components/Details/Details';
 
 let timeoutID;
 let blurTimeout;
-localStorage.removeItem('windUnits');
 
 function App() {
   const [city, setCity] = useState('');
