@@ -14,7 +14,7 @@ export const getWindDirect = (deg) => {
       return 'SW';
     case deg >= 260 && deg <= 280:
       return 'W';
-    case deg > 280 && deg < 350:
+    case deg > 280 && deg <= 350:
       return 'NW';
     default:
       return 'N/A';
