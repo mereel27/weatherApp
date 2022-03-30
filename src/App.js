@@ -15,7 +15,6 @@ import { IoMenu } from 'react-icons/io5';
 import {
   windUnitsConverter,
   tempUnitsConverter,
-  /* windText, */
   effectsInfo,
   getWindDirect,
 } from './utils/utils';
@@ -44,7 +43,8 @@ function App() {
   );
   const [conditions, setConditions] = useState(null);
   const [searchOn, setSearchOn] = useState(false);
-  const [lang, setLang] = useState(localStorage.getItem('weatherAppLang') || 'en');
+  const userLang = navigator.language.slice(0, 2);
+  const [lang, setLang] = useState(localStorage.getItem('weatherAppLang') || (['en', 'ru'].includes(userLang) && userLang ) || 'en');
 
   useEffect(() => {
     moment.locale(lang);
