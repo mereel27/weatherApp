@@ -17,7 +17,6 @@ const Details = memo(({ data, moment, tempUnits, getWindDirect, translations, la
     data.daily.forecast[0].sunsetEpoch,
     data.current.time
   );
-  /* console.log('details'); */
   return (
     <div id="details-container">
       <div className="details-block">
@@ -30,7 +29,7 @@ const Details = memo(({ data, moment, tempUnits, getWindDirect, translations, la
             <span>{data.daily.forecast[0].sunset.slice(0, 5)}</span>
           </div>
           <div className="details-desc" id="daytime">
-            {/* <span className='details-heading'>Долгота дня</span> */}
+            {<span className='details-desc'>Долгота дня</span>}
             <span>
               {moment
                 .utc(
@@ -38,7 +37,7 @@ const Details = memo(({ data, moment, tempUnits, getWindDirect, translations, la
                     data.daily.forecast[0].sunriseEpoch) *
                     1000
                 )
-                .format(`h [${translations.h[lang]}] mm [${translations.min[lang]}]`)}
+                .format(`H [${translations.h[lang]}] m [${translations.min[lang]}]`)}
             </span>
           </div>
           <div id="graph">
@@ -125,7 +124,7 @@ const Details = memo(({ data, moment, tempUnits, getWindDirect, translations, la
               style={{ transform: `rotate(${data.current.windDir}deg)` }}
             />
             <div className="details-desc">
-              <span className="details-heading">{translations.windDir[lang]}</span>
+              <span className="details-heading">{translations.windDirShort[lang]}</span>
               <span>{translations[getWindDirect(data.current.windDir)][lang]}</span>
             </div>
           </div>

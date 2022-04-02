@@ -27,7 +27,7 @@ const translations = {
   sunMoon: { en: 'sun and moon', ru: 'солнце и луна' },
   uv: { en: 'uv-index', ru: 'уф-индекс' },
   moonPhase: { en: 'moon phase', ru: 'фаза луны' },
-  moonrise: { en: 'moon rise', ru: 'восход луны,' },
+  moonrise: { en: 'moon rise', ru: 'восход луны' },
   moonset: { en: 'moon set', ru: 'закат луны' },
   allDay: { en: 'All day', ru: 'Весь день' },
   yesterday: { en: 'Yesterday', ru: 'Вчера' },
@@ -35,7 +35,7 @@ const translations = {
   forecast: { en: 'Detailed forecast', ru: 'Детальный прогноз'},
   dewPoint: { en: 'dew point', ru: 'точка росы' },
   visibility: { en: 'visibility', ru: 'видимость' },
-  windDirShort: { en: 'wind dir.', ru: 'напр.ветра' },
+  windDirShort: { en: 'wind dir.', ru: 'напр. ветра' },
   //Settings
   favorites: { en: 'Favorites', ru: 'Избранное' },
   default: { en: 'Select default', ru: 'Выбрать по-умолчанию' },

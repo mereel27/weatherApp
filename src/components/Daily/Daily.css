@@ -46,6 +46,7 @@
 
 .daily-temp {
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .extra svg {
@@ -65,7 +66,6 @@
   .daily-temp {
     justify-self: center;
     text-align: center;
-    white-space: nowrap;
   }
 
   /* .weather-icon {
