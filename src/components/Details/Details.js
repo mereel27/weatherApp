@@ -29,7 +29,6 @@ const Details = memo(({ data, moment, tempUnits, getWindDirect, translations, la
             <span>{data.daily.forecast[0].sunset.slice(0, 5)}</span>
           </div>
           <div className="details-desc" id="daytime">
-            {<span className='details-desc'>Долгота дня</span>}
             <span>
               {moment
                 .utc(
