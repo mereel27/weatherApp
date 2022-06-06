@@ -1,13 +1,16 @@
 import { useEffect, useState, memo } from 'react';
+import { WiMoonAltFull } from 'react-icons/wi';
 
-export const MoonIcon = memo(({ name, size }) => {
-  /* console.log(name) */
-  const [icon, setIcon] = useState(null);
+const MoonIcon = memo(({ name, size }) => {
+  
+  const [icon, setIcon] = useState(<WiMoonAltFull size={size} className='moonIcon'/>);
   useEffect(() => {
     /* console.log('moon render'); */
     (async () => {
       const Icon = (await import('react-icons/wi'))[name];
-      setIcon(<Icon size={size} className='moonIcon'/>)
+      if (Icon) {
+        setIcon(<Icon size={size} className='moonIcon'/>)
+      }
     })()
   }, [name, size]);
 

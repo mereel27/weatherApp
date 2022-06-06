@@ -44,7 +44,7 @@ export const getMoonInfo = (deg) => {
       iconName = 'WiMoonWaxingCrescent5';
       break;
     case deg > 77 && deg < 90:
-      iconName = 'WiMoonWaxingCrescent6';
+      iconName = 'WiMoonWaxing6';
       break;
     case deg >= 90 && deg <= 103:
       iconName = 'WiMoonFirstQuarter';

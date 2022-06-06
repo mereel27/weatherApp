@@ -1,4 +1,3 @@
-import MoonIcon from '../MoonIcon/MoonIcon';
 import {
   WiDaySunny,
   WiBarometer,
@@ -10,6 +9,7 @@ import {
 import { RiEyeLine } from 'react-icons/ri';
 import { getMoonInfo, uvIndex, getSunPos } from '../../utils/utils';
 import { memo } from 'react';
+import MoonIcon from '../MoonIcon/MoonIcon';
 
 const Details = memo(({ data, moment, tempUnits, getWindDirect, translations, lang }) => {
   const sunPos = getSunPos(
